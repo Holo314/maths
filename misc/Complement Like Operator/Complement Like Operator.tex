@@ -1,0 +1,236 @@
+\input{../../base-article.tex}
+
+\newcommand{\clf}{\mbox{clf}}
+\newcommand{\ICI}{\mathcal{ICI}}
+\title{Complement Like Operator}
+\begin{document}
+	
+	\maketitle
+	\section{Introduction}
+	Given a set $X$, we can uniquely identify the complement operator $^c:\mathcal{P}(X)\to\mathcal{P}(X)$ using 3 properties:
+	\begin{enumerate}
+		\item{ for all $a\subseteq X$ we have $a^c\cap a=\emptyset$}
+		\item{ for all $a\subseteq X$ we have $a^c\cup a=X$}
+		\item{ for all $a\subseteq X$ we have $(a^c)^c=a$}
+	\end{enumerate}
+	We wish to explore "complement like operators", an operator $^*:\mathcal{P}(X)\to\mathcal{P}(X)$ that satisfy only 2 out of those 3 properties:
+	
+	
+	\begin{definition}
+		$\blacksquare$-complement is an operator $\mathcal{P}(X)\to\mathcal{P}(X)$ that satisfy only 1 and 2
+	\end{definition}
+	\begin{definition}
+		$\bullet$-complement is an operator $\mathcal{P}(X)\to\mathcal{P}(X)$ that satisfy only 1 and 3
+	\end{definition}
+	\begin{definition}
+		$\star$-complement is an operator $\mathcal{P}(X)\to\mathcal{P}(X)$ that satisfy only 2 and 3
+	\end{definition}
+	
+	\begin{lemma}\label{lem:1.1}
+		There are no $\blacksquare$ operator
+	\end{lemma}
+	\begin{proof}
+		We will now show that property 1 and 2 implies property 3:\newline
+		Let $^*$ be $\blacksquare$ operator, By property 1 we have $x\in a^*\subseteq X$ implies $x\notin a$, so $a^*\subseteq a^c$.\newline
+		Similarly by property 2 we have $x\notin a$ implies $x\in a^*$ so $a^c\subseteq a^*$, hence $a^c=a^*$, thus property 3 also holds.
+	\end{proof}
+	
+	So now we only need to consider $\star$ and $\bullet$ operators. The following theorems will justify only considering one of those 2 operators:
+	
+	\begin{theorem}\label{thm:1.2}
+		There is bijection between the set of all $\bullet$ operators and the set of all $\star$ operators on $\mathcal{P}(X)$.
+	\end{theorem}
+	\begin{proof}
+		Let $^*$ be a $\star$ operator, then $^*\to^{c*c}$.
+		
+		
+		This is indeed a $\bullet$ operator: $(A^{c*c})^{c*c}=A^{c*cc*c}=A^{c**c}=A^{cc}=A$ and $x\in A^{c*c}\implies x \notin A^{c*}\implies x \notin A^{cc}=A\implies A\cap A^{c*c}=\emptyset$.
+		
+		Moreover, this map is also an inverse of itself: $^{c(c*c)c}=^*$
+	\end{proof}
+	From here on we will only consider $\star$-complement operators.
+	
+	\section{Properties of $\star$-complement operator}
+	One can ask, is there exists a $\star$-complement operator? i.e. does there exists a set $X$ with $^*:\mathcal{P}(X)\to\mathcal{P}(X)$ such that $a^*\cup a=X$ and $a^*{}^*=a$ for all $a\subseteq X$?
+	
+%	\newline\newline
+	For explicit example consider $X=\Bbb{N}$, now we will construct $A\in \mathcal{P(P(}X))$ like so: 
+	\begin{enumerate}
+		\item{let $A_0=$the set of even natural numbers}
+		\item{If $n$ is a natural number then:}
+		$$\qquad A_{n}=A_{n-1}\cup\{\min(x\in\Bbb{N}\mid x\notin A_{n-1})\}$$
+		$$\qquad A_{-n}=A_{-n+1}\setminus\{\min(A_{-n+1})\}$$
+	\end{enumerate}
+	Now $A=\{A_j\}_{j\in\Bbb{Z}}$.
+	
+	It is easy to see that $A_j\subsetneq A_{j+1}$ for all $j\in\Bbb{Z}$, then we can define $^*:\mathcal{P}(X)\to\mathcal{P}(X)$ as follows:
+	$$a^*=\begin{cases}a^c&a\notin A\\A_{j-1}^c&a=A_j\in A\end{cases}$$
+	This $^*$ is a $\star$-complement operator.
+	
+%	\newline
+	So, it is worth talking about $\star$-complement operators. The sharp ones may notice how $(A,\subsetneq)\cong(\Bbb{Z},<)$, this relation is in fact the entire classification of $^*$.
+	\begin{definition}
+		$\cl(A,f)$ is the closure of $A$ under $f$: $\cl(A,f)=\bigcup_{k\in\omega}\{f^k[A]\}$
+	\end{definition}
+	\begin{definition}
+		$\clf(A,f)=\cl(A,f)\cup\cl(A,f^{-1})$
+	\end{definition}
+	\begin{lemma}
+		If $^{*}$ is $\star$-complement operator on $\mathcal{P}(X)$, then for each $a\subseteq X$ we have $\clf(a,^{*c})=\{a\}$ or $(\clf(a,^{*c}),\subsetneq)\cong(\Bbb{Z}, <)$ and there exists at least one $a\subseteq X$ is the latter. In addition, if $a$ is finite or co-finite then $a^*=a^c$
+	\end{lemma}
+	\begin{proof}
+		Let $^{*c}$ be such operator, and assume $\clf(a,^{*c})\ne\{a\}$, because $a^{*}\supsetneq a^c$ we have $a^{*c}\subsetneq a$, if $(a^{*c})^{*c}=a^{*c}$ then $(a^{*c})^{*}=a^{*}$ so $a^{*c}=a$, $a^{*c*c}\ne a$ as well because $a^{*c*c}\subsetneq a^{*c}\subsetneq a$, continuing it for both direction and that finish the proof of the first part(because $^{*c}$ is a bijective map this process will work for inverse as well).
+		
+		Assume that $a$ is finite(resp. co-finite) and $a^*\ne a^c$ then $\clf(a,^{*c})$ has a minimum(resp. maximum), and hence is not isomorphic to $\Bbb{Z}$
+	\end{proof}
+	In fact, $\clf(a,^{*c})$ can also be seen as the equivalence class $[a]_{\sim_*^\star}$ where $a\sim_*^\star b\iff \exists n\in\Bbb{Z}\;(A^{(*c)^n}=B)$, so $\{C\mid \exists a\subseteq X\;(\clf(a,^{*c})=C)\}$ is a partition of $\mathcal{P}(X)$.
+	\begin{lemma}
+		If $P$ is a partition of $\mathcal{P}(X)$ such that if $p\in P$ then either $|p|=1$ or $(p,\subsetneq)\cong(\Bbb{Z},<)$, and at least one $p \in P$ is the latter, then there exists $\star$-complement operator, $^*$, such that $\{C\mid \exists a\subseteq X\;(\clf(a,^{*c})=C)\}=P$.
+	\end{lemma}
+	\begin{proof}
+		If $p\in P$ is such that $|p|=1$ then $a^*=a^c$ for the $a\in p$.
+		
+		If not, then $p=\{p_k\}_{k\in\Bbb{Z}}=\{\cdots, p_{-1}\subsetneq p_0\subsetneq p_1\cdots\}$, so let $p_k^*=p_{k-1}^c$.
+	\end{proof}
+	
+	Now we ets $X$ we have $\star$-complement operator on $\mathcal{P}(X)$.
+	
+	\begin{theorem}
+		The following are equivalent:
+		\begin{enumerate}
+			\item{ There exists a $\star$-complement operator on $\mathcal{P}(X)$}
+			\item{ There exists $\Bbb{Z}$-chain to $\mathcal{P}(X)$(ordered by $\subsetneq$)}
+			\item{ $X$ is countable union of infinite disjoint sets}
+			\item{ $\mathcal{P}(X)$ is Dedekind infinite}
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		(1)$\iff$(2) is clear by lemma 2.1 and lemma 2.2 
+		
+		Assume (2) let $\{P_j\}_{j\in\Bbb{Z}}$ be a chain of subsets of $X$, then define $C_j=P_j\setminus\bigcup_{k<j}P_k$, then $\{\bigcup_{j\in\omega}C_{\langle k,j\rangle}\}_{k\in\omega}\cup\{X\setminus\bigcup_{i\in \omega}P_i\}$ is a countable family of infinite disjoint sets whose union is $X$, where $\langle\cdot,\cdot\rangle:\omega^2\to\omega$ is a pairing function.
+		
+		Assume (3), let $\{C_i\}_{i\in\Bbb{Z}}$ be countable family of infinite disjoint sets whose union is $X$, let $P_i=\bigcup_{k<i}C_k$ to get (2).
+		
+		(3)$\implies$(4) is trivial and (4)$\implies$(3) is due to Tarski\cite{SurLesEnsemblesFinis}:
+		Let $X$ be a set such that $\mathcal{P}(X)$ is Dedekind-infinite, then let $(X_i)_{i\in\omega}$ be a sequence of subsets of $X$, and define the function $F:X\to\mathcal{P}(\omega)$:
+		
+		Let $a\in X$, then define $F(a)_n$ for $n\in\omega$ recursively: let $F(a)_n$ be the minimal $k\in\omega$ such that $\bigcup_{i\le n} X_{F(a)_i}\subsetneq \bigcup_{i< n} X_{F(a)_i}$ and $a\in X_k$, if not such $k$ exists, let $F(a)_n=F(a)_{n-1}$, let $F(a)=\{F(a)_n\}_{n\in\omega}$.
+		
+		If $F(a)$ is infinite we can use similar method as in the proof of (2)$\implies$(3), if $F(a)$ is finite for all $a$ we will note that $a\sim b\iff F(a)=F(b)$ is a equivalence relation, hence the underline equivalence classes are partition which is infinite and with injection to the set of finite subsets of $\omega$, $\mathcal{P}_{<\omega}(\omega)$.
+		
+		And because $|\mathcal{P}_{<\omega}(\omega)|=\aleph_0$, so does the partition of $X$, $X$ is a countable union of infinite disjoint sets.
+	\end{proof}
+	
+	\begin{definition}
+		$\Delta_1$-finite set is a set that is not disjoint union of 2 infinite sets
+	\end{definition}
+	\begin{definition}
+		Amorphous set is an infinite $\Delta_1$-finite set.
+	\end{definition}
+	
+	\begin{theorem}
+		It is not provable in ZF that there are no amorphous sets.
+	\end{theorem}
+	\begin{proof}
+		The proof can be found at Lévy\cite{TheIndependenceOfVariousDefinitionsOfFiniteness} theorem 11.
+	\end{proof}
+	
+	
+	\begin{corollary}
+		It is not provable in ZF that if $X$ is infinite set, then $\mathcal{P}(X)$ has a $\star$-complement operator.
+	\end{corollary}
+	
+	\section{$\star$-strong complement operator}
+	
+	Now that we have shown some properties of $\star$-complement, we can ask "how far" can $\star$-complement be from the complement?
+	
+	By lemma 2.1 we know that $a$ is finite or co-finite implies any $\star$-complement of it must be the complement, can there exists a $\star$-complement where the other direction is also true? I.e. the $\star$ complement of $a$ is the complement if and only if $a$ is finite or co-finite?
+	
+	Assuming some form of choice, in particular, assuming $\Bbb{R}$ can be well ordered, we can construct such operator:
+	\begin{gather*}
+		\mbox{Let $\ICI(X)$ be the set of infinite co-infinite subsets of $X$, let $<$ be}\\
+		\mbox{well ordering of $\ICI(\Bbb N)$ of order type $|\Bbb R|$, one can show that}\\
+		A_{\subsetneq}=\{B\in\ICI(\Bbb N)\mid A\subsetneq B\}\mbox{ has the cardinality of $\Bbb R$ for all $A\in\ICI(\Bbb{N})$}\\
+		\mbox{Now assume we defined $A^*$ for all $\ICI(\Bbb N)\ni A<B$, then let}\\
+		B^*=\min(C\in B^c_{\subsetneq}\setminus\{A,A^*\}_{A<B} )\mbox{, we can do it because the set of $A<B$}\\
+		\mbox{is of cardinality $<\Bbb R$.}\\
+		\mbox{For $A\notin \ICI(\Bbb N)$ let $A^*=A^c$, and we are done.}
+	\end{gather*}
+	The above suggest that there is a point to define $\star$-strong complement.
+	\begin{definition}
+		An operator $^*:\mathcal{P}(X)\to \mathcal{P}(X)$ is a $\star$-strong complement if it is a $\star$-complement and for all $a\subseteq X$ we have $a^*=a^c\iff a\notin \ICI(X)$.
+	\end{definition}
+	
+	One point we should be careful about in this definition is the fact that $^*$ is not the complement operator because it is $\star$-complement, and not because of $a^*=a^c\iff a\notin \ICI(X)$.\newline
+	It is possible to define the following:
+	\begin{definition}
+		An operator $^*:\mathcal{P}(X)\to \mathcal{P}(X)$ is a $\star$-strong like complement if: 
+		\begin{enumerate}
+			\item{ for all $a\subseteq X$ we have $a^c\cup a=X$}
+			\item{ for all $a\subseteq X$ we have $(a^c)^c=a$}
+			\item{ for all $a\subseteq X$ we have $a^*=a^c\iff a\notin \ICI(X)$}
+		\end{enumerate}
+	\end{definition}
+	And contrary to what one may think, this definition is not equivalent to $\star$-strong complement in general, in fact we have the following:
+	\begin{lemma}
+		Every $\star$-strong like complement on $\mathcal{P}(X)$ is a $\star$-complement on $\mathcal{P}(X)$ if and only if $X$ is not amorphous set. 
+	\end{lemma}
+	But interestingly enough the following also hold:
+	\begin{lemma}
+		For all infinite sets $X$ there is $\star$-strong like complement on $\mathcal{P}(X)$ implies that for all infinite sets $X$ there is $\star$-strong complement on $\mathcal{P}(X)$
+	\end{lemma}
+	So even so the existence of a $\star$-strong like complement does not implies the existence of $\star$-strong complement, if all sets has $\star$-strong like complement then all sets has $\star$-strong complement.
+	
+	Proof of lemma 3.2:
+	\begin{proof}
+		By lemma 3.1 we only need to show that there are no amorphous sets.
+		
+		Let $X$ be amorphous, then $2\times X$ is not amorphous, by assumption we have $\star$-strong like complement on $\mathcal{P}(2\times X)$, by lemma 3.1 we have $\star$-strong complement, by theorem 2.3 we have that $2\times X=A_0\cup A_1\cup A_2$ for $A_0,A_1,A_2$ are infinite disjoint sets.
+		
+		We have $A_0\cap\{i\}\times X$ is infinite for some $i\in\{0,1\}$, then both $A_1\cap\{i\}\times X$ and $A_2\cap\{i\}\times X$ are finite, hence both $A_1\cap\{1-i\}\times X$ and $A_2\cap\{1-i\}\times X$ are infinite, so we get $\pi_1\left(A_1\cap\{1-i\}\times X\right), \pi_1\left(A_2\cap\{1-i\}\times X\right)$ are 2 infinite disjoint subsets of $X$, which is contradiction of $X$ being amorphous.
+	\end{proof}
+	
+%	\newline
+	\begin{theorem}
+		The following are equivalent:
+		\begin{gather*}
+			1.\mbox{ There exists a $\star$-strong complement operator on $\mathcal{P}(X)$}\\
+			2.\mbox{ There exists a partition of $\ICI(X)$ to $\Bbb{Z}$-chains(ordered by $\subsetneq$)}
+		\end{gather*}
+	\end{theorem}
+	\begin{proof}
+		(1)$\implies$(2): By lemma 2.1 we have $\clf(a,^{*c})$ is either $\Bbb Z$-chain or $\{a\}$ for all $a\in\ICI(X)$, if $\clf(a,^{*c})=\{a\}$ then $a^{*c}=a\implies a^*=a^c\implies a\notin \ICI(X)$.
+		
+		(2)$\implies$(1): Let $P$ be partition of $\mathcal{P}(X)$ be the partition of $\ICI(X)$ plus singletons to the finite and co-finite elements. Let $^*$ be the operator from lemma 2.2, if $^*$ is not $\star$-strong complement, then take $a\in\ICI(X)$ such that $a^*=a^c$, then $\clf(a,^{*c})=\{a\}$, this set is in the partition of $\ICI(X)$ so $(\{a\},\subsetneq)\cong(\Bbb Z,<)$, contradiction.
+	\end{proof}
+	
+	\section{Relation to Axiom of Choice}
+	There are several questions we can ask about the $\star$-complement operator and AC:
+	\begin{enumerate}
+		\item{ Does the existence of a $\star$-strong complement is provable in ZF?}
+		\item{ How strong exactly is the axiom "There exists a $\star$-complement operator}{ on the power set of every infinite set"?}
+		\item{ How strong exactly is the axiom "There exists a $\star$-strong complement}{ operator on the power set of every infinite set"?}
+	\end{enumerate}
+	
+	Theorem 2.3 is answers (2), that axiom is equivalent to: $$\forall X\;(X\mbox{ is infinite}\implies\mathcal{P(}X)\mbox{ is Dedekind infinite})$$
+	
+	If we to borrow definitions from Truss\cite{ClassesOfDedekindDiniteCardinals}, then we have the following finiteness definition:
+	
+	\begin{definition}
+		A cardinality $\kappa$ is $\Delta_4$-finite
+		there is no surjective function from it to $\omega$.
+	\end{definition}
+	
+	And, if we look at $\mathcal{P}(X)$ has a $\star$-complement operator as a finiteness definition, we have that it is equivalent to $$\omega=\Delta_4$$ easily by theorem 2.3 form (3)
+	
+	\medskip
+	
+	%Sets the bibliography style to UNSRT and imports the 
+	%bibliography file "samples.bib".
+	\bibliographystyle{unsrt}
+	\bibliography{bibliography}
+\end{document}
+
+
+
+

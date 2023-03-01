@@ -1,0 +1,114 @@
+\documentclass[12pt,reqno]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{xfp}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{exercise}
+\newtheorem{exercise}[section]{Exercise}
+\theoremstyle{subExercise}
+\newtheorem{subExercise}{Part}[section]
+\newtheorem{subSubExercise}{Sub Part}[subExercise]
+\numberwithin{equation}{section}
+\newcommand{\acl}[2]{\operatorname{acl}^{#2}\left(#1\right)}
+\newcommand{\rank}[2]{\operatorname{rank}_{#2}\left(#1\right)}
+\newcommand{\dcl}[2]{\operatorname{dcl}^{#2}\left(#1\right)}
+\newcommand{\Aut}[1]{\operatorname{Aut}\left(#1\right)}
+\newcommand{\Av}[1]{\operatorname{Av}\left(#1\right)}
+\newcommand{\comment}[2]{#2}
+\newcommand{\cof}[1]{\operatorname{cof}\left(#1\right)}
+\renewcommand{\cal}[1]{\mathcal{#1}}
+\newcommand{\D}[2][{}]{\text{Diag}_{#1}\left(#2\right)}
+\renewcommand{\phi}{\varphi}
+\newcommand{\code}[1]{\left\lceil#1\right\rceil}
+\setcounter{MaxMatrixCols}{20}
+\sloppy
+
+\newcommand{\ex}[2][\fpeval{\value{section}+1}]{\setcounter{section}{\fpeval{#1 - 1}}
+	\begin{exercise}
+		#2
+\end{exercise}}
+\newcommand{\sub}[2][\fpeval{\value{subExercise}+1}]{\setcounter{subExercise}{\fpeval{#1 - 1}}
+	\begin{subExercise}
+		#2
+\end{subExercise}}
+\newcommand{\subb}[2][\fpeval{\value{subSubExercise}+1}]{\setcounter{subSubExercise}{\fpeval{#1 - 1}}
+	\begin{subSubExercise}
+		#2
+\end{subSubExercise}}
+\newcommand{\cl}{\mbox{cl}}
+\newcommand{\CB}[1]{\operatorname{CB}\left(#1\right)}
+\newcommand{\MR}[1]{\operatorname{MR}\left(#1\right)}
+\newcommand{\MD}[1]{\operatorname{MD}\left(#1\right)}
+\newcommand{\monster}{{\mathfrak C}}
+\newcommand{\tp}[1]{\operatorname{tp}\left(#1\right)}
+\newcommand{\hull}[3]{\operatorname{Hull}^{#2}_{#3}\left(#1\right)}
+\newcommand{\stp}[1]{\operatorname{stp}\left(#1\right)}
+\newcommand{\dom}[1]{\operatorname{dom}\left(#1\right)}
+\newcommand{\range}[1]{\operatorname{range}\left(#1\right)}
+\newcommand{\cnst}[2]{\operatorname{const}_{#1}\left(#2\right)}
+\renewcommand{\c}{{\mathfrak c}}
+\newcommand{\club}[1]{\operatorname{club}\left(#1\right)}
+\newcommand{\Lev}[1]{\operatorname{Lev}\left(#1\right)}
+\newcommand{\height}[1]{\operatorname{ht}\left(#1\right)}
+\newcommand{\emptyseq}{\Lambda}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+
+
+
+
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\tl_new:N \l_septatrix_env_tl
+\NewDocumentCommand \getenv { o m }
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 }
+	{ \int_set:Nn \tex_endlinechar:D { -1 } }
+	\l_septatrix_env_tl
+	\IfNoValueTF {#1}
+	{ \tl_use:N \l_septatrix_env_tl }
+	{ \tl_set_eq:NN #1 \l_septatrix_env_tl }
+}
+\tl_const:Nn \c_getenv_par_tl { \par }
+
+\NewDocumentCommand{\ifenvsetTF}{mmm}
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #1 } { } \l_tmpa_tl
+	\tl_if_eq:NNTF \l_tmpa_tl \c_getenv_par_tl { #3 } { #2 }
+}
+\ExplSyntaxOff
+
+\usepackage{datetime}
+% \newdate{date}{06}{09}{2012}
+% \date{\displaydate{date}}
+\date{\today}
+\newcommand{\envOrDefault}[2]{\ifenvsetTF{#1}{\getenv{#1}}{#2}}
+
+\author{\envOrDefault{au4thor}{Holo}}
+

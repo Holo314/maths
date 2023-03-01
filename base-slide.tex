@@ -1,0 +1,69 @@
+\documentclass{beamer}
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage[utf8]{inputenc}
+\usepackage{utopia}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\theoremstyle{definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\usepackage[utf8]{inputenc}
+\usepackage{catchfile}
+
+
+\usetheme{Frankfurt}
+\usecolortheme{seagull}
+\AtBeginSection[]{
+	\begin{frame}
+		\vfill
+		\centering
+		\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+			\usebeamerfont{title}\secname\par%
+		\end{beamercolorbox}
+		\vfill
+	\end{frame}
+}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\U}{\mathcal{U}}
+
+
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\tl_new:N \l_septatrix_env_tl
+\NewDocumentCommand \getenv { o m }
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 }
+	{ \int_set:Nn \tex_endlinechar:D { -1 } }
+	\l_septatrix_env_tl
+	\IfNoValueTF {#1}
+	{ \tl_use:N \l_septatrix_env_tl }
+	{ \tl_set_eq:NN #1 \l_septatrix_env_tl }
+}
+\tl_const:Nn \c_getenv_par_tl { \par }
+
+\NewDocumentCommand{\ifenvsetTF}{mmm}
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #1 } { } \l_tmpa_tl
+	\tl_if_eq:NNTF \l_tmpa_tl \c_getenv_par_tl { #3 } { #2 }
+}
+\ExplSyntaxOff
+
+\usepackage{datetime}
+% \newdate{date}{06}{09}{2012}
+% \date{\displaydate{date}}
+\date{\today}
+\newcommand{\envOrDefault}[2]{\ifenvsetTF{#1}{\getenv{#1}}{#2}}
+
+\author{\envOrDefault{author}{Holo}}
+
+

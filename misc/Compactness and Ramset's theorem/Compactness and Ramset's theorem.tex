@@ -1,0 +1,237 @@
+\input{../../base-slide.tex}
+
+\title[Compactness and Ramsey's theorem]{Compactness and Ramsey's theorem}
+\begin{document}
+	\frame{\titlepage}
+	\section[Ramsey theory]{Ramsey theory}
+	\begin{frame}
+		A branch of combinatorics, touches (set theoretical) infinitary combinatorics, graph theory and number theory
+		\begin{block}{Deals with questions of the form}
+			how large does the structure have to be to guarantee that there exists substructure with a given property?
+		\end{block}\pause
+		Toy examples:
+		\begin{itemize}
+			\item What is the smallest party that guarantee that there exists 3 people that all know each other, or all don't know each other?(Theorem on friends and strangers) \pause What about 10 people?\pause
+			\item What is the smallest number $k\in\mathbb{N}$ such that for every partition of the set $\{1,...,k\}$ into $A_0,A_1$, there exists $a,b,c\in A_0$ or $a,b,c\in A_1$ such that $a+b=c$
+		\end{itemize}\pause
+		Answer
+		\begin{itemize}
+			\item 6\pause, Somewhere in between 798 and 23556\pause
+			\item 5
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		A branch of combinatorics, touches (set theoretical) infinitary combinatorics, graph theory and number theory
+		\begin{block}{Deals with questions of the form}
+			how large does the structure have to be to guarantee that there exists substructure with a given property?
+		\end{block}
+		Non-toy examples:\pause
+		\begin{itemize}
+			\item Schur's theorem - for every $n\in\mathbb{N}$ there exists a number $c(n)$ such that for every colouring of $[c(n)]=\{1,...,c(n)\}$ there exists monochromatic $a,b,c\in[c(n)]$ such that $a+b=c$\pause
+			\item Hindman's theorem - If $X$ is a set of all finite sums of some infinite subset of $\mathbb{N}$, and $X=A\sqcup B$, then either $A$ or $B$ are the set of all finite sums of some infinite subset of $\mathbb{N}$\pause
+			\item Ramsey's theorem
+		\end{itemize}
+	\end{frame}
+	\section[Ramsey's theorem]{Ramsey's theorem}
+	\begin{frame}
+		Ramsey's theorem is a very important theorem in graph theory and infinitary combinatorics it has several different variation which are not necessarily equivalent.\pause\newline
+		To be able to state the theorem nicely we first need to define 2 notations:
+	\end{frame}
+	\begin{frame}
+		\begin{definition}
+			Let $A$ be a set and $\alpha$ be cardinal number, $[A]^\alpha$ denotes the set of subsets of $A$ of size $\alpha$, that is: $[A]^\alpha=\{X\in\mathcal{P}(A)\mid |X|=\alpha\}$
+		\end{definition}\pause
+		Examples:\pause
+		\begin{itemize}
+			\item For a set $A$, the set $[A]^2$ is exactly the complete graph with vertices $A$\pause
+			\item $[\mathbb{R}]^3$ is the set of triangles on the plane(including the degenerate triangles)\pause
+			\item $[\mathbb{N}]^\omega$ is the set of all infinite sets of natural numbers
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\begin{definition}[Ramsey's arrow notation]
+			Let $\kappa,\lambda,m$ be cardinals, and let $n$ be a natural number then $$\kappa\to(\lambda)^n_m$$ Is the statement: for every colouring of $[\kappa]^n$ into $m$ colours, there exists a $S\subseteq \kappa$ such that $|S|=\lambda$ and $[S]^n$ is monochromatic 
+		\end{definition}\pause
+		Example:
+		\begin{itemize}
+			\item Theorem on friends and strangers: $6\to(3)^2_2$ - Let $|X|=6$, then $[X]^2$ is $K_6$, we label the \textbf{edges} of $K_6$ with the 2 colours "friends", "strangers", then there exists a subset of $X$, $|Y|=3$, such that $[Y]^2$ is all "friends" or "strangers", that it, either everyone from $Y$ are friends with each other, or non of them know each other
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\begin{theorem}[Ramsey's theorem]
+			Infinitary version: $\forall n,m\in\omega;\; \aleph_0\to(\aleph_0)_m^n$\newline
+			Finitary version: $\forall n,m,b\in\omega\exists a\in\omega;\; a\to(b)^n_m$
+		\end{theorem}\pause
+		Infinitary Ramsey's theorem is the statement "For every colouring of $[\omega]^n$ into $m$ colours, there exists an infinite subset of $\omega$, $X$, such that $[X]^n$ is monochromatic"\pause\newline
+		Finitary Ramsey's theorem should be interpret in the "opposite" direction, "Given a finite set $B$, there exists a finite set $A$ such that every partition of $[A]^n$ into $m$ colours, there exists a homogeneous subset of $A$, $C$, such that $|C|=|B|$"
+	\end{frame}
+	\begin{frame}
+		Bonus
+		\begin{theorem}[Ramsey's theorem]
+			Infinitary version: $\forall n,m\in\omega;\; \aleph_0\to(\aleph_0)_m^n$\newline
+			Finitary version: $\forall n,m,b\in\omega\exists a\in\omega;\; a\to(b)^n_m$
+		\end{theorem}
+		The infinitary version raises an interesting question: For what uncountable $\kappa$ there exists $n,m\in\omega$ such that $\kappa\to(\kappa)_m^n$?\pause\newline
+		It clearly doesn't hold for finite $\kappa$, Ramsey's theorem tells us that it holds for $\kappa=\aleph_0$, but doesn't talk about uncountable $\kappa$? \pause It terns out that if $\kappa$ is uncountable cardinal with such property, then it is satisfy very strong properties, such as "$\kappa$ is inaccessible", "$\kappa$ is $\Pi_1^1$-Indescribable", "The infinitary logic $L_{\kappa,\kappa}$ satisfies the compactness theorem" and more.\pause\newline
+		Such cardinal cannot be proven to exists using ZFC, and it is called "weakly-compact cardinal"
+	\end{frame}
+	\begin{frame}
+		\begin{theorem}[Ramsey's theorem]
+			Infinitary version: $\forall n,m\in\omega;\; \aleph_0\to(\aleph_0)_m^n$\newline
+			Finitary version: $\forall n,m,b\in\omega\exists a\in\omega;\; a\to(b)^n_m$
+		\end{theorem}\pause
+		We will use the "ultrafilters lemma" to prove the infinitary version, and then use the "compactness theorem"(which is equivalent to the "ultrafilters lemma") to show that the infinitary case implies the finitary case.\pause\newline
+		It is worth noting that the special case where $n=2$ is provable in ZF, and the general theorem is weaker than the ultrafilters lemma.
+	\end{frame}
+	\section[Ultrafilters]{Ultrafilters}
+	\begin{frame}
+		Filters is one of the most useful tools in mathematics, it is used in set theory, topology, measure theory, and pretty much anywhere that we look at family of subsets of a specific set, one can also argue that they appear in boolean algebra and any place that deals with ideals.
+		\begin{definition}[filter]
+			Let $X$ be a set, a set $\mathcal{F}\subsetneq\mathcal{P}(X)$ is a $\mathbf{filter}$ if:
+			\begin{itemize}
+				\item $\emptyset\notin \F, X\in\F$
+				\item $A\subseteq B\subseteq X$ and $A\in\F$
+				implies $B\in\F$
+				\item $A,B\in\F\implies A\cap B\in\F$
+			\end{itemize}
+		\end{definition}
+	\end{frame}
+	\begin{frame}
+		\begin{definition}[filter]
+			Let $X$ be a set, a set $\mathcal{F}\subsetneq\mathcal{P}(X)$ is a $\mathbf{filter}$ if:
+			\begin{itemize}
+				\item $\emptyset\notin \F, X\in\F$
+				\item $A\subseteq B\subseteq X$ and $A\in\F$
+				implies $B\in\F$
+				\item $A,B\in\F\implies A\cap B\in\F$
+			\end{itemize}
+		\end{definition}
+		Intuitively, filters are just a method to define the huge subsets of $X$\pause, if $\F$ is a filter, then $\emptyset$ is not $\F$-huge, the empty set should not be considered "big" in any context\pause, $X$ itself is $\F$-huge, $X$ is the biggest subset of $X$, so of course it is huge\pause, if $A$ is $\F$ huge, and $B$ is "bigger" than $A$, then $B$ is also $\F$-huge.\pause\newline
+		The last property is the reason I think about it as "huge" and not "big", intersection of 2 $\F$-huge sets is in itself $\F$-huge.
+	\end{frame}
+	\begin{frame}
+		\begin{definition}[filter]
+			Let $X$ be a set, a set $\mathcal{F}\subsetneq\mathcal{P}(X)$ is a $\mathbf{filter}$ if:
+			\begin{itemize}
+				\item $\emptyset\notin \F, X\in\F$
+				\item $A\subseteq B\subseteq X$ and $A\in\F$
+				implies $B\in\F$
+				\item $A,B\in\F\implies A\cap B\in\F$
+			\end{itemize}
+		\end{definition}
+		Examples:\pause
+		\begin{itemize}
+			\item Let $X$ be a set, if $Y\subseteq X$ then $\{Z\subseteq X\mid Y\subseteq Z\}$\pause
+			\item Let $X$ be a set, if $x\in X$, then $\langle x\rangle=\{Z\subseteq X\mid x\in Z\}$\pause
+			\item The Fréchet filter on $X$: Let $X$ be an infinite set, then the set $\F_X$ of cofinite subsets of $X$ is a filter
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\begin{definition}[ultrafilter]
+			Let $X$ be a set, and let $\U$ be a filter on $X$, $\U$ is an $\mathbf{ultrafilter}$ if for all $A\subseteq X$, $A\in\U$ or $X\setminus A\in\U$
+		\end{definition}\pause
+		\begin{lemma}
+			A filter $\U$ is an ultrafilter if and only if it is maximal
+		\end{lemma}\pause
+		Example:
+		\begin{itemize}
+			\item Let $X$ be a set, and $x\in X$, $\langle x\rangle$ is an ultrafilter
+		\end{itemize}\pause
+		\begin{definition}[nonprincipal ultrafilter]
+			An ultrafilter $\U$ on $X$ is nonprincipal ultrafilter it is not of the form $\langle x\rangle$
+		\end{definition}\pause
+		\begin{block}{Question}
+			Does there exists nonprincipal ultrafilter?
+		\end{block}\pause
+		It turns out that the question cannot be solved in ZF, and to solve it in ZFC we need to following lemma
+	\end{frame}
+	\begin{frame}
+		\begin{lemma}[the ultrafilter lemma]
+			Let $X$ be a set, and let $\F$ be a filter on $X$, then there exists an ultrafilter $\U$ such that $\F\subseteq\U$
+		\end{lemma}\pause
+		This lemma deserves a full course by itself, but it is only useful when combined with the following result:
+		\begin{lemma}
+			An ultrafilter $\U$ on $X$ is nonprincipal ultrafilter if and only if the Fréchet filter on $X$ is a subset of $\U$, that is $\F_X\subseteq\U$, equivalently, it is a nonprincipal ultrafilter if and only if it does not contains any finite subset of $X$
+		\end{lemma}\pause
+		\begin{block}{Corollary}
+			For any infinite set $X$ there exists a nonprincipal ultrafilter on $X$
+		\end{block}
+	\end{frame}
+	\section[Proof of infinitary case]{Proof of infinitary case}
+	\begin{frame}
+		We went over the Ramsey theory, Ramsey's theorem, filters, ultrafilters, nonprincipal ultrafilter, the ultrafilters lemma, but how can the 2 parts connect?\pause\newline
+		For simplicity sake, we will assume that $n=2$, that is we will prove that $\omega\to(\omega)^2_m$ for all $m$\pause, the proof can easily translate to all $n\in\omega$ using induction.\pause\newline
+		To give ourselves a better intuition let's remember the definition of $\omega\to(\omega)^2_m$
+	\end{frame}
+	\begin{frame}
+		\begin{definition}
+			Let $m$ be natural number then $\omega\to(\omega)^2_m$ means that for every colouring of $[\omega]^2$ into $m$ colours, there exists a $S\subseteq \omega$ such that $|S|=\omega$ and $[S]^2$ is monochromatic 
+		\end{definition}\pause
+		In particular, remember that $[X]^2$ is exactly the set of edges of the complete graph with $X$ as vertices.\pause\newline
+		In other words: given colouring on the edges of the complete graph on $\omega$, there exists an infinite complete subgraph that all of it's edges are the same colour.
+	\end{frame}
+	\begin{frame}
+		Let $(V,[V]^2)$ be a countable complete graph, and let $\U$ be $\mathbf{nonprincipal ultrafilter}$ on $V$, let $c:[V]^2\to\{1,2,...,m\}$ be colouring of the edges into $m$ colours.\pause\newline
+		Define the function $A_i:V\to\mathcal{P}(V)$ with $A_i(v)=\{u\in V\mid c(\{v,u\})=i\}$\pause, that is $A_i(v)$ is the set of all vertices that the edge between them and $v$ is $i$-coloured.\pause\newline
+		Note that $V\setminus\{v\}=A_1(v)\cup A_2(v)\cup...\cup A_m(v)$\pause
+		\begin{lemma}
+			If $A=B\sqcup C$ is in an ultrafilter, then either only $B$ is in the ultrafilter or only $C$ is in the ultrafilter
+		\end{lemma}\pause
+		\begin{block}{Corollary}
+			For each $v$ there exists unique $i$ such $A_i(v)\in\U$
+		\end{block}
+	\end{frame}
+	\begin{frame}
+		\begin{block}{Corollary}
+			For each $v$ there exists unique $i$ such $A_i(v)\in\U$
+		\end{block}
+		From this we can induce a colouring on $V$, $k:V\to\{1,2,...,m\}$ with $k(v)=$ the unique $i$ such that $A_i(v)\in\U$.\pause\newline
+		As $k^{-1}(1)\cup...\cup k^{-1}(m)=V$, there exists a unique $j$ such that $k^{-1}(j)\in \U$.\pause
+		\begin{block}{Claim}
+			There is an infinite set $J$ such that $[J]^2$ is all in the colour $j$(by $c$)
+		\end{block}
+	\end{frame}
+	\begin{frame}
+		\begin{block}{Claim}
+			There is an infinite set $J$ such that $[J]^2$ is all in the colour $j$(by $c$)
+		\end{block}
+		Let $A=k^{-1}(j)$, and let $v_0\in A$ be some element.\pause\newline 
+		Because $k(v_0)=j$, $A_j(v_0)\in\U$.\pause\newline
+		Let $v_1\in A\cap A_j(v_0)$\pause\newline
+		Let $v_2\in A\cap A_j(v_0)\cap A_j(v_1)$, and continue this process.\pause\newline
+		Because $\U$ is a filter, at no stage we get the emptyset, and because $\U$ is nonprincipal ultrafilter, at no stage we run out of elements to chose from.\pause\newline
+		We can see that given $v_p, v_q$ with $q>p$, $v_q\in A\cap A_j(v_0)\cap...\cap A_j(v_{q-1})\subseteq A_j(v_p)$, hence $c(\{v_p,v_q\})=j$.\pause\newline
+		Letting $J=\{v_p\mid p\in\omega\}$ finishes the proof.\hfill$\blacksquare$
+	\end{frame}
+	\section[Proof of finitary case]{Proof of finitary case}
+	\begin{frame}
+		Although ultrafilters are extremely useful, it won't help us with finite objects \pause - ish\pause\newline
+		There is a fundamental result in model theory, called the "compactness theorem", which unexpectedly turns out to be equivalent to the ultrafilters lemma.\pause
+		\begin{theorem}[The compactness theorem]
+			Let $T$ be a set of sentences, then $T$ has a model if and only if every finite subset of $T$ has a model
+		\end{theorem}\pause
+		This theorem is a tool that connects between finite results and infinite result.\pause\newline
+		To avoid using model theoretical or formal logic terms, we will not use the compactness theorem, but we will use the following theorem, which follows from the compactness theorem:
+	\end{frame}
+	\begin{frame}
+		\begin{theorem}[The axiom of dependent choice for finite sets]
+			If $A$ is a set, and $<_A$ is a relation on $A$ such that $\{b\in A\mid a<b\}$ is finite for all $a\in A$, then there exists a choice sequence for $<_A$.\newline
+			That is, a sequence $x_i$ such that $x_i<_A x_{i+1}$ for all $i\in\mathbb{N}$
+		\end{theorem}\pause
+		Exercise for those who are comfortable with the compactness theorem: prove the theorem.
+	\end{frame}
+	\begin{frame}
+		Let's assume that the finite case of Ramsey's theorem is false: \pause there exists 3 natural numbers, $n,m,b$, that that for every finite set $A$ there exists a colouring of $[A]^n$ into $m$ colours and this colouring doesn't have any homogeneous subset of size $b$\pause\newline
+		Let's fix $n,m,b$, and let $C_k$ be the set of such colourings for when $|A|=k$.\pause\newline
+		Define $C_k^1$ to be the set of colourings in $C_k$ that can be extended into a colouring in $C_{k+1}$. Because $C_{k+1}$ is non empty, so is $C_k^1$.\pause\newline
+		Similary define $C_k^2$ to be the set of colourings in $C_k^1$ that can be extended into colourings in $C_k^2$.\pause\newline
+		Continue with this construction till we have $C_k^p$ for all $k,p\in\mathbb{N}$.
+	\end{frame}
+	\begin{frame}
+		Notice how $C_k^p\supseteq C_k^{p+1}$ and $|C_k^p|$ is finite for all $k,p\in\mathbb{N}$, hence $C_k^\omega=C_k\cap C_k^1\cap C_k^2\cap\cdots$ is non-empty finite set.\pause\newline
+		Define the order $<_G$ on $C_1^\omega\cup C_2^\omega\cup\cdots$ with $x<_G y$ when there exists $\ell$ such that $x\in C_\ell^\omega,y\in C_{\ell+1}^\omega$ and $y$ extends $x$.\pause\newline
+		By the axiom of dependent choice for finite sets, there exists a sequence $g_0,g_1,\ldots$ such that $g_{q+1}$ extends $g_q$ for all $q$, let $G$ be the colouring that is the union of this sequence. \pause But $G$ has no homogeneous subset of size $b$, which is contradiction to the infinitary version of Ramsey's theorem, hence the infinitary version implies the finitary version
+		\hfill$\blacksquare$
+	\end{frame}
+\end{document}

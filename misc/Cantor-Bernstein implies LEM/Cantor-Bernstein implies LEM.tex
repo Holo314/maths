@@ -1,0 +1,84 @@
+\input{../../base-article.tex}
+
+\newcommand{\inl}{\sf{inl}}
+\newcommand{\inr}{\sf{inr}}
+\newcommand{\NI}{\mathbb{N}_\infty}
+\newcommand{\fw}{f\omega}
+
+\title{Cantor-Bernstein implies LEM}
+
+\begin{document}
+	
+	\maketitle
+	\begin{definition}
+		$O$ is called Binary-Sequentially-Constructive(BSC) if: $$\forall p\in 2^O\left(\exists x\in O\;p(x)=0\right)\lor p\equiv 1$$
+	\end{definition}
+	(This is my own naming
+	, I don't know how those sets are usually called)
+	
+	\begin{lemma}
+		If $O$ is BSC and there exists surjective function $F:O\to A+B$ then $A$ is empty or inhabited
+	\end{lemma}
+	
+	\begin{proof}
+		Define $f\in 2^O$
+		$$f(x)=\begin{cases}
+			0, & \exists a\in A\;F(x)=\inl(a)\\
+			2, & \exists b\in B\;F(x)=\inr(b)
+		\end{cases}$$
+		Because $O$ is BSC then either $\exists x\;f(x)=0\implies \exists a\in A$ or $\forall x\;f(x)=1\implies A=\emptyset$, the last implication is by the fact that $F$ is surjective.
+	\end{proof}
+	
+	\theoremstyle{definition}
+	\begin{definition}{}
+		\hfill \break
+		$$\NI=\left\{p\in 2^\N\mid\forall n\in\N\left(p(n)=1\implies \forall m<n(p(m)=1)\right)\right\}.$$
+		for $n\in\N$
+		
+		$fn\in\NI$ $$fn(m)=\begin{cases}1&m<n\\0&\mbox{Otherwise}\end{cases}$$
+		
+		$\fw\in\NI$ $$\fw\equiv 1$$
+		
+		$fS\in\NI^{\NI}$ $$fS(p)(k)=\begin{cases}1&k=0\\p(n)&k=n+1\end{cases}$$
+	\end{definition}
+	
+	\begin{lemma}
+		$fS$ is injective, and $\forall p\in\NI\;fS(p)\not\equiv f0$
+	\end{lemma}
+	\begin{proof}
+		\hfill\break
+		If $p\in\NI$ then $fS(p)(0)=1\ne 0=f0(0)$.\\
+		If $fS(p)=fS(q)$ then $\forall m\;p(m)=fS(p)(m+1)=fS(q)(m+1)=q(m)$
+	\end{proof}
+	\newpage
+	\begin{lemma}
+		If $P\in2^{\NI}$ and $P(\fw)=1$, and $\forall n\in\N\left(P(fn)=1\right)$ then $P\equiv 1$
+	\end{lemma}
+	\begin{proof}
+		\hfill\break
+		Let $P$ be such function, and let $p\in\NI$, it is enough to prove that $P(p)\ne 0$.\\
+		Assume that $P(p)=0$, //
+		Also assume $\forall k\left(k<n\implies p(k)=0\right)\land p(n)=0$, then $p=fn$(not sure how to prove this), but $0=P(p)=P(fn)=1$, so $p=\fw$, but $0=P(p)=P(\fw)=1$, contradiction.
+	\end{proof}
+	\begin{lemma}
+		There exists a function $e\in\NI^{\left(2^{\NI}\right)}$ such that $P(e(P))=1\implies P\equiv1$
+	\end{lemma}
+	\begin{proof}
+		\hfill\break
+		Define for $Q\in2^{\NI}$ $$e(Q)(n)=\begin{cases}1&\forall k\le n\; Q(fk)=1\\0&\mbox{Otherwise}\end{cases}$$
+		By induction one can prove that $Q(fk)=1$ for all $k\in\N$, and it is obvious that $Q(\fw)=1$, thus by lemma 0.3 $Q\equiv 1$.
+	\end{proof}
+	
+	Noticing that if $Q\in 2^{\NI}$ then either $Q(e(Q))=0$, in which case $\exists p\in\NI\; Q(p)=0$, or $Q(e(Q))=1$, then by Lemma 0.4 $Q\equiv 1$, so $\NI$ is BSC.
+	
+	\begin{theorem}
+		$\sf{CB}\implies\sf{LEM}$
+	\end{theorem}
+	\begin{proof}
+		Let $pr$ be some proposition, and $A=\{0\mid pr\}\subseteq 1$ and define:\\
+		$f:\NI\to A+\NI$ with $f(p)=\inr(p)$\\
+		$g:A+\NI\to\NI$ with $g(\inl(0))=f0$ and $g(\inr(p))=fS(p)$.\\
+		
+		Both are injective, so by CB there exists bijection $h:\NI\to A+\NI$, in particular, $h$ is surjective, so by Lemma 0.1, either $A=\emptyset$, which implies $\lnot pr$, or $A$ is inhabited, which implies $pr$.
+	\end{proof}
+\end{document}
