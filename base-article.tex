@@ -84,6 +84,28 @@
 
 \usepackage{xparse}
 
+
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \randint { m m }
+{ \int_rand:nn { #1 } { #2 } }
+\ExplSyntaxOff
+\newcounter{cntTherefore}
+\newcommand\setTherefore[2]{%
+	\csdef{Therefore#1}{#2}}
+\newcommand\addTherefore[1]{%
+	\stepcounter{cntTherefore}%
+	\csdef{Therefore\thecntTherefore}{#1}}
+\newcommand\getTherefore[1]{%
+	\csuse{Therefore#1}}
+\newcommand{\Therefore}{\getTherefore{\randint{1}{\thecntTherefore}} }
+\addTherefore{therefore}
+\addTherefore{hence}
+\addTherefore{which implies}
+\addTherefore{consequently}
+\addTherefore{it follows that}
+
+
+
 \ExplSyntaxOn
 \tl_new:N \l_septatrix_env_tl
 \NewDocumentCommand \getenv { o m }
@@ -110,5 +132,5 @@
 \date{\today}
 \newcommand{\envOrDefault}[2]{\ifenvsetTF{#1}{\getenv{#1}}{#2}}
 
-\author{\envOrDefault{au4thor}{Holo}}
+\author{\envOrDefault{author}{Holo}}
 
