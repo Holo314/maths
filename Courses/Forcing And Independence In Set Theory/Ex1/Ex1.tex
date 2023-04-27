@@ -1,0 +1,30 @@
+\input{../../../base-article.tex}
+
+\title{Exercise 1}
+\begin{document}
+\maketitle
+\ex[2]{}
+\sub{}
+	Let $Z\subseteq\P$ and let $D_Z$ be as in the question, and let $x\in\P$ be any element.
+	If $x$ is incompatible with every element in $Z$ then $x\in D_Z$, otherwise there is $p\in Z$ such that $x\| p$, let $q$ be element that strengthening both $x,p$, because $p\in Z$ we have that $q\in D_Z$, so $D_Z$ is dense.\\
+	Assume $x\in D_Z$ and $y$ stronger than $x$, if there exists $p\in Z$ such that $y\|p$ then there is strengthening of both, $q$, this $q$ is also stronger than $x$, in particular $x\not\bot p$ and so there exists $r\in Z$ that is weaker than $x$, in particular it is also weaker than $y$ and hence $y\in D_Z$. Otherwise $y$ is incompatible with every $p\in Z$ hence $p\in D_Z$.
+\sub{}
+	Let $A\subseteq \P$ be maximal antichain. \\
+	Assume $G$ is generic, from the previous part we know that $D_A$ is dense, hence there is a $p\in D_A\cap G$, but from maximality of $A$ there is no $p\in \P$ that is incompatible with all of $A$, hence $p\in D_A\cap G\implies p\in\{q\in \P\mid \exists r\in A(r<q)\}\cap G$, but $G$ is closed downwards, so $A\cap G\ne\emptyset$.\\
+	Assume $G$ intersects with every maximal antichain $A$, and let $D\subseteq\P$ be dense set. Let $A'$ a maximal antichain in the restricted order to $D$ (From AC, every poset has maximal antichain).\\
+	I claim that $A'$ is a maximal antichain in $\P$. Indeed it is an antichain because if $p,q\in A'$ are compatible in $\P$, let $r$ be a witness, and then there is some $r\le t\in D$ that will witness it in $D$. \\
+	To see it is maximal, let $x\in \P$, because $D$ is dense there exists some $p\in D$ such that $x\le p$, then either $p\in A'$ or there exists some $q\in A'$ such that $p\|q$ from the maximality of $A'$, in either cases there exists some $y\in A'$ such that $x\|y$, in particular $A'$ is maximal antichain in $\P$ as well, so $G$ intersects with $A'$ which is a subset of $D$, so $G$ intersects with $D$ and hence it is generic.
+\newpage
+\ex[4]{}
+Let Let $\P,\cal D$ be as in the question.
+\sub{}
+	Take $G,G_{\cal D}$ as in the question and let $A\subseteq \cal D$ be a maximal antichain of $\cal D$, in 2.2 I have shown that $A$ is a maximal antichain of $\P$ as well, hence from 2.2 we have $G\cap A=G\cap \cal D\cap A=G_{\cal D}\cap A\ne\emptyset$ and from 2.2 again we get that $G_\cal{D}$ is generic in $\cap D$.
+\sub{}
+	Take $G,G_{\cal D}$ as in the question and let $A\subseteq$ be any dense set.\\
+	For each $x\in A$ choose some element $y\in\cal D$ that is stronger, call the set of all such $y$ as $A'\subseteq \cal D$. Notice that $A'$ is dense in $\cal D$, indeed if $x\in \cal D$ then there exists some $y\in A$ stronger and hence $r\in A'$ that is stronger than both. Let $p\in G_\cal{D}\cap A'$, $p$ must be stronger than some $q\in A$ by construction, hence $q\in G\cap A$ which means that $G$ is generic.
+	
+\end{document}
+
+
+
+

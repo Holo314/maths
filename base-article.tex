@@ -56,7 +56,7 @@
 	\begin{subSubExercise}
 		#2
 \end{subSubExercise}}
-\newcommand{\cl}{\mbox{cl}}
+\newcommand{\cl}[2]{\mbox{cl}_{#2}\left(#1\right)}
 \newcommand{\CB}[1]{\operatorname{CB}\left(#1\right)}
 \newcommand{\MR}[1]{\operatorname{MR}\left(#1\right)}
 \newcommand{\MD}[1]{\operatorname{MD}\left(#1\right)}
@@ -78,9 +78,11 @@
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
 \newcommand{\F}{\mathbb F}
-
-
-
+\renewcommand{\P}{\mathbb P}
+\renewcommand{\Bbb}[1]{\mathbb #1}
+\newcommand{\incomp}{\operatorname{\bot}}
+\newcommand{\comp}{\operatorname{\|}}
+\newcommand{\force}{\Vdash}
 
 \usepackage{xparse}
 
@@ -125,12 +127,34 @@
 	\tl_if_eq:NNTF \l_tmpa_tl \c_getenv_par_tl { #3 } { #2 }
 }
 \ExplSyntaxOff
+\newcommand{\envOrDefault}[2]{\ifenvsetTF{#1}{\getenv{#1}}{#2}}
+
+
+\def\bonktxt#1{% 
+	\quitvmode\hbox{% 
+		\pdfliteral{q 1 0 .15 .4 0 0 cm}\rlap{#1}\pdfliteral{Q}\hphantom{#1}% 
+		\pdfliteral{q .9063 .4226 -.4226 .9063 -3 6 cm .2 0 0 .2 0 0 cm}\llap\bonktext\pdfliteral{Q}\ % 
+		\pdfliteral{q 
+			.81914 .57356 -.57356 .81914 -3 4 cm 
+			1.7 0 0 1.7 0 0 cm 1 j 1 J .7 w 
+			0 0 m 0 .7 l 2 .7 l 2 0 l b 
+			0 j .3 w .2 -.4 m .2 1.1 l s 
+			1.8 -.4 m 1.8 1.1 l s 
+			.8 1.05 m .85 1.15 1.15 1.15 1.2 1.05 c 
+			1 0 m 1 -1.4 l s 
+			1.1 -1.4 m 1.2 -2 1.1 -3 y s 
+			.9 -1.4 m .8 -2 .9 -3 y s 
+			Q}\kern3pt\relax 
+	}% 
+} 
+\def\bonktext{bonk!}
+\newcommand{\bonk}[1]{\bonktxt{$#1$}}
 
 \usepackage{datetime}
 % \newdate{date}{06}{09}{2012}
 % \date{\displaydate{date}}
 \date{\today}
-\newcommand{\envOrDefault}[2]{\ifenvsetTF{#1}{\getenv{#1}}{#2}}
+
 
 \author{\envOrDefault{author}{Holo}}
 
