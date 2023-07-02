@@ -1,0 +1,78 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 3}
+\begin{document}
+\maketitle
+\ex{Nice Names}
+\sub{}
+Let $f:\omega\to 2^\P$ be a function defined as $f(n)=\{p\in\P\mid p\force \check{n}\in\sigma\}$ and let $A_n$ be some maximal anti-chain of $f(n)$.
+
+We will see that the nice name $\sigma^*=\bigcup_{n<\omega}\{\check{n}\}\times A_n$ is a nice name such that $0_\P\force \sigma=\sigma^*$, or equivalently that $M[\flower]\models \sigma_\flower=\sigma^*_\flower$ for all generic ideals $\flower$.
+
+Fix some $\flower$ and $n\in\omega$ a natural, assume $M[\flower]\models n\in \sigma_\flower$, I claim that $\flower\cap A_n\ne\emptyset$, first remember that $g(n)=\{p\in \P\mid p\force \check{n}\in\sigma\lor p\force \check{n}\notin\sigma\}\supseteq f(n)$ is dense in $\P$, so extend $A_n$ into $B_n$ a maximal anti-chain in $g(n)$, because $B_n$ is maximal anti-chain in a dense set, it is also maximal anti-chain in $\P$.
+
+Let $p\in \flower\cap B_n$, if $p\notin A_n$ it means that $p\force \check{n}\notin\sigma$ which is false, hence $p\in \flower\cap A_n$ which means by definition that $M[\flower]\models n\in\sigma^*_\flower$. 
+
+The direction of $M[\flower]\models n\notin \sigma^*_\flower\implies M[\flower]\models n\notin \sigma_\flower$ is just the contrapositive of the previous case.
+
+The directions of $M[\flower]\models n\in\sigma^*_\flower\implies M[\flower]\models n\in\sigma_\flower$ and the contrapositive $M[\flower]\models n\notin\sigma_\flower\implies M[\flower]\models n\notin\sigma^*_\flower$ are directly from the definition of $\sigma^*$.
+
+\sub{}
+Let $\P=\Add{\omega}{\omega_2}$, and note that $|\aleph_2|\le|\P|\le|[\aleph_0\times\aleph_2\times 2]^{<\omega}|=|[\aleph_2]^{<\omega}|=\aleph_2$.
+
+Let $\cal A$ be the set of anti-chains of $\P$, because $\P$ is c.c.c. we have that $\aleph_2=|\P|\le|\cal A|\le |[\aleph_2]^{\le \omega}|=|[\aleph_2]^{< \omega}\cup [\aleph_2]^{\omega}|=\aleph_2+|[\aleph_2]^{\omega}|=|[\aleph_2]^{\omega}|\le \aleph_2^{\aleph_0}=\left(2^{\aleph_1}\right)^{\aleph_0}=2^{\aleph_1\times\aleph_0}=2^{\aleph_1}=\aleph_2$
+
+Notice that a function that sends $f:\omega\to\cal A$ to $\bigcup_{n<\omega}\{\check{n}\}\times f(n)$ is a bijection from the nice names to $^{\aleph_0}\cal A$ so the cardinality of the set of nice names is exactly $|\cal A|^{\aleph_0}=\aleph_2^{\aleph_0}=\aleph_2$
+
+\sub{}
+
+Let $F$ be a bijection from the nice $\P$-names of $M$ to $\aleph_2$, because $F,\flower\in M[\flower]$ and $M[\flower]\models AC$ we can define inside of $M[\flower]$ a function that for each $f\in 2^{\aleph_0}$ chooses some $\sigma\in\dom{F}$ such that $\sigma_\flower=f$ and sends it to $F(\sigma)$, this is an injective function because $F$ is injective and given $a\ne b\in G[\flower]$ they are not evaluated from the same $\P$ name.
+	
+We have shown in class that $M[\flower]\models 2^{\aleph_0}\ge\aleph_2$ and so because $M[\flower]$ satisfy Cantor–Bernstein we have $M[\flower]\models 2^{\aleph_0}=\aleph_2$.
+
+%\newpage
+\ex[7]{Homogeneous Posets}
+\sub{}
+For 2 partial function $p,q$ let $K(p,q)=\dom{p}\cap \dom{q}$ and $p^{(q)}=p\cup (q\restriction \dom{q}\setminus K(p,q))$.
+
+Notice that $p^{(q)}\ge p$ and that if $p,q$ are comparable then $p^{(q)}=\max(p,q)$.
+
+Now let $\P$ be a poset of partial functions ordered by inclusion and $\pi:\P\to\P$ be a bijection that is bit-wise, that is $\dom{p}=\dom{\pi(p)}$ and $\pi(p)(n)$ depends only on $p(n)$ and $n$ for $n\in\dom{p}$, then we have that $\pi$ is an automorphism.
+
+Indeed let $\tau(n,p(n))$ be $(n,\pi(p)(n))$, because $\pi$ is a bijection so is $\tau$, and let $p\subseteq q$, if $(a,b)\in p$ then $(a,b)\in q$ so $\tau(a,b)\in \pi(p)$ and $\tau(a,b)\in \pi(q)$, and if $(a,b)\in \pi(p)$ then $\tau^{-1}(a,b)\in p$ so $\tau(\tau^{-1}(a,b))=(a,b)\in \pi(q)$ so $\pi$ is order-preserving.
+
+Now fix some $p,q\in\P$ and lets define the automorphism $\pi_p^q:\P\to\P$ that swaps $p^{(q)}$ and $q^{(p)}$ by swapping $(n,p(n))$ with $(n,q(n))$ for all $n\in K(p,q)$ and let it not change any other pair.
+
+Indeed $\pi_p^q$ is bit-wise, $\pi_p^q(t)(n)=t(n)$ if $n\notin K(p,q)$ or $t(n)\notin\{p(n),q(n)\}$, otherwise if $t(n)=p(n)$ let $p(t)(n)=q(n)$ and vice versa.
+
+To see it swaps $p^{(q)}$ with $q^{(p)}$ notice that $p^{(q)},q^{(p)}$ have the domain of of $\dom{p}\cup\dom{q}$ and they agree on their domain apart from (maybe) $K(p,q)$, so let $n\in K(p,q)$ and we get that $p^{(q)}(n)=p(n)$, so $\pi_p^q(p^{(q)})(n)=q(n)$ by definition, and vice versa.
+
+Because $\Add{\kappa}{1}$ and $Col(\omega,\lambda)$ are posets of partial functions ordered by inclusion we are done.
+
+\sub{}
+Let $G$ be any generic we know that $\phi(\overline{\check{x}_G})$ either holds in $M[G]$ or its negation holds, WLOG assume it holds, and take $p\in G$ such that $p\force \phi(\overline{\check{x}})$.
+
+Let $q\in\P$ be any element, and let $\pi$ be an automorphism that sends $r\ge p$ to $t\ge q$, because $r\ge p$, it also forces $\phi(\overline{\check{x}})$ and so from problem (6.2) we have that $t\force \phi(\overline{\pi(\check{x})})$ and from (6.1) we can conclude that $t\force \phi(\overline{\check{x}})$, so $\{p\in \P\mid p\force\phi(\overline{\check{x}})\}$ is dense above $0_\P$, hence $0_\P$ also forces that.
+
+
+
+\end{document}
+
+
+
+

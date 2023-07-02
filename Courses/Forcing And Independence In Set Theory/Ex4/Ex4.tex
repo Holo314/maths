@@ -1,0 +1,90 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+
+
+\title{Exercise 4}
+\begin{document}
+\maketitle
+\begin{cExercise}[Dense projections and Quotient posets]
+	\begin{cPart}
+		Let $\pi,\mathbb P, \mathbb Q$ and $\Gamma_\mathbb Q^\mathbb P$ be as in the question, let $G$ be any $M$-generic subset of $\mathbb P$ and let $\Gamma=(\Gamma_\mathbb Q^\mathbb P)_G, \Gamma'=(\check\pi''\Gamma_\mathbb P)_G$.
+		
+		Let $p,q\in\Gamma$ and $p',q'\in\Gamma'$ be strengthening of $p,q$ respectively, let $t,r\in G$ be such that $\pi(t)=p',\pi(r)=q'$, because $G$ is generic we have $t,r<w\in G$, and because $\pi$ is a weak homomorphism, $\pi(w)>q',p'$ hence $\pi(w)>q,p$, and almost by definition $\pi(w)\in \Gamma$.
+		
+		Because $\Gamma$ is closed downwards by definition, we only left to show that it intersect with every maximal anti-chain of $\mathbb Q$ that is in $M$, let $A$ be such maximal anti-chain. For each $x\in\mathbb Q$ let $x^\dagger$ be a maximal anti-chain of $\{y\in \pi''\mathbb P\mid y\ge x\}$, and let $A^\dagger=\bigcup\{y^\dagger\mid y\in A\}$, because $\pi''\mathbb P$ is dense, we have that $A^\dagger$ is a maximal anti-chain as well.
+		
+		Let $A^\ddagger$ be the inverse image of $A^\dagger$ by $\pi$, because $\pi$ preserve incompatibility we must have that $A^\ddagger$ contains a maximal anti-chain, let $t\in A^\ddagger\cap G$, $\pi(t)\in A^\dagger\cap \Gamma$. By construction of $A^\dagger$ there exists some $p\in A$ such that $\pi(t)>p$, and because $\Gamma$ is closed downwards we have that $p\in A\cap \Gamma$, hence $M[G]\vDash"\Gamma\text{ is generic over $M$ for $\mathbb Q$}"$.
+		
+		Finally because $G$ was arbitrary we can conclude that $0_\mathbb P$ forces that.
+	\end{cPart}
+	\begin{cPart}
+		Let $G\subseteq \mathbb P$ be generic.
+		
+		Notice that $H$ is exactly $\Gamma$ from (1.1), so $H$ is generic over $M$ for $\mathbb Q$.
+		
+		Because being downwards closed is downwards absolute (from $\mathbb P$ to $\mathbb P/_\pi H$) and every 2 elements having a common extension in the subset is absolute (again from $\mathbb P$ to $\mathbb P/_\pi H$) we only need to care about it intersecting every maximal anti-chain of $\mathbb P/_\pi H$ in $M[H]$.
+		
+		Let $p,q\in\mathbb P/_\pi H$, by definition $\pi(p),\pi(q)\in H\implies \pi(p)\|\pi(q)\implies p\|q$, the last implication is because $\pi$ is homomorphism and the one before that is because $H$ is a generic filter.
+		
+		Let $A\subseteq \mathbb P/_\pi H$ be any maximal anti-chain in $M[H]$, that is $A=\{p\}$ for some $p\in\mathbb P/_\pi H$ (as any $2$ elements of the quotient poset are compatible), so $A\in M$. Extend $A$ to $A'$ a maximal anti-chain in $\mathbb P$, because $G$ is $M$ generic for $\mathbb P$ we know that $G\cap A'\ne\emptyset$, but $G\subseteq \mathbb P/_\pi H$ so $G\cap A'=A\implies G\cap A=A\ne\emptyset$.
+		
+		For the other direction, let $G$ be any subset of $\mathbb P$ such that $H$ is $M$-generic for $\mathbb Q$ and $G$ is $M[H]$-generic for $\mathbb P/_\pi H$.
+		
+		Similarly to before, every 2 elements in $\mathbb P/_\pi H$ are compatible, in particular any 2 elements in $G$ are compatible, as $G\subseteq \mathbb P/_\pi H$.
+		
+		Let $p\in G$ and $q<p$, because $\pi$ is a weak homomorphism we have that $\pi(q)<\pi(p)\in H$, so $\pi(q)\in H\implies q\in \mathbb P/_\pi H$, because $q<p\in \mathbb P/_\pi H$ and $G$ is closed downwards in $\mathbb P/_\pi H$ we must have that $q\in G$.
+		
+		Lastly, let $p,q\in \mathbb P/_\pi H$, let $D_{p,q}=\{r\in \mathbb P\mid r\ge p,q\lor r\bot p\lor r\bot q\}$ and $D'=\pi''D_{p,q}$, because $D_{p,q}$ is dense and $\pi$ is dense homomorphism we know that $D'$ is dense hence intersecting $H$, let $r\in D_{p,q}$ be such that $\pi(r)\in D'\cap H$. Because $\pi(r)\in H$ we have that $r\in \mathbb P/_\pi H$ but because every 2 elements of $\mathbb P/_\pi H$ are compatible in $\mathbb P$, we have that $r\| p$ and $r\| q$, by construction of $D_{p,q}$ we get that $r\ge p,q$.
+		
+		That means that every 2 elements in $\mathbb P/_\pi H$ are compatible in $\mathbb P/_\pi H$, so the only generic filter is $\mathbb P/_\pi H$, so $G=\mathbb P/_\pi H$.
+		
+		Now take $A$ to be any maximal anti-chain, $\pi''A$ is a maximal anti-chain as well, hence $\{\pi(p)\}=H\cap \pi''A$ hence $G\cap A=\mathbb P/_\pi H\cap A=\{p\}\ne\emptyset$
+	\end{cPart}
+\end{cExercise}
+
+\begin{cExercise}[Collapse Criterion]
+	First note that $\mathbb Q/q$ absorbs $\mathbb Q$, indeed for each $M$-generic for $\mathbb Q/q$ we can take the downwards closure and get an $M$-generic for $\mathbb Q$.
+	
+	Therefore $0_{\mathbb Q/q}\Vdash |\check{\omega}|=|\check{\delta}|$, so $\mathbb Q/q$ is not $\delta$.c.c. and has a maximal anti-chain of size $\delta$.
+	
+	Let $\dot g$ be a $\mathbb Q$ name that $0_\mathbb Q\Vdash"\dot g:\omega\to \Gamma_\mathbb Q\text{ is surjective}"$
+	
+	We will construct recursively an embedding from $\delta^{<\omega}$ to $\mathbb Q$ as a tree $T$:
+	
+	\begin{itemize}
+		\item $T_\emptyseq=0_\mathbb Q$
+		\item Let $t\in \delta^{n+1}$ and assume $T_t$ is defined, let $C_t=\{c_t^{(\alpha)}\mid \alpha\in\delta\}$ be a maximal anti-chain of size $\delta$ in $\mathbb Q/ T_t$ such that for each $c\in C_t$ we have that $c$ decides the value of $\dot g(\check n)$ and let $T_{t\frown\{i\}}=c_t^{(i)}$
+	\end{itemize}
+	
+	Note that the anti-chain above is always well defined, let $p\in\mathbb Q$ be any element and let $A\subseteq \mathbb Q/p$ be any maximal anti-chain that decides $\dot g(\check n)$, let $q\in A$ be any element and let $B\subseteq \mathbb Q/q$ of cardinality $\delta$, then $A'=A\setminus q\cup B$ is a maximal anti-chain of size $\delta$ that decides $\dot g(\check n)$.
+	
+	This map is clearly an injective homomorphism, to see that it is dense let $p\in \mathbb Q$ be any element, remember that $p\Vdash "\dot g:\omega\to \Gamma_\mathbb Q\text{ is surjective and }\check p\in\Gamma_\mathbb Q=\range{\dot g}"$ which implies $p\Vdash\exists n\in\check\omega\;\dot g(n)=\check p$ in particular there exists a name $\dot n$ such that $p\Vdash \dot g(\dot n)=\check p$, let $m$ be a real natural such that $p\Vdash \check m=\dot n$, thus $p\Vdash \dot g(\check m)=\check p$.
+	
+	The set $\operatorname{Lev}_T(m+1)$ is clearly a maximal anti-chain, so either $p\in \operatorname{Lev}_T(m+1)$, in which case we are done, or there exists $q\in \operatorname{Lev}_T(m+1)$ that is compatible with $p$, because $p,q$ are compatible and both decide $\dot g(\check m)$ they must agree with one another, that is $q\Vdash \dot g(\check m)=\check p$, in particular $q\Vdash \check p\in \range{\dot g}=\Gamma_\mathbb Q$ therefore $p$ is inside every generic $G$ that $q$ is in, in other words $p<q$.
+	
+	Finally, let $G$ be $M$-generic for $\mathbb Q$, and let $H'$ be the intersection of $G$ with the image of the tree, it is simple to see that $H'$ is $M$-generic over $T$ let $H''$ be the pre-image of $H'$ into $\delta^{<\omega}$, and let $H$ be the downwards closure of $H''$ into an $M$-generic for $\operatorname{Coll}(\omega,\delta)$.
+	
+	To see that $M[G]=M[H]$ first note that because $H$ is definable in $M[G]$ (with parameters) it means that $M[H]\subseteq M[G]$, to see the other direction, let $H^\dagger$ be the restriction of $H$ to $\delta^{<\omega}$, let $H^{\ddagger}$ be the image of $H^{\dagger}$ under the embedding to $T$, we can verify that $G$ is exactly the downward closure of $H^\ddagger$.
+	
+	First because $H^\ddagger\subseteq G$ the downwards closure of $H^\ddagger$ is clearly a subset of $G$, and the downwards closure is $M$-generic for $\mathbb Q$ (as $T$ is dense).
+	
+	Let $p\in G$ be any element, extend $\{p\}$ to a maximal anti-chain $A$, $A$ intersects with the downwards closure of $H^\ddagger$, but $p$ is compatible with every element of the downwards closure of $H^\ddagger$, so the intersection must be $\{p\}$, so $p$ is in the downwards closure of $H^\ddagger$.
+	
+	So we got that $G$ is definable in $M[H]$ (with parameters) and hence $M[G]\subseteq M[H]$ and we are done.
+\end{cExercise}
+
+\end{document}
+
+
+
+
