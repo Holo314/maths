@@ -1,0 +1,72 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+
+
+\title{Exercise 5}
+\begin{document}
+\maketitle
+\begin{cExercise}[Suslin trees][Yuval Paz][author]
+	By definition Suslin trees satisfy c.c.c. 
+	
+	Let $T$ be a Suslin tree, for each $\alpha\in\omega_1$ let $D_\alpha$ be the set if nodes in $T$ whose rank is greater or equal to $\alpha$ (these sets are dense by the virtue of how we defined them, if we exclude the condition that each node has arbitrarily large extension we just add to $D_\alpha$ all of the leaves of smaller rank), and $\mathfrak{D}$ be the set of all $D_\alpha$, let $G$ be $\mathfrak{D}$-generic for $T$.
+	
+	Because $T$ is a tree, 2 elements are compatible if and only if they are comparable, in particular $G$ is a chain. Assume it is not maximal, let $t\in T$ be element that is comparable with all of $G$, because $G$ is closed downwards $t$ must be above all of $G$, let $\alpha$ be the rank of $t$ and $t'\in D_{\alpha+1}\cap G$, we have that $t,t'$ are comparable and the rank of $t'$ is greater so $t<t'$, contradiction.
+	
+	In addition $\{\bigcup G\restriction \alpha\mid \alpha\in\omega_1\}=G$, but it is clearly of cardinality $\aleph_1$, contradiction to the fact $T$ is Suslin.
+\end{cExercise}
+
+\begin{cExercise}[Almost disjoint families][][author][2]
+	\begin{cPart}
+		Let $A_i$ be the powers of the $i^\textbf{th}$ prime, this gives a collection of $\aleph_0$-many disjoint infinite subsets of $\N$.
+		
+		For each $\alpha\in\omega_1\setminus\omega$ let $f_\alpha:\alpha\to\omega$ be a bijection, assume that $A_\beta$ is defined for each $\beta<\alpha$ and that $A_\beta$ are all infinite and that $\{A_\beta\}$ is almost disjoint family.
+		
+		Let $\{B_i\}_{i\in\omega}$ be the set $\{A_\beta\}$ mapped to order type $\omega$ using $f_\alpha$.
+		
+		Let $a_i$ be an element from $B_i\setminus (\bigcup_{j<i}B_j)$, because $B_i$ is infinite for each $i\in\omega$ and $B_i\cap (\bigcup_{j<i}B_j)$ is finite, $a_i$ is well defined for each $i\in\omega$, furthermore for each $i\in\omega$ we have that $\{a_i\}_{i\in\omega}\cap B_j\subseteq \{a_i\}_{i\le j}$ a finite set, so letting $A_\alpha=\{a_i\}_{i\in\omega}$ will work.
+	\end{cPart}
+	\begin{cPart}
+		Given $\vec{a},A$, let $(s,F),(s,F')\in\Q(\vec{a},A)$ we have that $(s,F\cup F')\ge (s,F),(s,F')$ trivially, and because $s\in[\omega]^{<\omega}$ which is countable, for given uncountably many conditions, there will be some elements with the same left-side, and any 2 such elements are compatible, so the forcing notion is c.c.c
+		
+		Let $a^G$ be as in the question, to see that $a^G$ is infinite we claim that if $(s,F)$ is any condition, then there exists $(s',F)>(s,F)$ such that $|s'|>|s|$, this would imply that $\{(s,F)\mid |s|>|a^G|\}$ is dense set in $M$ that is disjoint from $G$.
+		
+		Let $(s,F)$ by any condition, note that the set of finite subsets and cofinite subsets of $\omega$ is countable, so there exists $a_\alpha\in\vec{a}$ that is infinite-coinfinite, which has infinite intersection with each cofinite set, so each $a_\alpha$ is coinfinite.
+		
+		In addition if $\{b_i\}_{i\in I}$ is almost disjoint family and $J\subseteq I$ is finite we have that $\{b_i\}_{i\in I\setminus J}\cup\{\bigcup_{j\in J}b_j\}$ is also almost disjoint family.
+		
+		Hence we can conclude that $B=\{a_\alpha\}_{\alpha\in \omega_1\setminus F}\cup \{\bigcup_{\alpha\in F}a_\alpha\}$ is almost disjoint, from the previous fact we get that $\bigcup_{\alpha\in F}a_\alpha$ is coinfinite, let $k\in\omega\setminus \bigcup_{\alpha\in F}a_\alpha$ and we get that $(s\cup\{k\},F)>(s,F)$. We had used only $\aleph_0$ many dense sets to show this ($D_n=\{(s,F)\mid |s|>n\}$).
+		
+		Let $j\notin A$ and assume $a^G\cap a_j$ is finite, similarly to above, we can see that $\{(s,F)\mid |s\cap a_j|>|a^G\cap a_j|\}$ is dense, indeed we saw before that $B$ is almost disjoint, and because $F\subseteq A$ it means that $a_j\cap \bigcup_{\alpha\in F}a_\alpha$ is finite, in particular $a_j\setminus \bigcup_{\alpha\in F}a_\alpha$ is not empty, and we can choose a $k$ from there. We had used $|\omega_1\setminus A|\times\aleph_0\le\aleph_1\times\aleph_0=\aleph_1$ many dense sets for this (to be precise, we can remove the reference to $a^G$ and use the dense sets $D_{j,n}=\{(s,F)\mid |s\cap a_j|>n\}$).
+		
+		Lastly, let $j\in A$, we want to show that $a^G\cap a_j$ is finite, to do this we will show that there exists some finite $a\subseteq a_j$ such that for each $(s,F)\in G$ we have that $s\cap a_j\subseteq a$ and conclude that $a^G\cap a_j\subseteq a$ is finite.
+		
+		Indeed, if for every $(s,F)\in G$ we have that $s\cap a_j=\emptyset$ we are done, so let $(s',F')\in G$ be some fixed condition such that $s'\cap a_j\ne\emptyset$.
+		
+		Because $D^j=\{(s,F)\mid j\in F\}$ is dense (because we can always strengthen $(s,F)$ to $(s,F\cup\{j\})$) there must be some $(z,W)\in G$ with $j\in W$, WLOG assume $(z,W)>(s',F')$ (if not, just take the common strengthening), and let $a=z\cap a_j\supseteq s'\cap a_j\ne\emptyset$.
+		
+		Assume $(s,F)\in G$ such that there exists $k\in s\cap a_j\setminus a$ and let $(t,Q)$ be common strengthening of $(s,F),(z,W)$. Because $(t,Q)\ge (s,F)$ we must have that $k\in t$, in particular $k\in(t\setminus z)\cap a_j\ne\emptyset$, but $j\in W$, so $(t,Q)\not\ge (z,W)$, contradiction. For this argument we used $|A|\le\aleph_1$ many dense sets.
+	\end{cPart}
+	\begin{cPart}
+		Assume $\sf MA_{\omega_1}$ and fix some $\vec a$ almost disjoint sequence as in the previous parts, for each $A\subseteq \omega_1$ let $\mathfrak{D}_A$ be the set of all dense sets we used in the previous part and let $G_A$ be $\mathfrak{D}_A$-generic for $\mathbb{Q}(\vec a,A)$ (note that $|\mathfrak{D}_A|\le \aleph_0+\aleph_1+\aleph_1=\aleph_1$ and that $\mathbb{Q}(\vec a,A)$ is c.c.c).
+		
+		Define the function $f:2^{\aleph_1}\to2^{\aleph_0}$ as $f(A)=a^{G_A}$, because $A$ is recoverable from $a^{G_A}$ alone (using $\vec a$ as a parameter, in particular we don't need to know what $G_A$ is), $f$ must be injective, hence $2^{\aleph_1}\le 2^{\aleph_0}$, and the other direction is trivial.
+	\end{cPart}
+\end{cExercise}
+
+
+
+\end{document}
+
+
+
+
