@@ -18,57 +18,196 @@
 \title{Exercise 3}
 \begin{document}
 \maketitle
-\ex{Nice Names}
-\sub{}
-Let $f:\omega\to 2^\P$ be a function defined as $f(n)=\{p\in\P\mid p\force \check{n}\in\sigma\}$ and let $A_n$ be some maximal anti-chain of $f(n)$.
-
-We will see that the nice name $\sigma^*=\bigcup_{n<\omega}\{\check{n}\}\times A_n$ is a nice name such that $0_\P\force \sigma=\sigma^*$, or equivalently that $M[\flower]\models \sigma_\flower=\sigma^*_\flower$ for all generic ideals $\flower$.
-
-Fix some $\flower$ and $n\in\omega$ a natural, assume $M[\flower]\models n\in \sigma_\flower$, I claim that $\flower\cap A_n\ne\emptyset$, first remember that $g(n)=\{p\in \P\mid p\force \check{n}\in\sigma\lor p\force \check{n}\notin\sigma\}\supseteq f(n)$ is dense in $\P$, so extend $A_n$ into $B_n$ a maximal anti-chain in $g(n)$, because $B_n$ is maximal anti-chain in a dense set, it is also maximal anti-chain in $\P$.
-
-Let $p\in \flower\cap B_n$, if $p\notin A_n$ it means that $p\force \check{n}\notin\sigma$ which is false, hence $p\in \flower\cap A_n$ which means by definition that $M[\flower]\models n\in\sigma^*_\flower$. 
-
-The direction of $M[\flower]\models n\notin \sigma^*_\flower\implies M[\flower]\models n\notin \sigma_\flower$ is just the contrapositive of the previous case.
-
-The directions of $M[\flower]\models n\in\sigma^*_\flower\implies M[\flower]\models n\in\sigma_\flower$ and the contrapositive $M[\flower]\models n\notin\sigma_\flower\implies M[\flower]\models n\notin\sigma^*_\flower$ are directly from the definition of $\sigma^*$.
-
-\sub{}
-Let $\P=\Add{\omega}{\omega_2}$, and note that $|\aleph_2|\le|\P|\le|[\aleph_0\times\aleph_2\times 2]^{<\omega}|=|[\aleph_2]^{<\omega}|=\aleph_2$.
-
-Let $\cal A$ be the set of anti-chains of $\P$, because $\P$ is c.c.c. we have that $\aleph_2=|\P|\le|\cal A|\le |[\aleph_2]^{\le \omega}|=|[\aleph_2]^{< \omega}\cup [\aleph_2]^{\omega}|=\aleph_2+|[\aleph_2]^{\omega}|=|[\aleph_2]^{\omega}|\le \aleph_2^{\aleph_0}=\left(2^{\aleph_1}\right)^{\aleph_0}=2^{\aleph_1\times\aleph_0}=2^{\aleph_1}=\aleph_2$
-
-Notice that a function that sends $f:\omega\to\cal A$ to $\bigcup_{n<\omega}\{\check{n}\}\times f(n)$ is a bijection from the nice names to $^{\aleph_0}\cal A$ so the cardinality of the set of nice names is exactly $|\cal A|^{\aleph_0}=\aleph_2^{\aleph_0}=\aleph_2$
-
-\sub{}
-
-Let $F$ be a bijection from the nice $\P$-names of $M$ to $\aleph_2$, because $F,\flower\in M[\flower]$ and $M[\flower]\models AC$ we can define inside of $M[\flower]$ a function that for each $f\in 2^{\aleph_0}$ chooses some $\sigma\in\dom{F}$ such that $\sigma_\flower=f$ and sends it to $F(\sigma)$, this is an injective function because $F$ is injective and given $a\ne b\in G[\flower]$ they are not evaluated from the same $\P$ name.
+\begin{cExercise}[Nice Names][][author][1]
+	\begin{cPart}
+		Let $f:\omega\to 2^\P$ be a function defined as $f(n)=\{p\in\P\mid p\force \check{n}\in\sigma\}$ and let $A_n$ be some maximal anti-chain of $f(n)$.
+		
+		We will see that the nice name $\sigma^*=\bigcup_{n<\omega}\{\check{n}\}\times A_n$ is a nice name such that $0_\P\force \sigma=\sigma^*$, or equivalently that $M[\flower]\models \sigma_\flower=\sigma^*_\flower$ for all generic ideals $\flower$.
+		
+		Fix some $\flower$ and $n\in\omega$ a natural, assume $M[\flower]\models n\in \sigma_\flower$, I claim that $\flower\cap A_n\ne\emptyset$, first remember that $g(n)=\{p\in \P\mid p\force \check{n}\in\sigma\lor p\force \check{n}\notin\sigma\}\supseteq f(n)$ is dense in $\P$, so extend $A_n$ into $B_n$ a maximal anti-chain in $g(n)$, because $B_n$ is maximal anti-chain in a dense set, it is also maximal anti-chain in $\P$.
+		
+		Let $p\in \flower\cap B_n$, if $p\notin A_n$ it means that $p\force \check{n}\notin\sigma$ which is false, hence $p\in \flower\cap A_n$ which means by definition that $M[\flower]\models n\in\sigma^*_\flower$. 
+		
+		The direction of $M[\flower]\models n\notin \sigma^*_\flower\implies M[\flower]\models n\notin \sigma_\flower$ is just the contrapositive of the previous case.
+		
+		The directions of $M[\flower]\models n\in\sigma^*_\flower\implies M[\flower]\models n\in\sigma_\flower$ and the contrapositive $M[\flower]\models n\notin\sigma_\flower\implies M[\flower]\models n\notin\sigma^*_\flower$ are directly from the definition of $\sigma^*$.
+	\end{cPart}
+	\begin{cPart}
+		Let $\P=\Add{\omega}{\omega_2}$, and note that $|\aleph_2|\le|\P|\le|[\aleph_0\times\aleph_2\times 2]^{<\omega}|=|[\aleph_2]^{<\omega}|=\aleph_2$.
+		
+		Let $\cal A$ be the set of anti-chains of $\P$, because $\P$ is c.c.c. we have that $\aleph_2=|\P|\le|\cal A|\le |[\aleph_2]^{\le \omega}|=|[\aleph_2]^{< \omega}\cup [\aleph_2]^{\omega}|=\aleph_2+|[\aleph_2]^{\omega}|=|[\aleph_2]^{\omega}|\le \aleph_2^{\aleph_0}=\left(2^{\aleph_1}\right)^{\aleph_0}=2^{\aleph_1\times\aleph_0}=2^{\aleph_1}=\aleph_2$
+		
+		Notice that a function that sends $f:\omega\to\cal A$ to $\bigcup_{n<\omega}\{\check{n}\}\times f(n)$ is a bijection from the nice names to $^{\aleph_0}\cal A$ so the cardinality of the set of nice names is exactly $|\cal A|^{\aleph_0}=\aleph_2^{\aleph_0}=\aleph_2$
+	\end{cPart}
+	\begin{cPart}
+		Let $F$ be a bijection from the nice $\P$-names of $M$ to $\aleph_2$, because $F,\flower\in M[\flower]$ and $M[\flower]\models AC$ we can define inside of $M[\flower]$ a function that for each $f\in 2^{\aleph_0}$ chooses some $\sigma\in\dom{F}$ such that $\sigma_\flower=f$ and sends it to $F(\sigma)$, this is an injective function because $F$ is injective and given $a\ne b\in G[\flower]$ they are not evaluated from the same $\P$ name.
+			
+		We have shown in class that $M[\flower]\models 2^{\aleph_0}\ge\aleph_2$ and so because $M[\flower]$ satisfy Cantor–Bernstein we have $M[\flower]\models 2^{\aleph_0}=\aleph_2$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[Higher Closure][Yuval Paz][author]
+	Let $M,\kappa,\P$ be as in the question and $G$ be a generic.
 	
-We have shown in class that $M[\flower]\models 2^{\aleph_0}\ge\aleph_2$ and so because $M[\flower]$ satisfy Cantor–Bernstein we have $M[\flower]\models 2^{\aleph_0}=\aleph_2$.
-
-%\newpage
-\ex[7]{Homogeneous Posets}
-\sub{}
-For 2 partial function $p,q$ let $K(p,q)=\dom{p}\cap \dom{q}$ and $p^{(q)}=p\cup (q\restriction \dom{q}\setminus K(p,q))$.
-
-Notice that $p^{(q)}\ge p$ and that if $p,q$ are comparable then $p^{(q)}=\max(p,q)$.
-
-Now let $\P$ be a poset of partial functions ordered by inclusion and $\pi:\P\to\P$ be a bijection that is bit-wise, that is $\dom{p}=\dom{\pi(p)}$ and $\pi(p)(n)$ depends only on $p(n)$ and $n$ for $n\in\dom{p}$, then we have that $\pi$ is an automorphism.
-
-Indeed let $\tau(n,p(n))$ be $(n,\pi(p)(n))$, because $\pi$ is a bijection so is $\tau$, and let $p\subseteq q$, if $(a,b)\in p$ then $(a,b)\in q$ so $\tau(a,b)\in \pi(p)$ and $\tau(a,b)\in \pi(q)$, and if $(a,b)\in \pi(p)$ then $\tau^{-1}(a,b)\in p$ so $\tau(\tau^{-1}(a,b))=(a,b)\in \pi(q)$ so $\pi$ is order-preserving.
-
-Now fix some $p,q\in\P$ and lets define the automorphism $\pi_p^q:\P\to\P$ that swaps $p^{(q)}$ and $q^{(p)}$ by swapping $(n,p(n))$ with $(n,q(n))$ for all $n\in K(p,q)$ and let it not change any other pair.
-
-Indeed $\pi_p^q$ is bit-wise, $\pi_p^q(t)(n)=t(n)$ if $n\notin K(p,q)$ or $t(n)\notin\{p(n),q(n)\}$, otherwise if $t(n)=p(n)$ let $p(t)(n)=q(n)$ and vice versa.
-
-To see it swaps $p^{(q)}$ with $q^{(p)}$ notice that $p^{(q)},q^{(p)}$ have the domain of of $\dom{p}\cup\dom{q}$ and they agree on their domain apart from (maybe) $K(p,q)$, so let $n\in K(p,q)$ and we get that $p^{(q)}(n)=p(n)$, so $\pi_p^q(p^{(q)})(n)=q(n)$ by definition, and vice versa.
-
-Because $\Add{\kappa}{1}$ and $Col(\omega,\lambda)$ are posets of partial functions ordered by inclusion we are done.
-
-\sub{}
-Let $G$ be any generic we know that $\phi(\overline{\check{x}_G})$ either holds in $M[G]$ or its negation holds, WLOG assume it holds, and take $p\in G$ such that $p\force \phi(\overline{\check{x}})$.
-
-Let $q\in\P$ be any element, and let $\pi$ be an automorphism that sends $r\ge p$ to $t\ge q$, because $r\ge p$, it also forces $\phi(\overline{\check{x}})$ and so from problem (6.2) we have that $t\force \phi(\overline{\pi(\check{x})})$ and from (6.1) we can conclude that $t\force \phi(\overline{\check{x}})$, so $\{p\in \P\mid p\force\phi(\overline{\check{x}})\}$ is dense above $0_\P$, hence $0_\P$ also forces that.
-
+	Let $\vec{a}=(a_i)_{i\in\lambda}\in M[G]$ be a sequence of ordinals of length $\lambda<\kappa$, we want to show it is in $M$. Let $\tau$ be a name such that $\tau_G=\vec a$.
+	
+	I claim that $D=\{p\in \P\mid \forall \alpha\in\lambda\exists \beta (p\force \tau_{\check\alpha}=\check{\beta})\}$ is dense.
+	
+	Let $q\in \P$ be any element, in $M$ construct the sequence:
+	
+	\begin{itemize}
+		\item $p_0$ be some element $\ge q$ that decides the value of $\tau_{\check 0}$
+		\item $p_{\alpha+1}$ be some element $\ge p_\alpha$ that decides the value of $\tau_{\widecheck {\alpha +1}}$
+		\item For limit $\beta<\lambda$, let $t_\beta$ be an upper bound of the sequence $(p_{\alpha})_{\alpha<\beta}$, and let $p_\beta$ be an element above $t_\beta$ that decides the value of $\tau_{\check\beta}$
+		\item $p_\lambda$ be an upper bound to the sequence $(p_{\alpha})_{\alpha<\lambda}$
+	\end{itemize}
+	Because $\lambda<\kappa$ and $\P$ is ($\kappa$-closed)$^M$, $p_\lambda$ is well defined and because $p_\lambda\in D$ we have that $D$ is dense.
+	
+	Let $p \in G\cap D$.
+	
+	Now in $M$ define $b_\alpha$ to be the unique ordinal $\beta$ such that $p\force \tau_{\check{\alpha}}=\check{\beta}$, because $p\in G$ we have that $\vec b=\vec a$ and we are done.
+	
+	Now let $\lambda<\kappa$ be a cardinal in $M$, if it is not a cardinal in $M[G]$ it means that there is some $\eta<\lambda$ and a new bijective sequence $f:\eta\to\lambda$, but $f \in (Ord^{<\kappa})^{M[G]}=(Ord^{<\kappa})^M\subseteq M$, contradiction.
+\end{cExercise}
+\begin{cExercise}[Higher Chain Condition][Yuval Paz][author]
+	Let $\sigma,X$ be as in the question, and let $x\in X$ and let $D_x$ be the set of $p\in\P$ that decides the value of $\sigma(\check x)$, this set is dense.
+	
+	Let $A_x$ be a maximal antichain subset of $D_x$. Let $F(x)$ be the set of values en element of $A_x$ decides $\sigma(\check x)$ to be. Because we have $\kappa$.c.c, $|F(x)|<\kappa$.
+	
+	Now let $G$ be any generic, because $G$ intersect each of $A_x$, $\sigma(\check x)_G\in F(x)$ for any $x\in X$.
+	
+	To see that $\P$ preserves all cardinals $\ge\kappa$, it is enough to show that it preserve all cardinals $\ge\kappa$ whenever $\kappa$ is regular from the following lemma:
+	
+	\begin{lemma}
+		If $\P$ is $\kappa$.c.c for a singular $\kappa$, then there exists some regular $\lambda<\kappa$ such that $\P$ is also $\lambda$.c.c.
+	\end{lemma}
+	
+	Now assume $\kappa$ is regular.
+	
+	Let $\lambda\ge\kappa$ be the first cardinal that is not being preserved, it means that there exists some generic $G$ and an ordinal $\eta<\lambda$ such that $M[G]\models |\lambda|=|\eta|$,  because  this would imply $M[G]\models |\zeta|=|\eta|$ for any cardinal in $[|\eta|,|\lambda|]$, we must have that $\lambda=|\eta|^+$ (otherwise we would contradict the minimality of $\lambda$), in particular $\lambda$ is regular.
+	
+	Now we must have a new sequence $f\in M[G]$ that witness the collapse, let $\sigma$ be a $\P$ name such that $0_\P\force "\sigma:\eta\to\lambda\text{ is a function}"$ and $\sigma_G=f$. From the claim above we must have $F:\eta\to [\lambda]^{<\kappa}$ such that $0_\P\force\forall x\in\check\eta (\sigma(x)\in F(x))$ so in $M[G]$ we have that $\sup f''\eta \le \sup \bigcup F''\eta<\lambda$ (the last inequality comes from the fact $\lambda$ is regular and that $\kappa\le\lambda$), hence $f$ is not surjective, contradiction.
+	
+	\begin{proof}[Proof of lemma 3.1]
+		Let $\P$ be $\kappa$.c.c for a singular $\kappa$, in particular $\kappa$ is limit.
+		
+		Let $c:\P\to Card$ defined as $c(x)$ is the supremum of the possible sizes of antichains above $x$. Because $c$ is weakly downwards monotonic into the cardinals, above every $x$ there exists some $y$ such that $c(y)=c(z)$ for every $z\ge y$. Call those elements $c$-minimal elements. Note that because the $c$-minimal elements form an open dense set, there must exists an antichain consist only of $c$-minimal elements.
+		
+		Let $C$ be a maximal elements of $c$-minimal elements, then $\sup_{x\in C} c(x)=\kappa$. Indeed let $A$ be an antichain of cardinality $\lambda<\kappa$, for each $a\in A$ let $s(a)$ be a common strengthening of $a$ and some element of $C$, and for each $x\in C$ let $U(x)=|\{s(a)\ge x\mid a\in A\}|\le c(x)$, then we have that $\sup_{x\in C} c(x)\ge \sup_{x\in C} U(x)=|A|=\lambda$. Because $\kappa$ is limit and $\lambda$ is arbitrary, we are done.
+		
+		We can also see that there exists some $c$-minimal $x$ such that $c(x)=\kappa$, let $C$ be as above, if we don't have such $x$, then $|C|\ge\cof{\kappa}$. Let $(c_i\mid i\in |C|)$ be well ordering of $C$ and let $s_i=c(c_i)$, let $s_{\beta(i)}$ be a cofinal subsequence. Above each $c_{\beta(i+1)}$ let $C_{i+1}$ be a maximal antichain of cardinality $s_{\beta(i)}<s_{\beta(i+1)}=c(c_{\beta(i+1)})$ (we don't care about the limit case), the union of all $C_{i+1}$ is an antichain of cardinality $\kappa$, extend it to a maximal antichain and we have a contradiction.
+		
+		Lastly, let $x$ be a $c$-minimal element, then $c(x)$ is regular, and hence from the previous observation we get to a contradiction.
+		
+		Assume the contrary and let $A$ be a maximal antichain above $x$ of cardinality $\ge\cof{c(x)}$, note $c(x)=c(y)$ for all $y\in A$. Because $c(x)$ is singular, it is a limit, so choose an unbounded sequence indexed by $A$, and above each $y\in A$ let $A_y$ be a maximal antichain corresponds to the unbounded sequence (technically, each $A_y$ may be bigger than the element in the sequence), the union of all $A_y$ is a maximal antichain above $x$ of cardinality $c(x)$, contradiction.
+	\end{proof}
+\end{cExercise}
+\begin{cExercise}[Generalized Cohen forcing][Yuval Paz][author]
+	\begin{cPart}
+		Assume $\kappa$ is regular, and that $(p_i\mid i\in\lambda)$ is a sequence from $\Add{\kappa}{X}$ of length $\lambda<\kappa$, note that $\bigcup p_i$ is a partial function from $\kappa\times X\to 2$ and that $|\bigcup p_i|\le \sum |p_i|\le \sum_{i\in\lambda}\sup(|p_i|)=\lambda\times \sup(|p_i|)<\kappa$, where the second inequality used the fact that $\kappa$ is regular. Therefore $\bigcup p_i\in \Add{\kappa}{X}$ is an upper bound to the sequence.
+	\end{cPart}
+	\begin{cPart}
+		First we notice that $\kappa^{\cof{\kappa}}>\kappa$, so $\kappa$ must be regular.
+		
+		Let $A\subseteq \Add{\kappa}{X}$ be a subset of cardinality $\kappa^+$, and we will find 2 elements that are compatible (we will actually find $\kappa^+$ many mutually compatible elements).
+		
+		First note that if we have a family $X$ of $\kappa^+$ elements whose intersection of domains is constant, we are done because if $D$ is the common domain, then every element of $X$ extends a sequence whose domain is $D$, and if 2 elements extends the same sequence, then they are compatible, but there are only $\kappa^{|D|}=\kappa<\kappa^+$ many such sequences from our question assumption.
+		
+		So let $B$ be the set of domains of elements from $A$. Instead of elements in $B$ be a subset of $\kappa\times X$, we can view them as subsets of $|\bigcup_{b\in B} b|\le \sum_{\alpha\in |B|}\kappa=\kappa^+$, which in turn we can view as strictly increasing sequences in $|\kappa^+|^{<\kappa}$.
+		
+		I want to claim that $\bigcup_{b\in B}\range{b}$ is unbounded.
+		
+		Otherwise we would have that $B\subseteq |\sup\bigcup_{b\in B}\range{b}|^{<\kappa}=\kappa^{<\kappa}=\kappa$, which is impossible as $|B|>\kappa$. To see that $\kappa^{<\kappa}=\kappa$ note that if $x\in\kappa^{<\kappa}$ then, because $\kappa$ is regular, $x\in\alpha^{\beta}$ for some $\alpha,\beta<\kappa$, in particular $\kappa^{<\kappa}=\bigcup_{\beta<\kappa}\bigcup_{\alpha<\kappa}\alpha^\beta$ and $|\bigcup_{\beta<\kappa}\bigcup_{\alpha<\kappa}\alpha^\beta|\le \sum_{\beta<\kappa}\sum_{\alpha<\kappa} \kappa^\beta=\sum_{\beta<\kappa}\sum_{\alpha<\kappa} \kappa=\sum_{\beta<\kappa}\kappa^2=\sum_{\beta<\kappa}\kappa=\kappa^2=\kappa$.
+		
+		Because $\bigcup_{b\in B}\range{b}$ is unbounded, $\kappa^+$ is regular and $\bigcup_{b\in B}\range{b}=\bigcup_{\alpha<\kappa}\{b(\alpha)\mid b\in B\}$, there must exists some $\alpha<\kappa$ such that $\{b(\alpha)\mid b\in B\}$ is unbounded.
+		
+		Let $\alpha_0$ be the first such $\alpha$. Define recursively over $\beta\in \kappa^+$:
+		
+		\begin{itemize}
+			\item $b_0$ be an arbitrary element from $B$
+			\item Assume $b_\alpha$ is defined for every $\alpha<\beta$, because $\bigcup_{\alpha<\beta}\range{b_\alpha}$ is $<\kappa^+$ union of $<\kappa^+$ sets, its supremum, $\gamma$, is $<\kappa^+$, let $b_\beta$ be an element from $B$ such that $b_\beta(\alpha_0)>\gamma$
+		\end{itemize}
+	
+		Let $B'$ be the set of $b_\beta$.
+		
+		Notice that for each $\alpha<\alpha_0$, we have that $\{g(\alpha)\mid g\in B'\}$ is bounded (by the minimality of $\alpha_0$), so $\bigcup_{\alpha<\alpha_0}\{g(\alpha)\mid g\in B'\}$ is also bounded by $\beta_0$, as $\kappa^+$ is regular, let $B''=\{g\in B'\mid g(\alpha_0)>\beta_0\}$.
+		
+		Now given $g,f\in B''$, the intersection of their ranges must come from before $\alpha_0$, and each element $f\in B''$ extends a function from $\beta_0^{\alpha_0}$, but there are only $|\beta_0^{\alpha_0}|=\kappa$ many such functions, so there exists $\kappa^+$ many functions from $B''$ that extends the same function from $\beta_0^{\alpha_0}$ and hence has constant intersection of ranges.
+	\end{cPart}
+	\begin{cPart}
+		Note that from the first part, $\Add{\kappa}{\lambda}$ preserve cardinals bellow $\kappa$, so we only need to show that $\kappa$ satisfy the conditions of the previous parts.
+		
+		If $\kappa=\aleph_0$, it is trivial, if $\kappa=\eta^+$ then $\eta<2^{\eta}\le\kappa$ hence $2^\eta=\kappa$ and we have that $\kappa^\mu=(2^{\eta})^\mu=2^{\eta\times\mu}=2^\eta=\kappa$ for every $\mu\le\eta$.
+		
+		Assume $\kappa$ is weakly inaccessible, using similar trick as before we have: $k^{<\kappa}=|\bigcup_{\beta<\kappa}\bigcup_{\alpha<\kappa}\alpha^\beta|\le \sum_{\beta<\kappa}\sum_{\alpha<\kappa}|\alpha^\beta|\le \sum_{\beta<\kappa}\sum_{\alpha<\kappa}(2^{|\alpha|})^{|\beta|}=\sum_{\beta<\kappa}\sum_{\alpha<\kappa}2^{|\alpha|\times|\beta|}=\sum_{\beta<\kappa}\sum_{\alpha<\kappa}2^{\max(|\alpha|,|\beta|)}\le \sum_{\beta<\kappa}\sum_{\alpha<\kappa}\kappa=\kappa$ (In fact, the condition of this question, the condition of the previous question, and $k^{<\kappa}=\kappa$, are all equivalent).
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[Finite Continuum Patterns][Yuval Paz][author]
+	In an identical manner to the countable case, if $\sigma$ is a $\P$-name of a subset of $\kappa$ we can define $f:\kappa\to 2^{\P}$ by $f(\alpha)=\{p\in \P\mid p\force \check{\alpha}\in\sigma\}$, let $A_\alpha$ be a maximal antichain of $f(\alpha)$ and define the generalized nice name of $\sigma$ to be $\bigcup_{\alpha<\kappa}\{\check{\alpha}\}\times A_\alpha$.
+	
+	Again, in a similar manner to the countable case, if $\sf GCH$ holds and $\P=\Add{\kappa}{\lambda}$ for $\lambda>\kappa$ we have at most $[\lambda]^{<\lambda}<\lambda^{<\lambda}=\lambda$ antichains (the proof of last equality appears at the end of the last part of the previous question).
+	
+	Hence the set of generalized $\P$ nice names has cardinality at most $\lambda^\kappa=\lambda$ (this equality again comes from the end of the last part of the previous question).
+	
+	This implies that if $f:m\to\omega$ is any monotonic function satisfy $f(n)\ge n+1$ for all $n\in\omega$, let $M_{-1}$ be transitive countable model of $\sf ZFC+V=L$, let $M_n$ be $M_{n-1}[G]$ for a generic of $\Add{\aleph_{n}}{\aleph_{f(n)}}$, to see that $M_{m-1}$ satisfy what we want, note that because $\Add{\aleph_{n}}{\aleph_{f(n)}}$ is $\aleph_{n}$-closed, it does not add sequences of length $\aleph_k$ for $k<n$ and hence does not add any subsets to $\aleph_k$.
+\end{cExercise}
+\begin{cExercise}[Automorphisms of posets][Yuval Paz][author]
+	\begin{cPart}
+		Because $\pi(0)=0$ and all of the tags (recursively) of $\check x$ are $0$, $\pi(\check x)=\check x$
+	\end{cPart}
+	\begin{cPart}
+		First note that the image of a dense set under $\pi$ is again dense, and if $D$ is dense above $p$, then $\pi''D$ is dense above $\pi(p)$.
+		
+		We will prove the problem by induction. Note that the $\implies$ direction is enough because $\pi^{-1}$ is also an automorphism:
+		
+		For $p\force \tau=\sigma$ we have that:
+		
+		For any $(p',z)\in \tau$ we have that $\{q\ge p\mid q\ge p'\implies \exists(q',w)\in\sigma, q\ge q'\land q\force z=w\}$ is dense above $p$ and similarly when swapping $\tau,\sigma$.
+		
+		But of course using $\pi$ we have:
+		
+		For any $(\pi(p'),\pi(z))\in \pi(\tau)$ we have that $\{q\ge \pi(p)\mid q\ge \pi(p')\implies \exists(q',w)\in\pi(\sigma), q\ge q'\land q\force z=w\}=\pi''\{q\ge p\mid q\ge p'\implies \exists(q',w)\in\sigma, q\ge q'\land q\force z=w\}$ is dense above $\pi(p)$. And similarly when swapping $\tau,\sigma$.
+		
+		Hence $\pi(p)\force \pi(\tau)=\pi(\sigma)$
+		
+		For $p\force \tau\in\sigma$ we have that:
+		
+		$\{q\ge p\mid \exists(p',z)\in \sigma,q\ge p'\land q\force z=\tau\}$ is dense.
+		
+		Just like before, using $\pi$ we get:
+		
+		$\{q\ge \pi(p)\mid \exists(p',z)\in \pi(\sigma),q\ge p'\land q\force z=\pi(\tau)\}=\pi''\{q\ge p\mid \exists(p',z)\in \sigma,q\ge p'\land q\force z=\tau\}$ is dense and hence $\pi(p)\force \pi(\tau)\in\pi(\sigma)$.
+		
+		The disjunction case is trivial.
+		
+		$p\force \lnot\phi$ if and only if (there is no $q\ge p$ such that $q\force \phi$), from the induction assumption it is if and only if (there is no $q\ge \pi(p)$ such that $q\force\pi(\phi)$) if and only if $\pi(p)\force\pi(\phi)$ (where $\pi(\phi)$ means using $\pi$ on all of the parameters).
+		
+		And lastly $p\force \exists \phi(x)$ if and only if the set $\{q\ge p\mid \exists x(q\force \phi(x))\}$ is dense above $p$, which implies that the set $\{q\ge \pi(p)\mid \exists x(\pi(p)\force \phi(\pi(x)))\}=\pi''\{q\ge p\mid \exists x(q\force \phi(x))\}$ is dense which happens if and only if $\pi(p)\force\exists x\pi(\phi)(x)$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[Homogeneous Posets][][author][7]
+	\begin{cPart}
+		For 2 partial function $p,q$ let $K(p,q)=\dom{p}\cap \dom{q}$ and $p^{(q)}=p\cup (q\restriction \dom{q}\setminus K(p,q))$.
+		
+		Notice that $p^{(q)}\ge p$ and that if $p,q$ are comparable then $p^{(q)}=\max(p,q)$.
+		
+		Now let $\P$ be a poset of partial functions ordered by inclusion and $\pi:\P\to\P$ be a bijection that is bit-wise, that is $\dom{p}=\dom{\pi(p)}$ and $\pi(p)(n)$ depends only on $p(n)$ and $n$ for $n\in\dom{p}$, then we have that $\pi$ is an automorphism.
+		
+		Indeed let $\tau(n,p(n))$ be $(n,\pi(p)(n))$, because $\pi$ is a bijection so is $\tau$, and let $p\subseteq q$, if $(a,b)\in p$ then $(a,b)\in q$ so $\tau(a,b)\in \pi(p)$ and $\tau(a,b)\in \pi(q)$, and if $(a,b)\in \pi(p)$ then $\tau^{-1}(a,b)\in p$ so $\tau(\tau^{-1}(a,b))=(a,b)\in \pi(q)$ so $\pi$ is order-preserving.
+		
+		Now fix some $p,q\in\P$ and lets define the automorphism $\pi_p^q:\P\to\P$ that swaps $p^{(q)}$ and $q^{(p)}$ by swapping $(n,p(n))$ with $(n,q(n))$ for all $n\in K(p,q)$ and let it not change any other pair.
+		
+		Indeed $\pi_p^q$ is bit-wise, $\pi_p^q(t)(n)=t(n)$ if $n\notin K(p,q)$ or $t(n)\notin\{p(n),q(n)\}$, otherwise if $t(n)=p(n)$ let $p(t)(n)=q(n)$ and vice versa.
+		
+		To see it swaps $p^{(q)}$ with $q^{(p)}$ notice that $p^{(q)},q^{(p)}$ have the domain of of $\dom{p}\cup\dom{q}$ and they agree on their domain apart from (maybe) $K(p,q)$, so let $n\in K(p,q)$ and we get that $p^{(q)}(n)=p(n)$, so $\pi_p^q(p^{(q)})(n)=q(n)$ by definition, and vice versa.
+		
+		Because $\Add{\kappa}{1}$ and $Col(\omega,\lambda)$ are posets of partial functions ordered by inclusion we are done.
+	\end{cPart}
+	\begin{cPart}
+		Let $G$ be any generic we know that $\phi(\overline{\check{x}_G})$ either holds in $M[G]$ or its negation holds, WLOG assume it holds, and take $p\in G$ such that $p\force \phi(\overline{\check{x}})$.
+		
+		Let $q\in\P$ be any element, and let $\pi$ be an automorphism that sends $r\ge p$ to $t\ge q$, because $r\ge p$, it also forces $\phi(\overline{\check{x}})$ and so from problem (6.2) we have that $t\force \phi(\overline{\pi(\check{x})})$ and from (6.1) we can conclude that $t\force \phi(\overline{\check{x}})$, so $\{p\in \P\mid p\force\phi(\overline{\check{x}})\}$ is dense above $0_\P$, hence $0_\P$ also forces that.
+	\end{cPart}
+\end{cExercise}
 
 
 \end{document}

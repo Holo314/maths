@@ -4,74 +4,78 @@
 \title{Exercise 2}
 \begin{document}
 \maketitle
-\ex{}
-Let $\Bbb P, A, f:A\to V^\Bbb P$ be as in the question, for each generic $G$ let $\bonk{G}$ be the unique $x\in A\cap G$, define $\operatorname{\uparrow}:\Bbb P\times A\to 2^\Bbb P$, $g:V^\Bbb P\times A\to V^\Bbb P$ and $\sigma_\cdot:A\to V^\P$ as:
+\begin{cExercise}[][][author]
+	Let $\Bbb P, A, f:A\to V^\Bbb P$ be as in the question, for each generic $G$ let $\bonk{G}$ be the unique $x\in A\cap G$, define $\operatorname{\uparrow}:\Bbb P\times A\to 2^\Bbb P$, $g:V^\Bbb P\times A\to V^\Bbb P$ and $\sigma_\cdot:A\to V^\P$ as:
+	
+	\begin{itemize}
+		\item $x\operatorname{\uparrow}a$ is the set of all common strengthening of $x$ and $a$
+		\item $g(\tau, a)=\{(\pi, x)\mid\exists y (\pi, y)\in \tau\land x\in y\operatorname{\uparrow}a\}$
+		\item $\sigma_a=g(f(a),a)$
+	\end{itemize}
+	
+	Notice that $(f(\bonk{G}))_G=(\sigma_{\bonk{G}})_G$, the $\subseteq$ direction is follows from the fact that every 2 elements in $G$ have a common strengthening, indeed if $\tau\in f(\bonk{G})$ is don't discarded by $G$ then its right side is in $G$, in particular $\pi_2(\tau)\operatorname{\uparrow}\bonk{G}\ne \emptyset$ (where $\pi_i$ is the projection function) and so there is some $\pi\in \sigma_{\bonk{G}}$ such that $\pi_1(\pi)=\pi_1(\tau)$ and $\pi_2(\pi)\in G$.\\
+	The $\supseteq$ direction follows from the fact that $G$ is closed downwards, if $\pi\in \sigma_{\bonk{G}}$ is not discarded by $G$, then $\pi_2(\pi)$ comes from some $\tau\in f(\bonk{G})$ with $\pi_1(\tau)=\pi_1(\pi)$ and $\pi_2(\tau)\le\pi_2(\pi)$, which means that $\tau$ is also not discarded by $G$ because it is closed downwards.
+	
+	In addition if $Q$ is a different generic ideal such that for some $x$ we have $x\in (\sigma_{\bonk{G}})_Q$ then $\bonk{G}=\bonk{Q}$ (in other words, $\sigma_{\bonk{G}}$ and $\sigma_{\bonk{H}}$ for $G,H$ generics that don't have a common $A$-member don't interfere with one another) because any right side  of an element of $\sigma_{\bonk{G}}$ must have stronger tag than $\bonk{G}$ and $Q$ is closed downwards which means that $\bonk{G}\in A\cap Q$ which by definition is equal to $\bonk{Q}$, so we can let $\sigma_f=\bigcup_{a\in A}\sigma_a$.
+\end{cExercise}
+\begin{cExercise}[][][author][4]
+	\begin{cPart}
+		For $(2)\to (1)$ in the book, notice that $(1)$ is a special case of $(2)$.
+		For $(2)\to (3)$ notice that assuming $(2)$ we have $\{r\mid r\Vdash^* \psi\}\supseteq \{r\mid r\ge p\}$, and the latter trivially dense above $p$.
+		
+		For the atomic $(1)\to(2)$ direction, let $p\Vdash^*\tau_1=\tau_2$ and $r>p$, I want to show that for all $(\pi_1,s_1)\in\tau_1$ the set $\{q\ge r\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$ is dense above $r$, indeed take an element $s$ above $r$, then because $p\Vdash^*\tau_1=\tau_2$ and that $s\ge r\ge p$ there exists some $t\in \{q\ge p\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$ greater than $s$, but because $t\ge s\ge r$ we have that $t\in \{q\ge r\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$, so that set is indeed dense above $r$. A symmetric argument will finish this proof.
+		
+		Now assume $p\Vdash^* \tau_1\in\tau_2$ and $r\ge p$, take $s\ge r\ge p$, there is some $t\in\{q\mid (\pi,x)\in\tau_2(q\ge x\land q\Vdash^*\pi=\tau_1)\}$ that is stronger than $s\ge r$, so the set is dense above $r$.
+		
+		For $(3)\to(1)$ we just need to prove that if $\{r\mid D\text{ is dense above }r\}$ is dense above $p$, then $D$ is dense above $p$, indeed take $q\ge p$ and $r\in \{r\mid D\text{ is dense above }r\}$ greater than $q$, then let $q'>r$, because $D$ is dense above $r$ there exists $t\in D$ such that $t\ge q'>r\ge q\ge p$, hence $D$ is dense above $D$.
+		
+		To finish all of the details of the proof of the lemma from the book we need to show $(1)\to(2)$ and $(3)\to(1)$ for $\lnot$ and $\exists x$.
+		
+		For $(1)\to(2)$, assume $p\Vdash^*\lnot\phi$ and $r\ge p$, then every $t\ge r$ is also stronger than $p$, hence does not force$^*$ the sentence $\phi$, therefore $r\Vdash^* \lnot\phi$. Assume $p\Vdash^*\exists x \phi(x)$ and take $r\ge p$ and $t\ge r$, because $t\ge p$ there exists $q\ge t$ such that $\exists \sigma\in V^\Bbb P (q\Vdash^* \phi(\sigma))$, in particular $\{q\mid \exists \sigma\in V^\Bbb P (q\Vdash^* \phi(\sigma))\}$ is dense above $r$.
+		
+		For $(3)\to(1)$ for the $\lnot\phi$ case, assume $p\not\Vdash^* \lnot\phi$ then there is some $r\ge p$ that forces$^*$ $\phi$, by the induction hypothesis we get that every $t\ge p$ also forces$^*$ $\phi$, a contradiction. The $\exists x\phi(x)$ case follows from the same fact as the atomic case, that if $\{r\mid D\text{ is dense above }r\}$ is dense above $p$, then $D$ is dense above $p$
+	\end{cPart}
+	\begin{cPart}
+		Assume $p\Vdash^* \phi$, we want to prove $p\Vdash^*\lnot\lnot\phi$, in particular we want to show:
+		\begin{align*}
+			&\forall q\ge p (\lnot q\Vdash\lnot \phi)\\
+			\iff&\forall q\ge p (\lnot (\forall r\ge q (\lnot r\Vdash^*\phi)))\\
+			\iff&\forall q\ge p  (\exists r\ge q (r\Vdash^*\phi))
+		\end{align*}
+		
+		But any $r\ge q$ will witness it is true, as $r\ge q\ge p$ and from (4.1) $r\Vdash^* \phi$.
+	\end{cPart}
+	\begin{cPart}
+		Let $D_\psi$ be as in the question and let $p\in \Bbb P$ be any term, if there is $q\ge p$ such that $q\Vdash^* \psi$ then we are done as $p\le q\in D_\psi$.
+		Otherwise we have that $p\Vdash^* \lnot\psi$ by definition, so $p\in D_\psi$.
+		
+		So assume $p\Vdash^*\lnot\lnot\psi$, the set $D_\psi$ is dense above $p$, by definition there is no $q\ge p$ that forces$^*$ $\lnot\psi$, so $\{q\mid q\Vdash^* \psi\}=D_\psi\cap \{q\mid q\ge p\}$ is dense above $p$, by (4.1) this is equivalent to $p\Vdash\psi$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[][][author][6]
+	Assume $(p\Vdash^*\phi(\overline\tau))^M$, in particular we have that for every $G$ a generic containing $p$ we have $\exists q\in G (q\Vdash^* \phi(\overline{\tau}))^M$, by theorem 3.5 in the book we have $M[G]\models \phi(\overline{\tau}_G)$, hence by definition $p\Vdash_\Bbb P^M \phi(\overline{\tau})$
+	
+	Now assume $p\Vdash_\Bbb P^M \phi(\overline{\tau})$ and let $r\ge p$ and $G$ be a $\Bbb P$-generic contains $r$, by definition $M[G]\models \phi(\overline{\tau}_G)$, by theorem 3.5 in the book there exists some $t\in G$ such that $(t\Vdash^*\phi(\overline\tau))^M$, let $q\in G$ be stronger than $r$ and $t$, by (4.1) we know that $(q\Vdash^*\phi(\overline\tau))^M$, hence $\{q\mid q\Vdash^*\phi(\overline\tau)\}$ is (dense above $p$)$^M$, which implies that $(p\Vdash^*\phi(\overline\tau))^M$
+	
+	To get the form we had in class all we need to do is "concat" this result to question theorem 3.5, if $G$ is a generic and $M[G]\models \phi(\overline{\tau}_G)\iff \exists p\in G\; (p\force^*\phi(\overline{\tau}))^M\iff \exists p\in G\; p\force_\P^M \phi(\overline{\tau})$.
+\end{cExercise}
 
-\begin{itemize}
-	\item $x\operatorname{\uparrow}a$ is the set of all common strengthening of $x$ and $a$
-	\item $g(\tau, a)=\{(\pi, x)\mid\exists y (\pi, y)\in \tau\land x\in y\operatorname{\uparrow}a\}$
-	\item $\sigma_a=g(f(a),a)$
-\end{itemize}
-
-Notice that $(f(\bonk{G}))_G=(\sigma_{\bonk{G}})_G$, the $\subseteq$ direction is follows from the fact that every 2 elements in $G$ have a common strengthening, indeed if $\tau\in f(\bonk{G})$ is don't discarded by $G$ then its right side is in $G$, in particular $\pi_2(\tau)\operatorname{\uparrow}\bonk{G}\ne \emptyset$ (where $\pi_i$ is the projection function) and so there is some $\pi\in \sigma_{\bonk{G}}$ such that $\pi_1(\pi)=\pi_1(\tau)$ and $\pi_2(\pi)\in G$.\\
-The $\supseteq$ direction follows from the fact that $G$ is closed downwards, if $\pi\in \sigma_{\bonk{G}}$ is not discarded by $G$, then $\pi_2(\pi)$ comes from some $\tau\in f(\bonk{G})$ with $\pi_1(\tau)=\pi_1(\pi)$ and $\pi_2(\tau)\le\pi_2(\pi)$, which means that $\tau$ is also not discarded by $G$ because it is closed downwards.
-
-In addition if $Q$ is a different generic ideal such that for some $x$ we have $x\in (\sigma_{\bonk{G}})_Q$ then $\bonk{G}=\bonk{Q}$ (in other words, $\sigma_{\bonk{G}}$ and $\sigma_{\bonk{H}}$ for $G,H$ generics that don't have a common $A$-member don't interfere with one another) because any right side  of an element of $\sigma_{\bonk{G}}$ must have stronger tag than $\bonk{G}$ and $Q$ is closed downwards which means that $\bonk{G}\in A\cap Q$ which by definition is equal to $\bonk{Q}$, so we can let $\sigma_f=\bigcup_{a\in A}\sigma_a$.
-
-\ex[4]{}
-\sub{}
-For $(2)\to (1)$ in the book, notice that $(1)$ is a special case of $(2)$.
-For $(2)\to (3)$ notice that assuming $(2)$ we have $\{r\mid r\Vdash^* \psi\}\supseteq \{r\mid r\ge p\}$, and the latter trivially dense above $p$.
-
-For the atomic $(1)\to(2)$ direction, let $p\Vdash^*\tau_1=\tau_2$ and $r>p$, I want to show that for all $(\pi_1,s_1)\in\tau_1$ the set $\{q\ge r\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$ is dense above $r$, indeed take an element $s$ above $r$, then because $p\Vdash^*\tau_1=\tau_2$ and that $s\ge r\ge p$ there exists some $t\in \{q\ge p\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$ greater than $s$, but because $t\ge s\ge r$ we have that $t\in \{q\ge r\mid q\ge s_1\implies \exists(\pi_2,s_2)\in\tau_2(q\ge s_2\land q\Vdash^*\pi_1=\pi_2)\}$, so that set is indeed dense above $r$. A symmetric argument will finish this proof.
-
-Now assume $p\Vdash^* \tau_1\in\tau_2$ and $r\ge p$, take $s\ge r\ge p$, there is some $t\in\{q\mid (\pi,x)\in\tau_2(q\ge x\land q\Vdash^*\pi=\tau_1)\}$ that is stronger than $s\ge r$, so the set is dense above $r$.
-
-For $(3)\to(1)$ we just need to prove that if $\{r\mid D\text{ is dense above }r\}$ is dense above $p$, then $D$ is dense above $p$, indeed take $q\ge p$ and $r\in \{r\mid D\text{ is dense above }r\}$ greater than $q$, then let $q'>r$, because $D$ is dense above $r$ there exists $t\in D$ such that $t\ge q'>r\ge q\ge p$, hence $D$ is dense above $D$.
-
-To finish all of the details of the proof of the lemma from the book we need to show $(1)\to(2)$ and $(3)\to(1)$ for $\lnot$ and $\exists x$.
-
-For $(1)\to(2)$, assume $p\Vdash^*\lnot\phi$ and $r\ge p$, then every $t\ge r$ is also stronger than $p$, hence does not force$^*$ the sentence $\phi$, therefore $r\Vdash^* \lnot\phi$. Assume $p\Vdash^*\exists x \phi(x)$ and take $r\ge p$ and $t\ge r$, because $t\ge p$ there exists $q\ge t$ such that $\exists \sigma\in V^\Bbb P (q\Vdash^* \phi(\sigma))$, in particular $\{q\mid \exists \sigma\in V^\Bbb P (q\Vdash^* \phi(\sigma))\}$ is dense above $r$.
-
-For $(3)\to(1)$ for the $\lnot\phi$ case, assume $p\not\Vdash^* \lnot\phi$ then there is some $r\ge p$ that forces$^*$ $\phi$, by the induction hypothesis we get that every $t\ge p$ also forces$^*$ $\phi$, a contradiction. The $\exists x\phi(x)$ case follows from the same fact as the atomic case, that if $\{r\mid D\text{ is dense above }r\}$ is dense above $p$, then $D$ is dense above $p$
-
-\sub{}
-Assume $p\Vdash^* \phi$, we want to prove $p\Vdash^*\lnot\lnot\phi$, in particular we want to show:
-\begin{align*}
-	&\forall q\ge p (\lnot q\Vdash\lnot \phi)\\
-	\iff&\forall q\ge p (\lnot (\forall r\ge q (\lnot r\Vdash^*\phi)))\\
-	\iff&\forall q\ge p  (\exists r\ge q (r\Vdash^*\phi))
-\end{align*}
-
-But any $r\ge q$ will witness it is true, as $r\ge q\ge p$ and from (4.1) $r\Vdash^* \phi$.
-\sub{}
-Let $D_\psi$ be as in the question and let $p\in \Bbb P$ be any term, if there is $q\ge p$ such that $q\Vdash^* \psi$ then we are done as $p\le q\in D_\psi$.
-Otherwise we have that $p\Vdash^* \lnot\psi$ by definition, so $p\in D_\psi$.
-
-So assume $p\Vdash^*\lnot\lnot\psi$, the set $D_\psi$ is dense above $p$, by definition there is no $q\ge p$ that forces$^*$ $\lnot\psi$, so $\{q\mid q\Vdash^* \psi\}=D_\psi\cap \{q\mid q\ge p\}$ is dense above $p$, by (4.1) this is equivalent to $p\Vdash\psi$.
-
-\ex[6]{}
-Assume $(p\Vdash^*\phi(\overline\tau))^M$, in particular we have that for every $G$ a generic containing $p$ we have $\exists q\in G (q\Vdash^* \phi(\overline{\tau}))^M$, by theorem 3.5 in the book we have $M[G]\models \phi(\overline{\tau}_G)$, hence by definition $p\Vdash_\Bbb P^M \phi(\overline{\tau})$
-
-Now assume $p\Vdash_\Bbb P^M \phi(\overline{\tau})$ and let $r\ge p$ and $G$ be a $\Bbb P$-generic contains $r$, by definition $M[G]\models \phi(\overline{\tau}_G)$, by theorem 3.5 in the book there exists some $t\in G$ such that $(t\Vdash^*\phi(\overline\tau))^M$, let $q\in G$ be stronger than $r$ and $t$, by (4.1) we know that $(q\Vdash^*\phi(\overline\tau))^M$, hence $\{q\mid q\Vdash^*\phi(\overline\tau)\}$ is (dense above $p$)$^M$, which implies that $(p\Vdash^*\phi(\overline\tau))^M$
-
-To get the form we had in class all we need to do is "concat" this result to question theorem 3.5, if $G$ is a generic and $M[G]\models \phi(\overline{\tau}_G)\iff \exists p\in G\; (p\force^*\phi(\overline{\tau}))^M\iff \exists p\in G\; p\force_\P^M \phi(\overline{\tau})$.
-
-\newpage
-\ex{}
-\sub{}
-Let $D$ be the set $\{p\mid \exists \sigma\in V^\Bbb P (p\Vdash \psi(\sigma, \overline{\tau}))\}$, we know this set is dense above $0_\Bbb P$, which means it is just dense.
-
-Let $A\subseteq D$ be a maximal anti-chain, and for each $x\in A$ let $f(x)$ be a name that is a witness of $x\in D$, let $\sigma_f$ be the name from exercise 1.
-
-For every generic ($=$ for every generic contains $0_\Bbb P$) we have that $M[G]\models \psi((\sigma_f)_G,\overline{\tau}_G)$, which by definition means $0_\Bbb P\Vdash \psi(\sigma_f, \overline{\tau})$.
-
-\sub{}
-Let $\psi(x,y,w,z)=(x \text{ is a function from $w$ to $z$})\land (y\text{ is a function from $w$ to $z$}\implies x=y)$, notice that for every $y',w',z'$ such that $(z'=\emptyset\implies w'=\emptyset)$ we have that $\exists x\psi(x,y',w',z')$ is tautology.
-
-Let $G$ be a generic ideal and $f:\alpha\to\beta$ function in $M[G]$, let $\tau$ be the name that $G$ interpret as $f$, because $f$ is a function we have that either $\beta\ne 0$ or both $\alpha$ and $\beta$ are $0$, in particular for every $Q$ a generic ideal we have that $M[G]\models\exists x\psi(x,\tau_Q,\check{\alpha}_Q,\check{\beta}_Q)$, so $0_\Bbb P\Vdash \exists x\psi(x,\tau,\check{\alpha},\check{\beta})$, from (7.1) we have that there is some name $\sigma$ such that $0_\Bbb P\Vdash \psi(\sigma,\tau,\check{\alpha},\check{\beta})$.
-
-Clearly $0_\Bbb P\Vdash \sigma:\check{\alpha}\to\check{\beta}$ and because $\tau_G=f$ is a function from $\alpha$ to $\beta$ we have that $f=\tau_G=\sigma_G$.
+\begin{cExercise}[][][author][7]
+	\begin{cPart}
+		Let $D$ be the set $\{p\mid \exists \sigma\in V^\Bbb P (p\Vdash \psi(\sigma, \overline{\tau}))\}$, we know this set is dense above $0_\Bbb P$, which means it is just dense.
+		
+		Let $A\subseteq D$ be a maximal anti-chain, and for each $x\in A$ let $f(x)$ be a name that is a witness of $x\in D$, let $\sigma_f$ be the name from exercise 1.
+		
+		For every generic ($=$ for every generic contains $0_\Bbb P$) we have that $M[G]\models \psi((\sigma_f)_G,\overline{\tau}_G)$, which by definition means $0_\Bbb P\Vdash \psi(\sigma_f, \overline{\tau})$.
+	\end{cPart}
+	\begin{cPart}
+		Let $\psi(x,y,w,z)=(x \text{ is a function from $w$ to $z$})\land (y\text{ is a function from $w$ to $z$}\implies x=y)$, notice that for every $y',w',z'$ such that $(z'=\emptyset\implies w'=\emptyset)$ we have that $\exists x\psi(x,y',w',z')$ is tautology.
+		
+		Let $G$ be a generic ideal and $f:\alpha\to\beta$ function in $M[G]$, let $\tau$ be the name that $G$ interpret as $f$, because $f$ is a function we have that either $\beta\ne 0$ or both $\alpha$ and $\beta$ are $0$, in particular for every $Q$ a generic ideal we have that $M[G]\models\exists x\psi(x,\tau_Q,\check{\alpha}_Q,\check{\beta}_Q)$, so $0_\Bbb P\Vdash \exists x\psi(x,\tau,\check{\alpha},\check{\beta})$, from (7.1) we have that there is some name $\sigma$ such that $0_\Bbb P\Vdash \psi(\sigma,\tau,\check{\alpha},\check{\beta})$.
+		
+		Clearly $0_\Bbb P\Vdash \sigma:\check{\alpha}\to\check{\beta}$ and because $\tau_G=f$ is a function from $\alpha$ to $\beta$ we have that $f=\tau_G=\sigma_G$.
+	\end{cPart}
+\end{cExercise}
 \end{document}
 
 
