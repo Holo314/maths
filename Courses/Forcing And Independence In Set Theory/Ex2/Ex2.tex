@@ -18,6 +18,33 @@
 	
 	In addition if $Q$ is a different generic ideal such that for some $x$ we have $x\in (\sigma_{\bonk{G}})_Q$ then $\bonk{G}=\bonk{Q}$ (in other words, $\sigma_{\bonk{G}}$ and $\sigma_{\bonk{H}}$ for $G,H$ generics that don't have a common $A$-member don't interfere with one another) because any right side  of an element of $\sigma_{\bonk{G}}$ must have stronger tag than $\bonk{G}$ and $Q$ is closed downwards which means that $\bonk{G}\in A\cap Q$ which by definition is equal to $\bonk{Q}$, so we can let $\sigma_f=\bigcup_{a\in A}\sigma_a$.
 \end{cExercise}
+\begin{cExercise}[The relation $p\force^*\tau_1=\tau_2$][Yuval Paz][author]
+	\begin{cPart}
+		To fix the circular definition we need to add the base case of $p\force^* \emptyset=\emptyset$ for every $p\in\P$
+	\end{cPart}
+	\begin{cPart}
+		We will use induction on the $\P$-rank of $\tau_1,\tau_2$.
+		
+		Let $p\in\P$ be some element, $G$ a generic such that $p\in G$, and $\tau_1,\tau_2$ be $\P$-names such that $p\force^*\tau_1=\tau_2$.
+		
+		We will show that $(\tau_1)_G\subseteq(\tau_2)_G$ and from symmetry we would be done.
+		
+		Let $\pi_G\in(\tau_1)_G$ where $(\pi,s)\in\tau_1$ and $s\in G$. Choose $r\ge p,s$ in $G$.
+		 
+		Because $\{q\ge r\mid q\ge s\implies \exists(\sigma, t)\in\tau_2(q\ge t\land q\force^*\sigma=\pi)\}=\{q\ge r\mid \exists(\sigma, t)\in\tau_2(q\ge t\land q\force^*\sigma=\pi)\}$ (this equality is possible because we switched from $p$ to $r$) is dense above $r$ (as $r\ge p$ implies $r\force^*\tau_1=\tau_2$), let $r'$ be an element from that set intersect $G$, and let $(\sigma,t)$ witnesses, because $r'\force^*\sigma=\pi$, and the $\P$-rank of $\sigma$ and $\pi$ is lower than those of $\tau_i$, and because $r'\in G$, we can use the induction hypothesis and get $\sigma_G=\pi_G$, in particular we have $\pi_G=\sigma_G\in(\tau_2)_G$ and we are done.
+		
+		
+		Now assume $(\tau_1)_G=(\tau_2)_G$ and let $D$ be the set of $p\in P$ that forces$^*$ either $\tau_1=\tau_2$, or it's negation (where "it's negation" means that it is not force$^*$ by any stronger condition).
+		
+		This set is dense, indeed if $\lnot p\force^*\tau_1=\tau_2$, then (WOLG) there exists some $(\pi,s)\in \tau_1$ such that $\{q\ge p\mid q\ge s\implies \exists(\sigma, t)\in\tau_2(q\ge t\land q\force^*\sigma=\pi)\}$ is not dense above $p$. Let $r\ge p$ be a witness, we must have that everything above $r$ does not have the above set as dense above it, in particular $r$ force$^*$ the negation of $\tau_1=\tau_2$.
+		
+		Now we only need to show that if $p\in G$, $p$ does not force$^*$ the negation of $\tau_1=\tau_2$.
+		
+		Indeed if $p\in G$ is such element, let $(\pi,s)\in\tau_1$ be such that $s\in G$ and there is no $(\sigma,t)\in\tau_2$ ($t\in G$) and $r\ge p$ such that $r\force^*\sigma=\pi$.
+		
+		Because $\pi_G\in(\tau_1)_G$, there exists some $(\sigma',t')\in \tau_2$ such that $t'\in G$ and $\sigma_G'=\pi_G$, because the rank of $\sigma_G',\pi_G$ is smaller than those of $\tau_i$, we can use the induction hypothesis and find $q\in G$ such that $q\force^*\sigma'=\pi$, by taking $q'\ge q,r$ we get a contradiction as $q'\force^*\sigma'=\pi$ as well, which never happen as $q'\ge r$.
+	\end{cPart}
+\end{cExercise}
 \begin{cExercise}[][][author][4]
 	\begin{cPart}
 		For $(2)\to (1)$ in the book, notice that $(1)$ is a special case of $(2)$.
@@ -52,6 +79,23 @@
 		So assume $p\Vdash^*\lnot\lnot\psi$, the set $D_\psi$ is dense above $p$, by definition there is no $q\ge p$ that forces$^*$ $\lnot\psi$, so $\{q\mid q\Vdash^* \psi\}=D_\psi\cap \{q\mid q\ge p\}$ is dense above $p$, by (4.1) this is equivalent to $p\Vdash\psi$.
 	\end{cPart}
 \end{cExercise}
+\begin{cExercise}[Main $\force^*$ theorem][Yuval Paz][author]
+	We have proven in Exercise 2 the base $=$ case.
+	
+	Very similarly to the $=$ case, suppose that $G\ni p\force^*\tau_1\in\tau_2$, because $\{q\ge p\mid \exists(\pi,s)\in\tau_2(q\ge s\land q\force^*\pi=\tau_1)\}$ is dense above $p$, let $q\in G,(\pi,s)$ from that set.
+	
+	From the the $=$ case we have that $\pi_G=(\tau_1)_G$ and because $q\ge s$ we have that $s\in G$, in particular $(\tau_1)_G=\pi_G\in (\tau_2)_G$
+	
+	For the other direction assume $(\tau_1)_G\in (\tau_2)_G$, and let $(\pi,s)\in\tau_2$ such that $s\in G$ and $(\tau_1)_G=\pi_G$, from the $=$ case, we have $p\in G$ such that $p\force^* \tau_1=\pi$, let $r\in G$ be a common strengthening of $p$ and $s$, so $r\force^*\tau_1\in\tau_2$.
+	
+	The $\land,\lnot$ cases are trivial.
+	
+	Assume $G\ni p\force^*\exists x\phi(x,\tau)$, that is $\{r\ge p\mid\exists \sigma\in V^\P(r\force^*\phi(\sigma,\tau))\}$ is dense above $p$, and let $r\in G$ be an element of the above set with witness $\sigma'$, we have that $r\force^*\phi(\sigma,\tau)$, from the induction hypothesis $M[G]\models \phi(\sigma_G,\tau_G)$ which implies $M[G]\models \exists x\phi(x,\tau_G)$.
+	
+	Assume $M[G]\models \exists x\phi(x,\tau_G)$, let $\sigma_G$ be a witness, and let $\sigma$ be its name.
+	
+	Because $M[G]\models \phi(\sigma_G,\tau_G)$, by the induction hypothesis we have $p\in G$ such that $p\force^*\phi(\sigma,\tau)$, in particular $\{q\ge p\mid \exists x\in V^\P(q\force^*\phi(x,\tau))\}\subseteq\{q\ge p\mid q\force^*\phi(\sigma,\tau)\}=\{q\ge p\}$ is dense above $p$, and hence $p\force^*\exists x\phi(x,\tau)$
+\end{cExercise}
 \begin{cExercise}[][][author][6]
 	Assume $(p\Vdash^*\phi(\overline\tau))^M$, in particular we have that for every $G$ a generic containing $p$ we have $\exists q\in G (q\Vdash^* \phi(\overline{\tau}))^M$, by theorem 3.5 in the book we have $M[G]\models \phi(\overline{\tau}_G)$, hence by definition $p\Vdash_\Bbb P^M \phi(\overline{\tau})$
 	
@@ -75,6 +119,33 @@
 		
 		Clearly $0_\Bbb P\Vdash \sigma:\check{\alpha}\to\check{\beta}$ and because $\tau_G=f$ is a function from $\alpha$ to $\beta$ we have that $f=\tau_G=\sigma_G$.
 	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[][Yuval Paz][author]
+	Let $M,\P,G$ as in the question, because $M[G]$ is transitive, it satisfy Extensionality and Foundation.
+	
+	Because it contains all ordinals it also satisfy Infinite and Emptyset.
+	
+	Let $x\in M[G]$ with name $\tau$, for each $(\pi,s)\in \tau$ and for each $(\sigma,t)\in\pi$ take all of the names $(\sigma,r)$ for $r\ge t,s$, the set of all such pairs is a name for $\bigcup x$.
+	
+	For replacement, let $\phi(x,y,a)$ be functional formula over $A$ for $a\in M[G]$ parameter with $\tau$ name. Let $\pi$ be the name of $A$.
+	
+	Let $p\in G$ that forces that $\phi(x,y,\tau)$ is functional over $\pi$.
+	
+	For each $(\sigma,s)\in\pi$, $s\in G$ we have $p\force \exists x\phi(x,\sigma,\tau)$ so for each such $(\sigma, s)\in \pi$ (regardless of $s$) if $p\force \exists x\phi(x,\sigma,\tau)$ let $x_{(\sigma,s)}$ be a single name that witness that (exists from name integration) and let $A_{(\sigma,s)}$ be the set $(x_{(\sigma,s)}, t)$ for all $t\ge s,p$, if $p$ does not force that, let $A_{(\sigma,s)}$ be empty.
+	
+	(Note that we can replace $x_{(\sigma,s)}$ with the set of all such witnesses over a bounded rank to avoid using AC. This works because $\phi$ is functional, so all of those names translate to the same set in $M[G]$)
+	
+	The union of all those $A_{(\sigma,s)}$ will witness that the image of $\phi$ is a set in $M[G]$.
+	
+	Because $|M[G]|>1$ and we have Emptyset and replacement, we immediately get Pairing and Separation.
+	
+	For AC, if $X$ is any set with a name $\pi$, let $R$ be a well ordering of the name $\pi$, we have $R,\pi,G\in M[G]$ so define in $M[G]$ be function that sends $(\sigma,s)$ to $(\sigma_G,s)$, then $R$ induce a well ordering on $\{(\sigma_G,s)\mid (\sigma,s)\in \pi\}$ in $M[G]$, which can be used to define a well ordering on $X$.
+	
+	All we left to do is to show that the Powerset exists. Let $X\in M[G]$ with name $\pi$, let $(A\subseteq X)^{M[G]}$ with name $\tau$, by name integration we may assume $0\force \tau\subseteq \pi$.
+	
+	Let $\{(\sigma,s)\mid (\sigma,p)\in\pi,s\ge p,s\force \sigma\in \tau\}$ is a name for $A$ as well.
+	
+	This gives a set of names that (under $G$) contains all subsets of $X$. By separation we are done.
 \end{cExercise}
 \end{document}
 
