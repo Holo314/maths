@@ -82,7 +82,33 @@
 	
 	So we got that $G$ is definable in $M[H]$ (with parameters) and hence $M[G]\subseteq M[H]$ and we are done.
 \end{cExercise}
-
+\begin{cExercise}[Finishing the proof of Solovay’s Theorem][Yuval Paz][author]
+	\begin{cPart}
+		Notice that $Coll(\omega, <\kappa)$ is exactly the forcing product of $Coll(\omega,\alpha)$ for $\alpha<\kappa$ with finite support.
+		
+		To see that the forcing is $\kappa$.c.c let $A$ be a family of conditions of cardinality $\kappa$, by the sunflower lemma we may assume that the places where 2 conditions has nontrivial condition is a constant finite $r$ with $m=\max(r)<\kappa$, but then we have that the compatibility of the conditions depends only on the product up to $m+1$, which has cardinality $<\kappa$ and hence $\kappa$.c.c. 
+	\end{cPart}
+	\begin{cPart}
+		Clearly $Coll(\omega,<\alpha)\times Coll(\omega,[\alpha,\kappa))\cong Coll(\omega,<\kappa)$ as witness by concatenation, or in the other direction, as witness by splitting conditions at $\alpha$.
+		
+		Let $G$ be generic in $Coll(\omega,<\kappa)$, and let $G'\subseteq Coll(\omega,<\alpha)\times Coll(\omega,[\alpha,\kappa))$ be image of $G$ under the isomorphism above. We have shown in the lecture that a subset of a product forcing notion $H\times K\subseteq \P\times\Q$ is generic if and only if $H$ is $\P$-generic over $V$, and $K$ is $\Q$-generic over $M[H]$, which is exactly the situation the question asks for.
+	\end{cPart}
+	\begin{cPart}
+		Let $G=G_{<\kappa}$ for ease.
+		
+		First we notice that if $X\in M[G]$ such that $X$ is a bounded subset of $\kappa$, then there exists some $\alpha<\kappa$ such that $X\in M[G_{<\alpha}]$. Indeed if $X$ is as such, let $\tau=\{\{\alpha\}\times A_\alpha\}_{\alpha\in \sup X}$ be a nice name of $X$, because $\kappa$ is regular and satisfy $\kappa$.c.c, we must have that $\tau$ is some $Coll(\omega,<\alpha)$ for some $\alpha<\kappa$, which means that $X=\tau_{G}=\tau_{G_{<\alpha}}\in M[G_{<\alpha}]$. In particular, if $X\in M$ is any set, we can encode biject it into an ordinal, and decode the bijection in $M[G]$, so any subset of $X$ of cardinality $<\kappa$ first appear in some bounded stage.
+		
+		Rewording the above we get it neatly: if $A\in M$ and $M[G]\models B \subseteq A\land |B|=\aleph_0$ then there exists $\alpha<\kappa$ such that $B\in M[G_{<\alpha}]$.
+		
+		Now let $\Q$ be as in the question and let $\alpha$ be the first such ordinal and let $\lambda=\max(|\alpha|, |\Q|)^+$. Clearly we have that $M[H]\models"\lambda\text{ is uncountable}"$. Because $|\Q\times (Coll(\omega,\lambda))^{M[H]}|=\lambda$ and it collapses $\lambda$ to $\aleph_0$, by exercise 2 we have in $M$ that $\Q\times (Coll(\omega,\lambda))^{M[H]}\cong Coll(\omega,\lambda)=Coll(\omega,<\lambda+1)$.
+		
+		Let $K\subseteq (Coll(\omega,\lambda))^{M[H]}$ such that $H\times K\cong G_{<\lambda+1}$, but this means that $K$ is $(Coll(\omega,\lambda))^{M[H]}$-generic over $M[H]$. From the previous part we have that $M[G]=M[H][K][G_{[\lambda+1,\kappa)}]$.
+		
+		Lastly we note that $(Coll(\omega,\lambda))^{M[H]}$ is a superset of $Coll(\omega,\lambda)=Coll(\omega,\lambda+1)$, so any generic on the former will be generic for the latter, in particular $K$ is such. So from the previous part again we get that there is a $Coll(\omega,<\kappa)$-generic $G^\Q$ (that comes from $K\times G_{[\lambda+1,\kappa)}$).
+		
+		To see that $G^\Q$ is really generic over $M[H]$ note that $K$ is generic over $M[H]$ and $G_{[\lambda+1,\kappa)}$ is generic over $M[H][K]$.
+	\end{cPart}
+\end{cExercise}
 \end{document}
 
 
