@@ -106,19 +106,21 @@
 		
 		Let $\lambda$ be a cardinal sufficiently big to witness the corollary, and assume $\lambda>|\Q|^+$ so it is uncountable in $M[H]$.
 		
-		Let $\pi$ be a $Coll(\omega,<\lambda+1)$-name for a generic with $\pi_{G_{<\lambda+1}}=H$. Let $\P$ be the set of $Coll(\omega,<\lambda+1)$ conditions that do not force $\pi\ne H$, we use this round about way because we can express this inequality in $M$ (for each $q\in H$, we ignore those who force $\check q\in \pi$, this is a schema), but we cannot express equality in $M$.
+		Let $\pi$ be a $Coll(\omega,<\lambda+1)$-name for a generic with $\pi_{G_{<\lambda+1}}=H$. Let $\P$ be the set of $Coll(\omega,<\lambda+1)$ conditions that are "compatible" with $H$, that is, in $M$ let $Z=\{(a,b)\in Coll(\omega,<\lambda+1)\times \Q\mid a\force \check b\in \pi\},Z'=\{(a,b)\in Coll(\omega,<\lambda+1)\times \Q\mid a\force \check b\notin \pi\}$ and in $M[H]$ define $\P=\{p\in Coll(\omega,<\lambda+1)\mid (p,b)\in Z\implies b\in H\land (p,b)\in Z'\implies b\notin H\}$
 		
-		Note that because $\pi_{G_{<\lambda+1}}=H$ we know that $G_{<\lambda+1}\subseteq \P$, so $0\in \P$.
+		Note that because $\pi_{G_{<\lambda+1}}=H$ we know that $G_{<\lambda+1}\subseteq \P$, in particular $|\P|=|Coll(\omega,<\lambda+1)|=|\lambda|$.
 		
-		Denote $K$ for $G_{<\lambda+1}$ viewed inside of $\P$. Assume $K$ is not $\P$-generic over $M[H]$ with witness $D$ dense in $M[H]$ such that $D\cap G_{<\lambda+1}=\emptyset$. Let $\tau$ be the $Coll(\omega,<\lambda+1)$ name of $D$ inside of $M$.
+		Denote $K$ for $G_{<\lambda+1}$ viewed inside of $\P$. Assume $K$ is not $\P$-generic over $M[H]$ with witness $D$ dense in $M[H]$ such that $D\cap K=D\cap G_{<\lambda+1}=\emptyset$. Let $\tau$ be the $\Q$ name of $D$ inside of $M$.
 		
 		Because all of this happens inside of $M[G_{<\lambda+1}]$, there is $r$ in $G_{<\lambda+1}$ that forces "$\tau_\pi\cap \Gamma_{Coll(\omega,<\lambda+1)}=\check\emptyset$".
 		
-		Take a common strengthening $t,r\le p\in D$ and a generic $J$ of $Coll(\omega,<\lambda+1)$ that contains $p$ we would get that $M[J]\models D\cap J=\emptyset$, which contradict to the construction.
+		Take a strengthening $r\le p\in D$ and a generic $J$ of $Coll(\omega,<\lambda+1)$ that contains $p$, we would get that $M[J]\models D\cap J=\emptyset$, which contradict to the construction.
 		
 		Therefore $K$ is $\P$-generic over $M[H]$, but $H,K\in M[G_{<\lambda+1}]$, so $M[H][K]\subseteq M[G_{<\lambda+1}]$, on the other hand, one can easily reconstruct $G_{<\lambda+1}$ from $K$ (as they are equal), so $M[G_{<\lambda+1}]\subseteq M[H][K]$.
 		
-		We get $M[G]=M[G_{<\lambda+1}][G_{[\lambda+1,\kappa)}]=M[H][K][G_{[\lambda+1,\kappa)}]=M[H][K\times G_{[\lambda+1,\kappa)}]$ where $G_{[\lambda+1,\kappa)}$ generic over $M[H][K]$ and $K$ is generic over $M[H]$. From the last exercise we get that $K\times G_{[\lambda+1,\kappa)}$ is $Col(\omega,<\kappa)$ generic over $M[H]$ and we are done.
+		Lastly, note that $|\P|=|\lambda|$ in $M[H]$ and it collapses $|\lambda|^{M[H]}$, in particular (from exercise 2) we can embed $\P$ into $Coll(\omega,<\lambda+1)$ and get a corresponding $K'$ such that $M[H][K]=M[H][K']$
+		
+		We get $M[G]=M[G_{<\lambda+1}][G_{[\lambda+1,\kappa)}]=M[H][K'][G_{[\lambda+1,\kappa)}]=M[H][K'\times G_{[\lambda+1,\kappa)}]$ where $G_{[\lambda+1,\kappa)}$ generic over $M[H][K']$ and $K'$ is generic over $M[H]$. From the last exercise we get that $K\times G_{[\lambda+1,\kappa)}$ is $Col(\omega,<\kappa)$ generic over $M[H]$ and we are done.
 	\end{cPart}
 \end{cExercise}
 \end{document}
