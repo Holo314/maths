@@ -1,0 +1,109 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\newcommand{\ei}[1]{e^{i#1}}
+
+
+\title{Exercise 1}
+\begin{document}
+\maketitle
+{\Large Complex Numbers}
+\begin{cExercise}[][][author]
+	We know that $(\rho \ei{\phi})^n=\rho^n \ei{n\phi}$, in particular we have $(\rho \ei{\phi})^n=r\ei{\theta}$ hence
+	\begin{align*}
+		&\rho^n=r&\implies&\rho=r^{1/n}\\
+		&n\phi\equiv \theta\pmod {2\pi}&\implies& \phi=(\theta+2\pi k)/n,\ 0\le k<n
+	\end{align*}
+	(notice that the first row is legal because we know that $r,\rho$ both should be positive reals).
+	
+	In particular there are $n$ solutions.
+\end{cExercise}
+
+\begin{cExercise}[][][author][2]
+	\begin{cPart}
+		$1=1\ei{0}$, plugin in the solutions from (1) we get
+		\begin{align*}
+			&\rho=1\\
+			&\phi=2\pi k/6,\ 0\le k<6
+		\end{align*}		
+	\end{cPart}
+	\begin{cPart}
+		$-1=1\ei{\pi}$, hence:
+		\begin{align*}
+			&\rho=1\\
+			&\phi=(\pi+2\pi k)/4=3\pi k/4,\ 0\le k<4
+		\end{align*}	
+	\end{cPart}
+	\begin{cPart}
+		$-1+i\sqrt{3}=|-1+i\sqrt{3}|\ei{\arg(-1+i\sqrt{3})}=2\ei{2\pi/3}$ hence:
+		\begin{align*}
+			&\rho=2^{1/4}\\
+			&\phi=(2\pi/3+2\pi k)/4,\ 0\le k<4
+		\end{align*}
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[][][author]
+	\begin{cPart}
+		\begin{equation*}
+			\frac1{6+2i}=\frac{\overline{6+2i}}{(6+2i)(\overline{6+2i})}=\frac{6}{36+4}+i\frac{-2}{36+4}=\frac{3}{20}+i\frac{-1}{20}
+		\end{equation*}
+	\end{cPart}
+	\begin{cPart}
+		\begin{equation*}
+			\frac{(2+i)(3+2i)}{1-i}=\frac{(2+i)(3+2i)(\overline{1-i})}{(1-i)(\overline{1-i})}=\frac{-3+11i}{2}=-\frac32+i\frac{11}2
+		\end{equation*}
+	\end{cPart}
+	\begin{cPart}
+		\begin{equation*}
+			-\frac12+i\frac{\sqrt{3}}2=1\ei{2\pi/3}\implies(-\frac12+i\frac{\sqrt{3}}2)^4=\ei{8\pi/3}=\ei{2\pi/3}=-\frac12+i\frac{\sqrt{3}}2
+		\end{equation*}
+	\end{cPart}
+	\begin{cPart}
+		\begin{equation*}
+			-1+i0,\ 0+i(-1),\ 1+i0,\ 0+i1
+		\end{equation*}
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[][][author][4]
+	\begin{align*}
+		&(a^2+b^2)(c^2+d^2)&=&a^2c^2+b^2d^2+a^2d^2+b^2c^2=a^2c^2-2abcd+b^2d^2+a^2d^2+2abcd+b^2c^2\\
+		&&=&(ac-bd)^2+(ad+bc)^2
+	\end{align*}
+\end{cExercise}
+{\Large Closed and Open Sets}
+\begin{cExercise}[][][author][1]
+	Let $\{\flower_i\}_{i\in I}$ be a family of open sets, and let $x\in \bigcup_{i\in I}\flower_i$.
+	
+	By definition there is some $i\in I$ such that $x\in \flower_i$, because $U_i$ is open there must be some $\epsilon>0$ such that $B_\epsilon(x)\subseteq \flower_i$, in particular $B_\epsilon(x)\subseteq \bigcup_{i\in I}\flower_i$, hence $\bigcup_{i\in I}\flower_i$ is open.
+	
+	Let $\{\flower_j\}_{j\in J}$ be a finite family of open sets, and let $x\in \bigcap_{j\in J}\flower_j$, by definition there exists $\epsilon_j$ for each $j\in J$ such that $B_{\epsilon_j}(x)\subseteq \flower_j$. Because $J$ is finite, the set $\{\epsilon_j\}$ has a minimum, let $\epsilon$ be this minimum and it is clear that $B_\epsilon(x)\subseteq \bigcap_{j\in J}\flower_j$
+\end{cExercise}
+\begin{cExercise}
+	Assume the contrary, that $f^{-1}(U)$ is not open, in particular there exists $x\in f^{-1}(U)$ that witness it.
+	
+	Because $f$ is continuous we know that for every $\epsilon$ there is some $\delta$ such that $x'\in B_\delta(x)\implies f(x')\in B_\epsilon(f(x))$. Let $\epsilon$ be sufficiently small so that $B_\epsilon(f(x))\subseteq U$ (it exists because $U$ is open), and let $\delta$ be as above, but the above can be restated as $f''B_\delta(x)\subseteq B_\epsilon (f(x))$, in particular $B_\delta(x)\subseteq f^{-1}(U)$, but this contradict the fact that $x$ is witness of the failure of $f^{-1}(U)$ to be open.
+\end{cExercise}
+\begin{cExercise}
+	Assume that $\lim x_n=x\notin C$, we must have then that $x\in \R^n\setminus C$, which is open.
+	
+	Let $\epsilon$ be such that $B_\epsilon(x)\subseteq \R^n\setminus C$, we know that $B_\epsilon(x)\cap C=\emptyset$, so for all $n\in\omega$ we have $x_n\notin B_\epsilon(x)$, which contradict the fact that they converge to $x$.
+\end{cExercise}
+\end{document}
+
+
+
+
