@@ -1,0 +1,169 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 1}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author][1]
+	\begin{cPart}
+		There is no identity element.
+	\end{cPart}
+	\begin{cPart}
+		It is a group, whose identity is $1$ and inverse of $x$ is $\frac1x$.
+	\end{cPart}
+	\begin{cPart}
+		There is no inverse element to any $x\ne 1,-1$.
+	\end{cPart}
+	\begin{cPart}
+		This is not even a structure (addition is not total on the domain).
+	\end{cPart}
+	\begin{cPart}
+		The identity is $1$.
+	\end{cPart}
+	\begin{cPart}
+		The identity is $1$ and the inverse of $z$ is $\frac1z$.
+	\end{cPart}
+	\begin{cPart}
+		This is again not a structure, as multiplication is not total on the domain ($\sqrt2\sqrt2=2\ne \frac ab+\frac cd\sqrt2$).
+	\end{cPart}
+	\begin{cPart}
+		The identity is $I_2$ and the inverse of 
+		$
+		\begin{pmatrix}
+			x & y\\
+			-y & x
+		\end{pmatrix}
+		$ is $\frac1{x^2+y^2}
+		\begin{pmatrix}
+			x & -y\\
+			y & x
+		\end{pmatrix}
+		$
+	\end{cPart}
+	\begin{cPart}
+		The identity is the identity function, and the inverse of $f$ is the unique function $g$ such that $g(f(x))=x$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		$
+		\begin{pmatrix}
+			1 & 1\\
+			0 & 0
+		\end{pmatrix}
+		$ is the left identity, indeed $
+		\begin{pmatrix}
+			1 & 1\\
+			0 & 0
+		\end{pmatrix}\cdot
+		\begin{pmatrix}
+			x & y\\
+			0 & 0
+		\end{pmatrix}=
+		\begin{pmatrix}
+			x\cdot1+0\cdot1 & 0\cdot1+y\cdot1\\
+			0 & 0
+		\end{pmatrix}=
+		\begin{pmatrix}
+			x & y\\
+			0 & 0
+		\end{pmatrix}
+		$
+	\end{cPart}
+	\begin{cPart}
+		The right inverse of $\begin{pmatrix}
+			x & y\\
+			0 & 0
+		\end{pmatrix}$ is $\begin{pmatrix}
+			\frac1x & \frac1x\\
+			0 & 0
+		\end{pmatrix}$
+	\end{cPart}
+	\begin{cPart}
+		We saw at class that given a group $H$, the left identity is always the identity, so if $G$ were to be a group, then $\begin{pmatrix}
+			x & y\\
+			0 & 0
+			\end{pmatrix}\cdot \begin{pmatrix}
+			1 & 1\\
+			0 & 0
+			\end{pmatrix}=\begin{pmatrix}
+			x & y\\
+			0 & 0
+			\end{pmatrix}$, but this is absurd.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		If $G$ is Abelian then $a^2b^2=aabb=abab=(ab)^2$.\\
+		If $G$ satisfy this equality, then given $a,b$ we have $aabb=abab\implies a^{-1}aabb=a^{-1}abab\implies abbb^{-1}=babb^{-1}\implies ab=ba$
+		
+		To see an example, let $G=D_4$ and chose $a$ to be $90^\circ$ rotation and $b$ to be rotation through the $y$-axis.
+		
+		Then $a^2b^2=a^2=$rotation by $180^\circ$ but $(ab)^2=e$ 
+	\end{cPart}
+	\begin{cPart}
+		If $G$ is such group then $(ab)^2=e=ee=a^2b^2$, and by exercise 3.1 it is an Abelian group.
+	\end{cPart}
+	\begin{cPart}
+		The only non trivial vector space axioms are the distributivity axioms. (I will use $+$ for the group operator as accustomed in vector spaces) \\
+		Let $g,h\in G$ then $0(g+h)=e=e+e=0g+0h$ and $1(g+h)=e+(g+h)=g+h=(e+g)+(e+h)=1g+1h$.\\
+		Let $g\in G$, then $g=1g=(1+0)g=(1+0)g$ and $1g+0g=g+e=e+g=g$. Symmetric argument works for $0+1$. The $0+0$ case is trivial. Lastly $(1+1)g=0g=e$ and $e=g+g=1g+1g$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Assume that $x^k=x^m$ for $0\le k<m<n, \ell=m-k$, then in particular $e=x^0=x^{k-k}=x^{m-k}=x^{\ell}$ because multiplying by $x^{-1}$ is a an injective function.
+		But that means that $|x|=\ell<n$, contradiction. And clearly, if $y\in \langle x\rangle$, then $y=x^p$ for some $p\in \mathbb Z$, because $x^{-1}=x^{n-1}$, we can assume $p\in\mathbb N$, but we have that $x^p=x^{p\mod n}$, so $y\in\{e,x,\ldots,x^{n-1}\}$, hence $|\langle x\rangle|=|x|$.
+	\end{cPart}
+	\begin{cPart}
+		Given $n<m$, assume $n\ge 0$ then if $x^n=x^m$ then, just like before, we can multiple by $x^{-1}$ $n$-times to show that $e=x^{m-n}\implies x=x^{m-n+1}$, contradict the assumption.
+		
+		If $n<0$ then we do the same by instead of multiplying by $x^{-1}$ we multiply by $x$.
+	\end{cPart}
+	\begin{cPart}
+		Assume that there is no element of order 2.
+		
+		For each $x\in G\setminus\{e\}$ we look at $\tilde x=\{x,x^{-1}\}$, then $G\setminus\{e\}=\bigcup_{x\in G\setminus\{e\}}\tilde x$. Because multiplication is injective, those sets are all disjoint then $2n=|G|=1+\sum_{0\le i <|G\setminus\{e\}|}|\tilde x|=1+2k$, contradiction.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Because the determinate is multiplicative, $SL_n(\mathbb Z)$ is clearly closed under matrix multiplication, which inherent the associativity.\\
+		Clearly $\det (I_n)=1$, so $SL_n(\mathbb Z)$ has an identity.\\
+		Now if $A\in SL_n(\mathbb Z)$ then $1=\det(I_n)=\det (AA^{-1})=\det(A)\det(A^{-1})=\det(A^{-1})$, hence every $A\in SL_n(\mathbb Z)$ has an inverse.
+	\end{cPart}
+	\begin{cPart}
+		For a matrix $A\in GL_n(\mathbb Z)$ with determinate $1$, we know that $\det(A)=\det(A^{-1})$, for $A$ to be invertible in $\mathbb{Z}$ it means that it's inverse also must have only integer values, in particular if we consider a minimal path in Gaussian elimination at no point we multiply a row by anything other than $-1$, otherwise we would have non-integer enteries in the inverse.
+		
+		Furthermore, after multiplying a row by $-1$ or switching $2$ rows we must either multiply another row by $-1$ or switch another $2$ rows.
+		
+		Now let $E_+$ be the set of elementary matrices that adds 2 rows, and let $E_\times$ be the elementary  matrices that multiply a row by $-1$, and let $E_s$ be the matrices that swap $2$ rows, from the argument above the set $E_+\cup\{ab\mid a,b\in E_\times\cup E_s\}$ generates $SL_n(\mathbb Z)$, and it is clearly finite.
+	\end{cPart}
+	\begin{cPart}
+		Let $\tilde S_n$ be the set of matrices such that each row and column contains exactly one $1$. $|\tilde{S}_n|$ is clearly $n!$.\\
+		The obviously the inverse of $A\in \tilde{S}_n$ is $A^\in \tilde{S}_n$, and a simply plugging in $A,B\in \tilde{S}_n$ to calculate $AB$ shows that $AB\in \tilde{S}_n$.
+	\end{cPart}
+	\begin{cPart}
+		Given a field $\mathbb F_p$, a matrix $A\in M_n(\mathbb F_p)$ has an inverse if and only if all of it's rows are independent.\\
+		In particular we can calculate all possible ways to choose $n$ independent vectors:\\
+		The first vector can be anything but $0_{\mathbb F_p^n}$, so anything from a choice of $p^n-1$ elements.\\
+		The $(k+1)^{\text{th}}$ vector can be anything that is not a linear combination of the previous rows, there are $p^k$ many possible linear combinations, so there are $p^n-p^k$ possible choices.
+		
+		Multiplying this all together and we get that $|GL_n(\mathbb F_p)|=\prod_{i=0}^{n-1}(p^n-p^i)$
+	\end{cPart}
+\end{cExercise}
+\end{document}
