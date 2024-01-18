@@ -1,0 +1,117 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 2}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author][1]
+	\begin{cPart}
+		Lets remember that a cycle is just a function $f$ for a finite set $X$ to itself such that $\operatorname{Supp}(f)=\{f^{(n)}(a)\}_{0\le n<|X|}$ for any $a\in \operatorname{Supp}(f)$.
+		
+		To see that the $2$-cycles, let's call this set $C_2$, generate the cycles (that we already saw generate the permutation group) we first note that $e\in\gen{C_2}$ because if $a,b\in X$ then $(a,b)(b,a)=e$. Now, let $f$ be a non-identity cycle, we know that $\operatorname{Supp}(f)\ne\emptyset$, let $a$ be such witness. Let $f_i$ be $(f^{i}(a),f^{i+1}(a))$, because $X$ is finite we must have $\{f_i\}_{i\in\omega}$ finite and clearly we have $f=f_0\circ f_1\circ\cdots\circ f_{|\{f_i\}_{i\in\omega}|-1}$.
+	\end{cPart}
+	\begin{cPart}
+		Let the set of $(i,i+1)$ be $F_2$. To see that it generates $S_n$ we will show that $F_2$ generates $C_2$.
+		
+		Because $(a,b)^{-1}=(b,a)$ we may will always assume that when we write $(a,b)$ we have $a<b$, and because if $(g_i)$ is a sequence from $F_2$ that generates $(c-a,b-a)$ we can shift all of $g_i$ by $a$ to get $(c,b)$ it is enough to show that we generate $(1,k)$ to prove we generate $(a,b)$ for all $a,b$ with $b-a=k-1$.
+		
+		We will use induction on $k$ in $(1,k)$, starting with $2$. The base case is trivial so lets assume we generate $(1,k)$ and show $(1,k+1)$.
+		
+		We can compose $(1,k)$ with $(k,k+1)$ and then again with $(1,k)$ to get $g=(1,k)(k,k+1)(1,k)$. Clearly $g(i)=i$ for $i\notin\{1,k,k+1\}$, $g(k)=(1,k)(k,k+1)(1,k)k=(1,k)(k,k+1)1=(1,k)1=k$, $g(1)=(1,k)(k,k+1)(1,k)1=(1,k)(k,k+1)k=(1,k)k+1=k+1$ and $g(k+1)=(1,k)(k,k+1)(1,k)k+1=(1,k)(k,k+1)k+1=(1,k)k=1$, in other words $g=(1,k+1)$ and we are done.
+	\end{cPart}
+	\begin{cPart}
+		First we notice that $(1,\ldots,n)k\equiv k+1\pmod{n}$, so let $1<p<n$ and look at $h=(1,\ldots,n)^{(p-1)}(1,2)(1,\ldots,n)^{(-(p-1))}$. Plugin the values of $p,p+1$ and $k\notin \{p,p+1\}$ we see that $h=(p,p+1)$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Clearly if $a$ is a multiply of $\operatorname{lcm}(d_1,d_2)$ then it is a multiply of both $d_1,d_2$, in other words $\gen{\operatorname{lcm}(d_1,d_2)}\subseteq \gen{d_1}\cap\gen{d_2}$.
+		
+		To see the other direction let $x\in \gen{d_1}\cap\gen{d_2}$, but this means that $x$ is a multiply of both $d_1$ and $d_2$, then $x=k\operatorname{lcm}(d_1,d_2)+r, r<\operatorname{lcm}(d_1,d_2)$, if $r\ne 0$ then it divides both $d_1,d_2$, contradiction to the minimality, so $x=k\operatorname{lcm}(d_1,d_2)\implies x\in \gen{\operatorname{lcm}(d_1,d_2)}$
+	\end{cPart}
+	\begin{cPart}
+		Assume $\operatorname{lcm}(|g|,|h|)=k|gh|+r, r<|gh|$ and look at $(gh)^{\operatorname{lcm}(|g|,|h|)}=(gh)^{k|gh|+r}=(gh)^r$.
+		
+		But $(gh)^{\operatorname{lcm}(|g|,|h|)}=g^{\operatorname{lcm}(|g|,|h|)}h^{\operatorname{lcm}(|g|,|h|)}=0$, so $r$ must be divisible by both $|g|$ and $|h|$, which contradiction to the minimality of $\operatorname{lcm}(|g|,|h|)$ unless $r=0$.
+	\end{cPart}
+	\begin{cPart}
+		We have that $C=AB=\begin{bmatrix}1&1\\0&1\end{bmatrix}$, with $C^n=\begin{bmatrix}1&n\\0&1\end{bmatrix}$.
+		
+		On the other hand, $A^4=I_2$ and $B^6=I_2$, in particular from the previous part, if $AB=BA$ then $(AB)^{\operatorname{lcm}(4,6)}=C^{\operatorname{lcm}(4,6)}=I_2\ne \begin{bmatrix}1&\operatorname{lcm}(4,6)\\0&1\end{bmatrix}$
+	\end{cPart}
+	\begin{cPart}
+		It is enough to show that for 2 disjoint cycles $d,d'$ we have that $|dd'|=\operatorname{lcm}(|d|,|d'|)$.
+		
+		If $d^{|dd'|}$ or $d'^{|dd'|}$ is the identity we are done (as it implies that the other is the identity, and from the previous parts we get $|dd'|=\operatorname{lcm}(|d|,|d'|)$), but then $d^{|dd'|},d'^{|dd'|}$ are 2 disjoint nontrivial cycles, in particular $(dd')^{|dd'|}=d^{|dd'|}d'^{|dd'|}\ne e$, contradiction.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		If $|g|=n$ then the function $\mathbb Z_n\to G:k\mapsto g^{k}$ is clearly an isomorphism.
+		
+		Similarly, the same function with domain $\mathbb Z$ will be an isomorphism for $|g|=\infty$.
+	\end{cPart}
+	\begin{cPart}
+		$(1,1), (1,1)+(1,1)=(0,2), (0,2)+(1,1)=(1,0), (1,0)+(1,1)=(0,1), (0,1)+(1,1)=(1,2), (1,2)+(1,1)=(0,0), (0,0)+(1,1)=(1,1)$ so $\gen{(1,1)}=\mathbb Z_2\times \mathbb Z_3$ and $|(1,1)|=6$, so from the previous part they are isomorphic.
+	\end{cPart}
+	\begin{cPart}
+		$(a,b)+(a,b)=(0,0), (0,0)+(a,b)=(a,b)$ for all $(a,b)$, so $\mathbb Z_2\times\mathbb Z_2$ is not cyclic.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	If $H,K\ne H\cup K$, there exists $h\in H\setminus K, k\in K\setminus H$. If $hk\in H\cup K$ then it is in one of $H,K$, which is clearly a contradiction as we will have $h^{-1}hk\in H$ or $hkk^{-1}\in K$.
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		If $C\in \operatorname{SL}_n(\mathbb F_p)$ then clearly $\det(AC)=\det(A)\det(C)=\det(A)$ hence we have $A\cdot \operatorname{SL}_n(\mathbb F_p)\subseteq \{B\in \operatorname{GL}_n(\mathbb{F}_p)\mid \det(B)=\det(A)\}$.
+		
+		Take $B$ with $\det(B)=\det(A)$, then $\det(A^{-1}B)=\det(A^{-1})\det(B)=\det(A)^{-1}\det(B)=\det(B)^{-1}\det(B)=1$, hence $A^{-1}B\in\operatorname{SL}_n(\mathbb{F}_p)$.
+	\end{cPart}
+	\begin{cPart}
+		For each $k\in[1,p]$ there exists a matrix $A_k$ with determinate $k$, all of which are in $\operatorname{GL}_n(\mathbb{F}_p)$ and those matrices bijects to $\operatorname{GL}_n(\mathbb{F}_p)/\operatorname{SL}_n(\mathbb{F}_p)$ by a natural map, composing $k\mapsto A_k\mapsto A_k\operatorname{SL}_n(\mathbb{F}_n)$ will finish the proof.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+			First we will observe that $\sigma^{-1}=\sigma^{n-1},\tau^{-1}=\tau$.
+		
+		We will prove by induction on the length of the term that every $x\in D_n$ is either of the form $\sigma^k$ or $\tau\sigma^k$.
+		
+		To do this we notice that $\sigma\tau\sigma\tau=e\implies\sigma\tau=\tau^{-1}\sigma^{-1}=\tau\sigma^{n-1}$, which easily implies that $\sigma^{-1}\tau=\tau\sigma^{(n-1)^2}=\tau\sigma$.
+		
+		Now given $x\in D_n$ a term of length $p>2$, it is of the form $gh$ for $g\in\{\tau,\sigma\}$ and $h$ of length $p-1$, by the induction hypothesis $h$ is either of the form $\sigma^k$, in which case we are done, or of the form $\tau\sigma^k$. So $x=g(\tau\sigma^{k})=(g\tau)\sigma^k$, if $g=\tau$ we are done, otherwise $x=(\tau\sigma^{n-1})\sigma^k=\tau\sigma^{k-1}$.
+	\end{cPart}
+	\begin{cPart}
+		Let $g,h\in D_n$, let's also assume neither of them is $e$.
+		
+		Let $g=\sigma^p,h=\sigma^q$, in this case $gh=\sigma^{p+q\pmod n}$.
+		
+		Let $g=\tau \sigma^p,h=\sigma^q$, in this case $gh=\tau\sigma^p\sigma^q=\tau\sigma^{p+q\pmod n}$.
+		
+		Let $g=\sigma^p,h=\tau\sigma^q$, in this case $gh=\sigma^p\tau\sigma^q$, from the observation we did in the previous part we can repeatedly move $\tau$ back using the identity $\sigma\tau=\tau\sigma^{-1}$, so $\sigma^p\tau=\tau\sigma^{-p}\implies gh=\sigma^p\tau\sigma^q=\tau\sigma^{q-p\pmod n}$
+		
+		Let $g=\tau \sigma^p,h=\tau\sigma^q$, in this case $gh=\tau\sigma^p\tau\sigma^q=\tau^2\sigma^{q-p\pmod n}=\sigma^{q-p\pmod n}$
+	\end{cPart}
+	\begin{cPart}
+		From the previous part we can find for all $g=\sigma^k$ an $h$ such that $gh=\tau^i\sigma^{1-k},hg=\tau^i\sigma^{1+k}$, which are equal only for $k=n/2$. ($i\in\{0,1\}$)
+		
+		Similarly for $g=\tau\sigma^k$ we can find $h$ such that $gh=\tau^i\sigma^{k-1},hg=\tau^i\sigma^{k+1}$, which are never equal (unless $n=2,k=1$, in which case $\tau\sigma=e$).
+		
+		So all we need to check is $\sigma^{n/2}$, and quickly plugging it in the equations from the previous part we can see it works.
+	\end{cPart}
+\end{cExercise}
+\end{document}
