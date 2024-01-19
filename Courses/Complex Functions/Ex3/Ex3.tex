@@ -1,0 +1,97 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\newcommand{\ei}[1]{e^{i#1}}
+
+
+\title{Exercise 3}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author]
+	Assume that $\Omega$ is star domain at $\flower\in\mathbb C$, $T(z_1,z_2,z_3)^*\subseteq \Omega$, $z^\circ\in \Delta(z_1,z_2,z_3)\setminus T(z_1,z_2,z_3)^*$.
+	
+	Let $L$ be the line segment that starts at $\flower$ passes through $z^\circ$ (that is, continuing $I(\flower,z^\circ)$ in the direction of $z^\circ$).
+	
+	Because $z^\circ$ is inside of the circle, the line $L$ must intersect (uniquely) with $\partial \Delta(z_1,z_2,z_3)=T(z_1,z_2,z_3)^*$ \textit{after} passing through $z^\circ$ (and maybe one time before that), let $z^\bullet$ be that intersection.
+	
+	Because $\Omega$ is star domain at $\flower$ we have that $I(\flower, z^\bullet)^*\subseteq \Omega$, but of course we have that $z^\circ\in I(\flower, z^\bullet)^*$.
+\end{cExercise}
+\begin{cExercise}
+	Because $\gamma$ is a finite sum of continuously differential curves, we can split the integral to finite sum of $f$ over continuously differential curves (connecting at the endpoints), so it is enough to prove the required for $\gamma$ a continuously differential curve.
+	
+	We know that $\int_\gamma f(z)dz=\int_0^1 f(\gamma(z))\gamma'(z)dz$.
+	
+	Because $\phi$ is strictly increasing, hence injective and we have that $\phi'$ is strictly positive, hence we can plug it in the formula for change of variables.
+	$$...=\int_0^1f(\gamma(\phi(z)))\gamma'(\phi(z))\phi'(z)dz=\int_0^1f(\gamma\circ\phi(z))(\gamma\circ\phi)'(z)dz=\int_{\gamma\circ\phi}f(z)dz$$
+\end{cExercise}
+\begin{cExercise}
+	We defined $L(\gamma)$ the supremum of the length of the possible polygonal chain approximation.
+	
+	For a given a polygonal chain characterized by the partition $P=[0=p_0,\ldots, p_n=1]$ we have $L(\gamma, P)=\sum_{i=0}^{n-1}|\gamma(p_{i+1})-\gamma(p_i)|\le \sum_{i=0}^{n-1}K|p_{i+1}-p_i|=K$, hence the supremum of all such approximations is $\le K$.
+\end{cExercise}
+\begin{cExercise}
+	First we note that $\int_{T(x,y,w)}=\int_{3I(x,y)}+\int_{\frac13+3I(y,w)}+\int_{\frac23+3I(w,x)}$, where $s+v\times I(a,b)$ is $I(a,b)$ accelerated by $v$ starting at $s$.
+
+	Hence $\int_{T(x,y,z)}\overline zdz=\int_{3I(x,y)}f(z)dz+\int_{\frac13+3I(y,w)}f(z)dz+\int_{\frac23+3I(w,x)}f(z)dz$ is
+	\begin{align*}
+		&\int_{3I(x,y)}f(z)dz&=&\int_0^{\frac13}f((3I(x,y))(z))(3I(x,y))'(z)dz\\
+		&\int_{\frac13+\frac3I(y,w)}f(z)dz&=&\int_{\frac13}^{\frac23}f\left(\left(\frac13+3I(y,w)\right)(z)\right)\left(\frac13+3I(y,w)\right)'(z)dz\\
+		&\int_{\frac23+\frac3I(w,x)}f(z)dz&=&\int_{\frac23}^{1}f\left(\left(\frac23+3I(w,x)\right)(z)\right)\left(\frac23+3I(w,x)\right)'(z)dz
+	\end{align*}
+
+
+	Let $x=0,y=a,z=ib, f(z)=\overline{z}$, and notice that $(I(0,a))'(t)=a, (I(a,ib))'(t)=ib-a, (I(ib, 0))'(t)=-ib$, and the rest is a simple polynomial integration to show that the integral is indeed $iab$.
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		We remember that $\frac{\partial f}{\partial x}=u_x+iv_x, \frac{\partial f}{\partial y}=u_y+iv_y$ so plugging this in the operator:
+		\begin{align*}
+			&\frac{\partial f}{\partial z}&=&\frac12\left(\frac{\partial f}{\partial x}-i\frac{\partial f}{\partial y}\right)&\\
+			&&=&\frac12\left(u_x+iv_x-iu_y+v_y\right)&\\
+			&&=&\frac12\left((u_x+v_y)+i(v_x-u_y)\right)&\\
+			&&\overset{\text{CR}}{=}&\frac12\left((u_x+u_x)+i(v_x+v_x)\right)=u_x+iv_x&=f'(z)\\
+			&\frac{\partial f}{\partial \overline z}&=&\frac12\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right)&\\
+			&&=&\frac12\left(u_x+iv_x+iu_y-v_y\right)&\\
+			&&=&\frac12\left((u_x-v_y)+i(v_x+u_y)\right)&\\
+			&&\overset{\text{CR}}{=}&\frac12\left((u_x-u_x)+i(v_x-v_x)\right)&=0
+		\end{align*}
+	\end{cPart}
+	\begin{cPart}
+		Let $g=u'+iv'=u(x,-y)+iv(x,-y)$
+		Calculating $\frac{\partial g}{\partial x}(x,y)=u_x'+v_x'=u_x(x,-y)+iv_x(x,-y)$ and $\frac{\partial g}{\partial y}(x,y)=u_y'+v_y'=-u_y(x,-y)-iv_x(x,-y)=-(u_y(x,-y)+iv_x(x,-y))$ immediately shows that the $2$ operators we define switch roles on $g$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+		\begin{cPart}
+		Obviously $f'\equiv 0$ implies that $u'=v'\equiv 0$, from the result on $u,v$ as functions from $\mathbb R^2\to\mathbb R$ we get that $u,v$ are constants, but then $f=u+iv$ is also a constant.
+	\end{cPart}
+	\begin{cPart}
+		If $f''\Omega\subseteq\mathbb R$, then in particular we have that $v\equiv 0$, hence $v_x=v_y\equiv 0$, but from Cauchy-Riemann we get that $u_x=v_y\equiv 0$ and that $u_y=-v_x\equiv 0$ which implies that $u'=v'\equiv 0$ and so $f'\equiv 0$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	Let $\gamma_R:[0,1]\to\mathbb C:t\mapsto R\exp(i\pi\cdot t)$ and look at the integral $\int_{\gamma_R}f(z)dz=\int_0^1 f(R\exp(i\pi\cdot t))i\pi R\exp(i\pi\cdot t)dt$
+	
+	Setting $f(z)=\exp(iz)/z^2$ we get $$\int_{\gamma_R}\exp(iz)/z^2dz=\int_0^1 \frac{\exp(i(R\exp(i\pi\cdot t)))}{(R\exp(i\pi\cdot t))^2} i\pi R\exp(i\pi\cdot t)dt=\frac{i\pi}R\int_0^1 \frac{\exp(i(R\exp(i\pi\cdot t)))}{\exp(i\pi\cdot t)}dt$$
+	
+	Noticing that $|\exp(i(R\exp(i\pi\cdot t)))|$ is bounded by $M$ that is independent of $R$, so $\left|\int_{\gamma_R}\exp(iz)/z^2dz\right|\le \left|\frac{i\pi M}R\int_0^1 \frac{1}{\exp(i\pi\cdot t)}dt\right|$ which obviously goes to $0$ as $R$ grows.
+\end{cExercise}
+\end{document}
+
+
+
+
