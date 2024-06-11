@@ -1,0 +1,109 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\newcommand{\ei}[1]{e^{i#1}}
+
+
+\title{Exercise 5}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author]
+	Notice that $-\cos(x)=\sin^{(3)}(x)$, in particular, from Cauchy formula, we have:
+	\begin{equation*}
+		-1=-\cos(0)=\sin^{(3)}(x)=\frac{3!}{2\pi i}\int_{C(0,r)}\frac{\sin(\xi)}{(\xi-0)^{3+1}}d\xi
+	\end{equation*}
+	Solving the equation we get that the integral is equal to $-\frac{\pi i}3$
+\end{cExercise}
+\begin{cExercise}
+	Because $f$ is entire it satisfy Cauchy formula for any $z\in\C, r\in\R^+,n\in\N$:
+	\begin{equation*}
+		f^{(n)}(z)=\frac{n!}{2\pi i}\int_{C(z,r)}\frac{f(\xi)}{(\xi-z)^{n+1}}d\xi
+	\end{equation*}
+	Using our favourite inequality we get:
+	\begin{align*}
+		&|f^{(\lfloor d\rfloor)}(z)|&\le& \frac{\lfloor d\rfloor!}{2\pi }\int_{C(z,r)}\left|\frac{f(\xi)}{(\xi-z)^{\lfloor d\rfloor+1}}\right|d\xi&\\
+		&&\le& \frac{|C|\lfloor d\rfloor!}{2\pi }\int_{C(z,r)}\frac{\left|z\right|^{\lfloor d\rfloor}+1}{r^{\lfloor d\rfloor+1}}d\xi&\\
+		&&=&\frac{|C|\lfloor d\rfloor!}{2\pi r^{\lfloor d\rfloor+1}}\int_{C(z,r)}\left|z\right|^{\lfloor d\rfloor}+1d\xi&\\
+		&&=&\frac{|C|\lfloor d\rfloor!}{ r^{\lfloor d\rfloor+1}}(\left|r+z\right|^{\lfloor d\rfloor}+1)&\overset{r\to\infty}{\longrightarrow}0&
+	\end{align*}
+
+	In particular $f^{(\lfloor d\rfloor)}\equiv 0$, taking the anti-derivative $\lfloor d\rfloor$ times gives the desired result
+\end{cExercise}
+\begin{cExercise}[][][][4]
+	Let $f$ be an entire function satisfying $f(z)=f(z+i)=f(z+1)$, then $f''\{a+ib\mid a,b\in[0,1]\}=f''\C$, that is because given $z=x+iy$ then $f(x+iy)=f((x-\lfloor x\rfloor) + iy)=f((x-\lfloor x\rfloor) + i(y- \lfloor y\rfloor))$.
+	
+	But $f''\{a+ib\mid a,b\in[0,1]\}$ is bounded, hence $f$ is bounded, hence constant.
+\end{cExercise}
+\begin{cExercise}
+	Assume both $f,g$ are not the identity $0$ and $\Omega$ connected.
+	
+	Let $x_0\in \Omega$ be such that $f(x_0)\ne 0$, in particular (as $f$ is continuous) we have that there exists $\epsilon>0$ such that $f(z)\ne 0$ on $B_{\epsilon}(x_0)$.
+	
+	By the assumption we have that on that ball we have $f(z)g(z)=0\implies g(z)=0$, but if $g$ is constant on an open set in a connected set, it is constant on the whole set, hence $g$ is constant everywhere (and because it is continuous, it is constant $0$).
+	
+	To see that the connected assumption is necessary, let $\Omega_0,\Omega_1$ be 2 disjoint open sets, and let:
+	\begin{align*}
+		f(z)=\begin{cases}
+			0,&z\in\Omega_0\\
+			1,&z\in\Omega_1
+		\end{cases}\\
+		g(z)=\begin{cases}
+			1,&z\in\Omega_0\\
+			0,&z\in\Omega_1
+		\end{cases}
+	\end{align*}
+\end{cExercise}
+\begin{cExercise}
+	Let's rearrange our equation to get $(f'g-g'f)(1/n)=0$..
+	
+	Now assume that $h=f'g-g'f\not\equiv 0$ and let $k\in\N$ be the first such that $h^{(k)}(0)\ne 0$, it exists as $h$ analytic.
+	
+	Because $h$ is analytic, it equals to it's own Taylor series, in which the first $k$ terms disappear, so $h(z)=z^kp(z)$ for analytic $p$ with $p(0)\ne 0$.
+	
+	But because $p$ is continuous, it has a neighborhood $\Omega$ in around $0$ in which it is never $0$ in there, in particular $h(z)\ne 0$ for all $z\in\Omega\setminus\{0\}$, which is impossible as there exists a natural $n$ such that $\frac1n\in\Omega$.
+	
+	This means that $h\equiv 0$, which implies that $\left(\frac fg\right)'=0$, hence $\frac fg$ is constant.
+\end{cExercise}
+\begin{cExercise}
+	Let $f,g$ be as in the question.
+	
+	We already saw that $g$ is analytic, it exhibit a local maxima on compact $\Omega\subseteq B_1(0)$ only on $\partial \Omega$.
+	
+	For $r\in(0,1)$, let $\Omega_r=\overline{B_r(0)}$, then $\max_{\Omega_r}(|g(z)|)=\max_{\partial\Omega_r}(|g(z)|)=\max_{|z|=r}(|g(z)|)=\max_{|z|=r}\left(\frac{|f(z)|}{|z|}\right)\le\frac1{r}$.
+	
+	Let $r\to 1$, and we get that $|g(z)|\le 1$ on the whole unit ball, and we are done.
+\end{cExercise}
+\begin{cExercise}
+	We have that:
+	\begin{align*}
+		&\int_0^{2\pi}\frac1{a+b\cos(\theta)}d\theta&=&\int_0^{2\pi}\frac1{a+b\frac{\exp(iz)+\exp(-iz)}{2}}dz&\\
+		&&=&2\int_0^{2\pi}\frac1{2a+b(\exp(iz)+\exp(-iz))}dz&\\
+		&&=&2\int_0^{2\pi}\frac{\exp(iz)}{2a\exp(iz)+b\exp(2iz)+b}d\xi&\\
+		&&=&\frac2i\int_{C(0,1)}\frac{1}{b\xi^2+2a\xi+b}d\xi&\\
+		&&=&\frac2i\int_{C(0,1)}\frac{1}{(\xi-\xi_0)(\xi-\xi_1)}d\xi&\\
+		&&&\text{Where $\xi_{0}=\frac{-a+\sqrt{a^2-b^2}}{b}, \xi_{1}=\frac{-a-\sqrt{a^2-b^2}}{b}$}&\\
+		&&=&\frac2i\int_{C(0,1)}\frac{b}{2\sqrt{a^2-b^2}}\frac{1}{\xi-\xi_0}-\frac{b}{2\sqrt{a^2-b^2}}\frac{1}{\xi-\xi_1}d\xi&\\
+		&&=&\frac{b}{\sqrt{a^2-b^2}i}\int_{C(0,1)}\frac{1}{\xi-\xi_0}-\frac{1}{\xi-\xi_1}d\xi&
+	\end{align*}
+	Only $x_0$ is in the unit circle, so the integral of the $x_1$ component is zero and the final answer is $\frac{2\pi b}{\sqrt{a^2-b^2}}$.
+\end{cExercise}
+
+\end{document}
+
+
+
+

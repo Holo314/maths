@@ -1,0 +1,165 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 2}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author][1]
+	\begin{cPart}
+		Let $a_x=\begin{pmatrix}
+			1 & x\\
+			0 & 1
+		\end{pmatrix}, a_y=\begin{pmatrix}
+			1 & y\\
+			0 & 1
+		\end{pmatrix}\in G$, then we have $a_xa_y=\begin{pmatrix}
+			1\cdot 1+x\cdot 0 & 1\cdot y + x\cdot 1\\
+			0\cdot 1+0\cdot 1 & 0\cdot y + 1\cdot 1
+		\end{pmatrix}=a_{x+y}=\begin{pmatrix}
+			1 & x+y\\
+			0 & 1
+		\end{pmatrix}$.
+		
+		To see that $x\mapsto a_x$ is an isomorphism we need to show it is a bijection (which is obvious by the definition, alternatively, $\begin{pmatrix}
+			1 & x\\
+			0 & 1
+		\end{pmatrix}\mapsto x$ is an inverse function, which exists iff the function is a bijection), that it sends $e_{\mathbb F^+}$ to $e_G=I_2$ (which is true because $e_{\mathbb F^+}=0_{\mathbb F}$), and that it preserves the group operator, which is shown to be true in the starting sentence.
+	\end{cPart}
+	\begin{cPart}
+		We will show that $x\mapsto \exp(x)$ is an isomorphism from $\R^+$ to $\R_{>0}^\times$.
+		
+		Clearly $\exp(x+y)=\exp(x)\exp(y)$, and $\exp(0)=1$, and it is a strictly monotonic continuous function with $\lim_{x\to-\infty}\exp(x)=0, \lim_{x\to\infty}\exp(x)=\infty$, so it's injective range is $(0,\infty)$, hence bijective (to $\R_{>0}^\times$).
+	\end{cPart}
+	\begin{cPart}
+		Let $f$ defined as:
+		\begin{align*}
+			&1\overset{f}{\mapsto} (0,0)\\
+			&3\mapsto (0,1)\\
+			&5\mapsto (1,0)\\
+			&7\mapsto (1,1)\
+		\end{align*}
+		This is clearly a bijection and it sends the identity to the identity.
+		
+		We just need to check how $3,5,7$ interact under $f$ (as $1$ is sent to the identity)
+		\begin{align*}
+			&3,5:&f(7)=f(15)=f(3\cdot 5)=f(3)+f(5)=(1,1)\\
+			&3,7:&f(5)=f(21)=f(3\cdot 7)=f(3)+f(7)=(1,0)\\
+			&5,7:&f(3)=f(35)=f(5\cdot 7)=f(5)+f(7)=(0,1)
+		\end{align*}
+		Because the groups are Abelian, we are done.
+	\end{cPart}
+	\begin{cPart}
+		The center $Z(S_4)$ is trivial, as if $p\in S_4$ moves $i\mapsto j$, and $k,\ell\ne i,j$ then $j=p\circ(i,k)(k)$ but $p(k)$ is one of $i,k,\ell$, non of which $(i,k)$ sends to $j$.
+		
+		On the other hand we saw that $Z(D_n)$ is not trivial for even $n$.
+	\end{cPart}
+	\begin{cPart}
+		Every element of $\C^\times$ has a root, but not every element of $\R^\times$ has a root.
+	\end{cPart}
+	\begin{cPart}[Bonus]
+		Let $(p_i)_{i\in\omega}$ be the prime numbers, and define $f:\{p_i\}_{i\in\omega}\to \Z[x]^+$ defined by $f(p_i)=x^i$.
+		
+		This function can be extend into $F$ a function on all of $\Q^\times_{>0}$ using $F(xy)=F(x)+F(y)$ and $F(p_i)=f(p_i)$.
+		
+		This function is surjective as $z_0\cdot x^i+z_1\cdot x^j=F(p_i^{z_0}p_j^{z_1})$, it is injective by the fundamental theorem of arithmetic, and it respects the operator by definition.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Let $H=K\le D_3$ be the subgroups $\{e,\tau\}$ (this is a group as $\tau^2=e$), in this case $HK=H$ is a group.
+		
+		Let $K=\{e,\tau\sigma\}$ (this is a subgroup as $\tau\sigma\tau\sigma=e$), and let $H$ as before, then $HK=\{e,\sigma,\tau,\tau\sigma\}$, but this is not a group as $\sigma^2\notin HK$.
+	\end{cPart}
+	\begin{cPart}
+		Assume $HK$ is a group, let  $h\in H,k\in K$, then $h^{-1}k^{-1}\in HK$, then $kh=(h^{-1}k^{-1})^{-1}\in HK$ so $KH\subseteq HK$.
+		
+		Now we want to show that $hk\in KH$, but from before $k^{-1}h^{-1}\in HK$ so $k^{-1}h^{-1}=pq$ for $p\in H,q\in K$ which implies $hk=(pq)^{-1}=q^{-1}p^{-1}\in KH$.
+		
+		Now assume $HK=KH$, clearly $e\in HK$ and $HK$ is closed under $(\text{---})^{-1}$, let $ab,xy\in HK$ with $a,y\in H,b,x\in K$, we have that $abx\in HK$, so it is in $KH$ and equal to $tr, t\in K,r\in H$, which gives $abxy=try\in KH=HK$. 
+	\end{cPart}
+	\begin{cPart}
+		We have that for $ab\in HK$ and $x\in H\cap K$ (hence $x^{-1}$ is in there) we have $ab=axx^{-1}b$, and because multiplication by $a$ and multiplication by $b$ are bijections we don't have repetition.
+		
+		For each $g\in HK$ let $h_g\in H,k_g\in K$ such that $h_gk_g=g$.
+		
+		Let $hk=g$, so $hk=h_gk_g\implies h_g^{-1}h=k^{-1}k_g\in H\cap K$ and $(h_g^{-1}h)h_g=h$ and $k=k_g(k^{-1}k_g)^{-1}=k_g(h_g^{-1}h)^{-1}$.
+		
+		So the function $(h,k)\mapsto (hk,h_g^{-1}h)$ is a bijection from $|H||K|$ to $|HK||H\cap K|$
+	\end{cPart}
+	\begin{cPart}
+		We have that $|HK|\le |G|$ so $|G|<(1+\sqrt{|G|})^2\le |H||K|=|HK||H\cap K|\le|G||H\cap K|\implies |H\cap K|>1$
+	\end{cPart}
+	\begin{cPart}
+		Let $H<G$ be a subgroup of order $q$ and let $e\ne h\in H$, if $\gen{h}\ne H$ then the order of $h$ will divide $q$ but not be $1,q$, the same argument gives that $H$ has non non-trivial subgroups. If $K<G$ is another such group, it is generated from $k\in K$.
+		
+		From the previous part we have that for some $n,m<q$ we have $k^n=h^m\implies k=h^{m-n}\implies k\in \gen{h}\implies \gen{k}\le\gen{h}\implies \gen{k}=\gen{h}$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		\begin{itemize}
+			\item It is faithful: given $g\in S_n$ if $gx=x$ for all $x\in [n]$ then it is the identity function by definition.
+			
+			\item It is transitive: given $x,y\in [n]$ we have that $(x,y)x=y$.
+			
+			\item It is not free for $n\ne 2$: $(1,2)$ moves $1$ and fixes $3$
+			
+			\item The orbit $O(1),O(n)$ are both $n$, as for every $k\in n$ we have $(1,k),(k,n)$ that witness that $k$ is in the orbit.
+			
+			\item The stabilizer $G_1=S_{[n]\setminus \{1\}}$ and $G_n=S_{[n-1]}=S_{n-1}$.
+			
+			\item The size of the orbits is $n$ and the size of the stabilizers is $|S_{n-1}|=(n-1)!=n!/n=|S_n|/|O(n)|$
+		\end{itemize}
+	\end{cPart}
+	\begin{cPart}
+		\begin{itemize}
+			\item It is faithful: given $g\ne id$, and $gk=j$ for $k\ne j$, then $g\{k,j+1\}=\{j,g(j+1)\}\ne \{k,j+1\}$
+			\item It is transitive: given $\{a,b\},\{c,d\}$, then $(a,c)(b,d)\{a,b\}=\{c,d\}$ where $d\ne a$, if they are equal use $(b,c)$ instead.
+			\item It is never free: $(1,2)\{1,2\}=\{1,2\}$
+			\item $O(\{1,n\})=[[n]]^2$ from transitivity
+			\item $G_{\{1,n\}}=\{g\in G\mid \{g1,gn\}=\{1,n\}\}=S_{[n]\setminus \{1,n\}}\cup\{g\circ(1,n)\mid g\in S_{[n]\setminus \{1,n\}}\}$
+			\item $|O(\{1,n\})|=|[[n]]^2|=\binom{n}{2}=n\cdot (n-1)/2$
+			\item $|G_{\{1,n\}}|=(n-2)!+(n-2)!=2(n-2)!=|G|/|O(\{1,n\})|$
+		\end{itemize}
+	\end{cPart}
+	\begin{cPart}
+		\begin{itemize}
+			\item It is faithful: Each vertex can any other vertex using only rotation
+			\item It is transitive: It is a subgroup of a transitive group $S_n$
+			\item It is not free: reflection that passes through a vertex will fix those and only those vertex, so it is not the identity and has fix points. 
+			\item Like the previous examples, the orbit is the whole domain of the group action as the action is transitive.
+			\item The stabilizer of a vertex is only the identity and the reflection that passes through this vertex
+			\item The cardinality of the orbit is $n$
+			\item The order of the stabilizer is $2$
+		\end{itemize}
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	Let $n$ be even.
+	
+	Every element is of the form $e,\sigma^k,\tau\sigma^k$.
+	
+	We shall calculate the conjugacy classes of $\sigma^k$ first: $\sigma^p\sigma^k\sigma^{-p}=\sigma^{p+k-p}=\sigma^k$, $\tau\sigma^p\sigma^k\sigma^{-p}\tau=\tau\sigma^k\tau=\tau\tau\sigma^{n-k}=\sigma^{n-k}$, so the conjugacy class is $\{\sigma^k,\sigma^{n-k}\}$.
+	
+	Moving on to $\tau$: $\sigma^p\tau\sigma^{-p}=\tau\sigma^{-2p}=\tau\sigma^{n-2p}$, $\tau\sigma^p\tau\sigma^{-p}\tau=\sigma^{n-2p}\tau=\tau\sigma^{2p}$, so the conjugacy class of $\tau$ is $\tau\sigma^{2k}$ ($0\le k<n/2$). (We use the fact that $n$ is even as we claim that $2p\pmod n=2k$ for $p<n$)
+	
+	Lastly, $\tau\sigma$:
+	$\sigma^p\tau\sigma\sigma^{-p}=\tau\sigma^{1-2p}=\tau\sigma^{n-2p+1}$, $\tau\sigma^p\tau\sigma\sigma^{-p}\tau=\sigma^{n-2p+1}\tau=\tau\sigma^{2p-1}$, so the conjugacy class of $\tau$ is $\tau\sigma^{2k+1}$ ($0\le k<n/2$). (We use the fact that $n$ is even as we claim that $2p + 1\pmod n=2k + 1$ for $p<n$)
+	
+	For $n$ odd, the conjugacy classes we calculated for $\sigma^k$ don't change, but now $2k$ for $p<n$ will generate all of the values between $0$ and $n-1$, so the conjugacy class of $\tau$ is $\tau\sigma^k$ (for $0\le k<n$)
+\end{cExercise}
+\end{document}

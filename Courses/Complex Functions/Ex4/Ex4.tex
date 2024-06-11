@@ -1,0 +1,125 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\newcommand{\ei}[1]{e^{i#1}}
+
+
+\title{Exercise 4}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author]
+	\begin{cPart}
+		Let $p$ be a polynomial of degree $k$ and large coefficient of $M$.
+		
+		We know that the radius of convergence is $\limsup\frac1{\sqrt[n]{|p(n)a_n|}}$ and we want to show it is equal to $\limsup\frac1{\sqrt[n]{|a_n|}}$, for that we will show that $\limsup \sqrt[n]{|p(n)a_n|}=\limsup \sqrt[n]{|a_n|}$.
+		
+		Indeed $\limsup \sqrt[n]{|p(n)a_n|}=\limsup \sqrt[n]{|p(n)||a_n|}=\limsup \sqrt[n]{|p(n)|}\sqrt[n]{|a_n|}$, but $\limsup \sqrt[n]{|p(n)|}=\limsup \sqrt[n]{|M|}\sqrt[n]{|n^k|}=\limsup \sqrt[n]{|M|}\limsup \sqrt[n]{|n^k|}=\limsup \sqrt[n]{|n|}^k=(\limsup \sqrt[n]{|n|})^k=1^k=1.$
+	\end{cPart}
+	\begin{cPart}
+		We know that $|\frac{a_n}{\sqrt{n!}}|=\frac{|a_n|}{\sqrt{n!}}$.
+		
+		Furthermore, we have that the limsup of $\sqrt[n]{|a_n|}$ is bounded (as the series has positive convergence radius) and (because we know that $\exp(z)$ has a radius of convergence $\infty$) that $\sqrt[n]{\frac1{\sqrt{n!}}}$ goes to $0$, so the convergence radius of the new series is infinity.
+		
+		Let $t\in\omega$ be an index such that $\sup_{p>t}\sqrt[p]{|a_p|}<\infty$, the define the sequence $b_k=\sup_{p>t+k}\sqrt[p]{|a_p|}$.
+		
+		Clearly $b_k\underset{k\to\infty}{\longrightarrow}\frac1r$ and furthermore we have that $b_k^2=\sup_{p>t+k}\sqrt[p]{|a_p|}\sup_{p>t+k}\sqrt[p]{|a_p|}=\sup_{p>t+k}\sqrt[p]{|a_p|}\sqrt[p]{|a_p|}=\sup_{p>t+k}\sqrt[p]{|a_p|^2}$, so $\limsup{\sqrt[n]{|a_n|^2}}=\lim b_k^2$. From arithmetic of limits we have $b_k^2\underset{k\to\infty}{\longrightarrow}\frac1{r^2}$, so the convergence radius is $r^2$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Let's $F$ be as in the question, and calculate $F'(z)=\lim\limits_{z_1\to z}\frac{F(z_1)-F(z)}{z_1-z}=\lim\limits_{z_1\to z}\frac{\int_{C(z_0,r)}\frac{1}{w-z_1}-\frac{1}{w-z}dw}{z_1-z}$, looking at $\frac{1}{w-z_1}-\frac{1}{w-z}$ we have $\frac{1}{w-z_1}-\frac{1}{w-z}=\frac{(w-z)-(w-z_1)}{(w-z_1)(w-z)}=\frac{z_1-z}{(w-z_1)(w-z)}$ so:
+		
+		\begin{align*}
+			&F'(z)&=&\lim\limits_{z_1\to z}\frac{\int_{C(z_0,r)}\frac{1}{w-z_1}-\frac{1}{w-z}dw}{z_1-z}&=&\lim\limits_{z_1\to z}\frac{\int_{C(z_0,r)}\frac{z_1-z}{(w-z_1)(w-z)}dw}{z_1-z}\\
+			&&=&\lim\limits_{z_1\to z}\int_{C(z_0,r)}\frac{1}{(w-z_1)(w-z)}dw&=&\int_{C(z_0,r)}\frac{1}{(w-z)^2}dw
+		\end{align*}
+		
+		And it is clear that $g(z,w)=\frac1{(w-z)^2}$ satisfy the conditions we want.
+	\end{cPart}
+	\begin{cPart}
+		For a fixed $z$ we have that $D_w =-\frac1{w-z}=f(w,z)$ at $\C\setminus\{z\}$, so let $G(w,z)$ is an anti-derivative of $g$ for a fixed $z$. 
+		
+		Because $\C\setminus\{z\}$ is open and $g$ has a global anti-derivative in there, we know that the integral over any closed loop contained in $\C\setminus\{z\}$ is $0$, hence $F'(z)$, which is defined as such integral, is $0$ 
+	\end{cPart}
+	\begin{cPart}
+		$F(z_0)=\int_{C(z_0,r)}\frac1{w-z_0}dw=\int_0^{2\pi}\frac{D_t(z_0+re^{it})}{(z_0+re^{it})-z_0}dt=\int_0^{2\pi}\frac{ire^{it}}{re^{it}}dt=i\int_0^{2\pi}dt=2\pi i$.
+		
+		Because $F'\equiv 0$, we know that $F$ is a constant on any connected component of it's domain, in particular $F\equiv F(z_0)$ in $B_r(z_0)$.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	We know that $\exp(z)=\sum_{n=0}^{\infty} \frac{\exp^{(n)}(z_0)}{n!}(z-z_0)^n=\overset{\text{Taylor Series}}{\sum_{n=0}^{\infty} \frac{\exp(z_0)}{n!}(z-z_0)^n}=\exp(z_0)\frac{\exp(z_0)}{n!}(z-z_0)^n=\exp(z_0)\exp(z-z_0)$.
+	
+	So given $w,w'\in \C$ and letting $z=w+w'$ and $z_0=w'$ we get $\exp(w+w')=\exp(z)=\exp(z_0)\exp(z-z_0)=\exp(w')\exp(w+w'-w')=\exp(w')\exp(w)$
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		The function is not defined precisely for $z\in\C$ such that $i(\exp(iz)+\exp(-iz))= 0\iff \exp(iz)+\exp(-iz)= 0\iff \exp(iz)= -\exp(-iz)$.
+		
+		Let $z=x+i y$: $\exp(iz)= -\exp(-iz)\iff \overset{\text{LHS}}{\exp(-y)\exp(ix)}=\overset{\text{RHS}}{-\exp(y)\exp(-ix)}$.
+		
+		If $\exp(-y)\ne \exp(y)$ then the absolute value of the LHS and RHS will be different, hence they will be different, but $\exp(-y)=\exp(y)\iff y=0$ for a real $y$, the function is not defined on $z$ iff $z\in \R$ and $\exp(iz)=-\exp(-iz)$.
+		
+		We know that $\exp(ix)=\cos(x)+i\sin(x)$, $-\exp(-ix)=-(\cos(-x)+i\sin(-x))=-(\cos(x)-i\sin(x))=i\sin(x)-\cos(x)$, comparing the $2$ sides gives us that $\tan$ is not defined precisely on $z\in\R$ such that $\cos(z)=-\cos(z)\iff \cos(z)=0\iff z=\frac\pi2+n\pi$ for some integer $n$.
+	\end{cPart}
+	\begin{cPart}
+		Let $z\in\dom{\tan}$, and let $r>r'\in\R_{>0}$ such that $B_r(z)\subseteq \dom{\tan}$, on $B_{r'}(z)$, we have that $\tan$ is analytic, so it's Taylor series around $z$ has convergence radius $\ge r'$, so we have that the radius of convergence is $\sup\{r'\mid \exists r>r'\ s.t.\ B_r(z)\subseteq \dom{\tan}\}$, but this is exactly the minimum distance between $z$ and $\{\frac\pi2+n\pi\mid n\in\Z\}$ (to find the particular $n$ for a given $z$, we can reduce the problem to minimize the distance of $\Re(z)$ from that set)
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	We know that $f$ is analytic over $\C$, so the integral $\int_{\gamma_R}f=0$ for all $R$, this integral is also equal to the sum of the integrals over the sides of the rectangle.
+	
+	Let's calculate $\lim_{R\to\infty}\int_{I(R,R+i\xi)}f$, we have that $|\int_{I(R,R+i\xi)}f|\le \int_{I(R,R+i\xi)}|f|\le\int_{I(R,R+i\xi)}\sup_{z\in {I(R,R+i\xi)}^*}|f|=|\xi| \sup_{z\in {I(R,R+i\xi)}^*}|f|$.
+	
+	Now for $z\in{I(R,R+i\xi)}^*$ we have $z=R+i\eta$ for $\eta\in[0,\xi]$, so $|f(z)|=|f(R+i\eta)|=|\exp(-(R+i\eta)^2/2)|=|\exp(-(R^2+2iR\eta-\eta^2)/2)|=|\exp((\eta^2-R^2)/2)\exp(iR\eta)|=|\exp((\eta^2-R^2)/2)|\le|\exp((\xi^2-R^2)/2)|\longrightarrow0$, so the integral goes to $0$.
+	
+	Similar calculations happens for the integral on $I(-R+i\xi, -R)$.
+	
+	So $0=\lim\limits_{R\to\infty}\int_{\gamma_R}f=\lim\limits_{R\to\infty}\int_{I(-R, R)}f+\lim\limits_{R\to\infty}\int_{I(R+i\xi, -R+i\xi)}f$, hence $-\sqrt{2\pi}=-\lim\limits_{R\to\infty}\int_{I(-R, R)}f=\lim\limits_{R\to\infty}\int_{I(R+i\xi, -R+i\xi)}f$
+	
+	Now we shall write $\int_{I(R+i\xi, -R+i\xi)}f$ explicitly: 
+	
+	$I(R+i\xi, -R+i\xi)(t)=\nu(t)=i\xi+R-tR$, $\nu'(t)=-R$, so $\int_{I(R+i\xi, -R+i\xi)}f=\int_{0}^2 f(\nu(t))\nu'(t)dt=\int_{0}^2-R\exp(-(i\xi+R-tR)^2/2)dt$
+	
+	Let $u=R-Rt$ and we get 
+	\begin{align*}
+		&-\sqrt{2\pi}&=&\lim_{R\to\infty}\int_\nu f\\
+		&&=&\lim_{R\to\infty}\int_{0}^2-R\exp(-(i\xi+R-tR)^2/2)dt\\
+		&&=&\int_{\infty}^{-\infty}\exp(-(i\xi+u)^2/2)du\\
+		&&=&\int_{\infty}^{-\infty}\exp((\xi^2-2i\xi u-u^2)/2)du\\
+		&&=&\int_{\infty}^{-\infty}\exp(\xi^2/2)\exp(-i\xi u)\exp((-u^2)/2)du\\
+		&&=&-\exp(\xi^2/2)\int_{-\infty}^\infty\exp(i\xi u)\exp((-(-u)^2)/2)du\\
+		&&=&-\exp(\xi^2/2)\int_{-\infty}^\infty\exp(i\xi u)f(u)du\\
+		&&=&-\exp(\xi^2/2)\hat{f}(\xi)\\
+		&&=&-\frac{\hat{f}(\xi)}{f(\xi)}
+	\end{align*}
+	Hence we have $\hat{f}(\xi)=\sqrt{2\pi}f(\xi)$
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		$f$ is analytic on the disk $\overline{B_1(0)}$ means by definition that there exists an open set $B\supseteq \overline{B_1(0)}$ on which $f$ is analytic.
+		
+		So by Cauchy formula we have $f'(0)=\frac1{2\pi i}\int_{C(0,1)}\frac{f(z)}{z^2}dz$.
+		
+		With $C(0,1)(t)=\exp(it)$, now we can define $R(0,1)=-\exp(it)=C(0,1)(t+\pi)$. The integral over $C(0,1)$ and $R(0,1)$ are equal, as they are just moving the starting point, so $f'(0)=\frac1{2\pi i}\int_{R(0,1)}\frac{f(z)}{z^2}dz=\int_0^{2\pi}\frac{f(-\exp(it))}{(-\exp(it))^2}\cdot(-i\exp(it))dt=\frac1{2\pi i}\int_{C(0,1)}\frac{-f(-z)}{(-z)^2}dz$
+	\end{cPart}
+\end{cExercise}
+\end{document}
+
+
+
+

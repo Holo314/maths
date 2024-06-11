@@ -1,0 +1,126 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}} 
+
+\title{Exercise 0}
+\begin{document}
+\maketitle
+
+\begin{cExercise}[Trees][][author][1]
+	\begin{cPart}
+		We shall prove the general fact that transitivity is absolute between transitive models of ZFC, and because well-foundness of trees correspond to well-foundness of their reverse partial order we will finish. The upward direction is the interesting one, so let $<\in M\subseteq N$ be (well-founded)$^M$ partial order on $X\in M$.
+		
+		Let $r$ be the rank function of $<$ in $M$.
+		
+		Assume that $<$ is not well-founded in $N$, that is: there exists $(x_i\in X\mid i\in\omega)\in N$ $<$-descending sequence, in particular $N$ can talk about the $r$-image sequence $(r(x_i)\in Ord^M\mid i\in\omega)$, this is a descending sequence of $M$-ordinals.
+		
+		We shall show that $Ord^M\subseteq Ord^N$ and hence reach a contradiction. Look at $\min(Ord^M\setminus Ord^N)$, this is an ordinal in $M$, hence it is a set in $N$, but $N$ knows that it is a transitive set of transitive sets, which is impossible as it is not an ordinal in $N$.
+	\end{cPart}
+	\begin{cPart}
+		Let $W$ be any transitive class of ZFC such that $M,N\in W$ and $W\models M\text{ is countable}$.
+		
+		Enumerate $M=\{m_i\mid i\in\omega\}$ and define $T$ to be the tree of all $n=(n_i)\in N^{<\omega}$ such that for all $\phi$ in the language of $M,N$ with less than $|n| + 1$ parameters $M\models \phi(m_0,\ldots m_k)\iff N\models \phi(n_0,\ldots,n_k)$.
+		
+		Note that a branch of $T$ correspond to an elementary embedding $M\to N$ and vice versa, furthermore because $W$ is a transitive class of ZFC we have $W^{<\omega}\subseteq W$, in particular $T\in W$.
+		
+		From the previous part, if $T$ is ill-founded in $V$ (which it is, as witnessed by the branch $(j(m_i))$) it is ill-founded in $W$ as well, in particular there is a branch of $T$ in $W$ which witness $\tilde{j}:M\prec N$.
+		
+		To finish the proof just note that $L[A]$ is a transitive class satisfying all of conditions from above.
+	\end{cPart}
+\end{cExercise}
+\newpage
+\begin{cExercise}[Ineffable Cardinals][][author]
+	\begin{cPart}
+		Assume $\kappa$ is not strongly inaccessible, because it is regular we have that $\kappa$ is not a strong limit. Let $\lambda<\kappa\le 2^\lambda$ and let $\overline A=(A_i\in \mathcal P(\lambda)\mid i\in\kappa)$ be arbitrary injective sequence with $A_i=i$ for $i<\lambda$.
+		
+		This sequence satisfy $A_i\subseteq i$, in particular let $\flower\subseteq \kappa$ be such that $\flower^{\overline A}=\{\alpha\mid \alpha\cap \flower=A_\alpha\}$ is stationary.
+		
+		But because each $A_i$ is bounded by $\lambda$ we must have that $\alpha\mapsto \flower \cap \alpha$ is constant above $\lambda$, but we started with injective sequence $\overline A$, contradiction.
+		
+		To see $\kappa$ is Mahlo, first note that we can replace the sequence in the definition of ineffable with a sequence indexed by a club instead of $\kappa$ itself, so let $\overline A=(A_\eta\subseteq \eta\mid \eta\in\kappa\cap Card)$ be a sequence such that $A_\eta$ is cofinal subset of $\eta$ with cardinality $\cof{\eta}$.
+		
+		Let $\flower\subseteq \kappa$ is such that $\flower^{\overline A}$ is stationary, if the regular cardinals in $\flower^{\overline A}$ are not stationary then $\operatorname{cof}\!\!\restriction_{\flower^{\overline A}\cap Singular}$ is regressive over a stationary set, hence constant $\lambda$ over a stationary set $\flower^\star\subseteq\flower$, that is impossible as $|A_\eta|=\cof{\eta}=\lambda$ for all $\eta\in\flower^\star$ but the $\lambda^+$-th element of $\overline A\restriction \flower^\star$ must have cardinality at least $\lambda^+$.
+		
+		To finish the proof we just note that the strong limit cardinals are a club in any strong limit cardinal, and in particular in $\kappa$, and intersecting this club with the stationary set of regular cardinals results with a stationary set of inaccessible cardinals.
+	\end{cPart}
+	\begin{cPart}
+		\begin{lemma}
+			If $\kappa$ is ineffable and $\overline A=(A_\alpha\subseteq \alpha^2\mid\alpha\in\kappa)$ is any sequence, then there is $\flower\subseteq \kappa^2$ such that $\flower^{\overline A}$ is stationary.
+		\end{lemma}
+		\begin{proof}
+			We shall restrict ourselves to the club of cardinals, so WLOG $\dom{\overline{A}}=Card$. Let $G:Ord^2\to Ord$ be Godel's pairing function, so $G\restriction\eta^2$ is the pairing function on $\eta^2$, and let $\overline B=(B_\alpha)$ defined as $B_\alpha=G(A_\alpha)$, there is a set $\flower^\star$ that witness the fact $\kappa$ is ineffable over $\overline A$, and $\flower=G^{-1}{''}\flower^\star$ is the set we wanted.
+		\end{proof}
+		
+		
+		Assume that $\kappa$ is Ineffable and and let $T\subseteq 2^{<\kappa}$ be a slim tree, and let $B$ be the set of branches of $T$.
+		
+		Let $\overline{B^\alpha}=(B^\alpha_\beta\mid\beta\in\alpha)$ be enumeration of $\{b\restriction\alpha\mid b\in B\}$ and encode each $\overline{B^\alpha}$ with $L_\alpha=\{(x,\beta)\mid B^\alpha_\beta(x)=1\}$ and define the sequence $\overline{L}=(L_\alpha)$. From the lemma we have $\flower\subseteq \kappa^2$ such that $\flower^{\overline L}$ is stationary.
+		
+		For $\nu<\kappa$ define the following $b_\nu:\kappa\to 2$, as \begin{equation}
+			b_\nu(x) =
+			\begin{cases*}
+				1 & if $(x,\nu)\in \flower$ \\
+				0       & otherwise
+			\end{cases*}
+		\end{equation} 
+		
+		%I claim that $b_\nu$ is a branch, as if $\eta'\in\kappa$, let $\eta\in\flower^{\overline L}$ be bigger and look at $b_\nu\restriction \eta$, we have that $(x,\nu)\in L_\eta\iff (b_\nu\restriction\eta)(x)=1$, in particular $b_\nu\restriction\eta=B^\eta_\nu\in T$.
+		
+		Let $B'=\{b_\nu\mid\nu\in\kappa\}$, we shall show that $B\subseteq B'$ and hence restrict the size of $B$ to $\kappa$.
+		
+		Assume $b\in 2^\kappa\setminus B'$, define $g:\kappa\to\kappa$ be such that $g(x)$ is the least such that $g(x)>g(z)$ for $z<x$ and $b\ne b_x$ (that is, $b\restriction g(x)\ne b_x\restriction g(x)$). This is a normal function, hence the set $C$ of fixed points is a club in $\kappa$.
+		
+		Let $\alpha\in C\cap \flower^{\overline L}$, because $\alpha\in C$ we have that for all $\beta<\alpha\;(b\restriction\alpha\ne b_\beta\restriction\alpha)$ but $b_\beta\restriction\alpha=B^\alpha_\beta$, in particular $b\restriction\alpha\notin \range{\overline{B_\alpha}}$, in other words $b\restriction\alpha\notin T$ hence $b\notin B$.
+	\end{cPart}
+	\begin{cPart}
+		First we note that $\kappa$ is regular, indeed if $\cof{\kappa}=\nu<\kappa$ let $(x_\alpha\mid\alpha\in\nu)$ be such witness, this witness is in $H(\mu)$ hence there exists some $\overline y=(y_\alpha\mid\alpha\in\nu)\in M$ that is cofinal in $\kappa$, but $j(\overline y)=\overline y$ as it is a short sequence of small ordinals, in particular $\kappa=\sup\range{\overline y}=\sup\range{j(\overline y)}=j(\kappa)$.
+		
+		Now, let $\overline A\in M$ be any sequence such that $A_\alpha\subseteq \alpha$ for all $(\alpha\in \kappa)^M$.
+		
+		Let $\overline B=j(\overline A)$ and note that $B_\alpha=A_\alpha$ for $(\alpha<\kappa)^M$. Let $\flower=B_\kappa$ and let $C\in M$ be a (club of $\kappa$)$^M$, in particular $j(C)$ is a club of $j(\kappa)$ and $j(\flower^{\overline A})=j(\flower)^{\overline B}$.
+		
+		Because $j(C)$ is a club and $C\subseteq j(C)$ we must have $\kappa\in j(C)$ as it is a limit point, and furthermore $x\in\flower\iff x\in j(\flower)$ for all $(x\in \kappa)^M$, in particular $j(\flower)\cap\kappa=\flower\implies\kappa\in j(\flower)^{\overline B}=j(\flower^{\overline A})$, combining the 2 we get $j(\flower^{\overline A}\cap C)\ne\emptyset\implies \flower^{\overline A}\cap C\ne\emptyset$, because $C$ was arbitrary we have ($\flower^{\overline A}$ is stationary)$^M$.
+		
+		In particular $M\models \kappa\text{ is ineffable}$, by elementary $H(\mu)$ also thinks so, but every sequence $(Q_\alpha\subseteq\alpha\mid\alpha\in\kappa)$ and every $\kappa$-club are in $H(\mu)$, so $V$ agrees with $H(\mu)$ about stationary sets and hence about ineffability for cardinals bellow $\mu$. 
+	\end{cPart}
+	\begin{cPart}
+		Let $\overline M=(M_\alpha)_{\alpha\in\kappa\cap Card}$ be a list of structures in the language $\cal{L}$ and assume WLOG that the domain of each $M_\alpha$ is an ordinal. We shall further assume that the domain of each $M_\alpha$ is exactly $\alpha$ (if the domain is not a arbitrary we can just attach to each model an isomorphism $f_\alpha$ into $\alpha$ to get a sequence $\overline N$ of models and work with $\overline N$), and show separately at the end what happens if the domain of $M_\alpha$ is less than $\alpha$.
+		
+		Encode each $M_\alpha$ in $\alpha^{<\omega}$, just like Lemma 2.1 we have $\flower\subseteq \kappa^{<\omega}$ stationary such that $\flower^{\overline M}$ is stationary. In particular, $\flower$ can be decoded as a model $M_\kappa$ of $\mathcal L$ such that for each $\alpha\in\flower^{\overline{M}}$ we have that $M_\alpha$ is substructure of $M_\kappa$.
+		
+		Let $(p_{\alpha+1}(x))_{\alpha\in\kappa}$ be enumeration of $\phi(x,\overline a)$ the $\cal{L}$-formulaes with parameters from $M_\kappa$ and $1$ free variable such that $M_\kappa\models\exists x \phi(x,\overline a)$ with the property that if $p_{\alpha+1}(x)=\phi(x,\overline a)$ then $\alpha+1<|\max \overline a|^+$.
+		
+		Define $g:\kappa\to\kappa$ as follows: for $x=\alpha+1$ let $g(x)$ be the first $\beta>g(\alpha)$ such that $\exists y\in M_\beta(M_\kappa\models p_x(y))$. Otherwise let $g(x)=\sup_{w<x}g(w)$. $g$ is a normal function hence $C$ the set of fixed points of $g$ is a club.
+		
+		Let $\alpha\in C, \overline a\in M_\alpha^{<\omega}$ and $\phi(x,y)$ such that $M_\kappa\models \exists x\phi(x,\overline a)$, we know that $\phi(x,\overline a)=p_{\beta+1}(x)$ for some $\beta$ with $\beta + 1<|\max \overline a|^+\le\alpha$, in particular $g(\beta+1)<g(\alpha)=\alpha$ as $\alpha\in C$.
+		
+		By construction there is $\eta<\alpha$ such that $\exists y\in M_\eta(M_\kappa\models p_{\beta+1}(y))$ so $\exists y\in M_\alpha(M_\kappa\models p_{\beta+1}(y))$, in other words $\exists y\in M_\alpha(M_\kappa\models \phi(y, \overline a))$.
+		
+		By Tarski–Vaught criterion if $\alpha\in\flower^{\overline{M}}$ then $M_\alpha\prec M_\kappa$ is elementary.
+		
+		Now if $C\cap\flower^{\overline{M}}\ni\alpha<\beta<\kappa$ then $M_\alpha\prec M_\kappa, M_\beta\prec M_\kappa$ and $M_\alpha\subseteq M_\beta$. Now let $\overline a\in M_\alpha$ such that $\exists y\in M_\alpha(M_\kappa\models \phi(y, \overline a))$, in particular $\exists y\in M_\alpha(M_\beta\models \phi(y, \overline a))$, henceforth $M_\alpha\prec M_\beta$ if.
+		
+		
+		Finally, we shall show that the limit steps are direct limit of the previous steps, but that is obvious as our embeddings are the inclusion functions.
+		
+		To handle the case that $|M_\alpha|\ne\alpha$ for all $\alpha$ note that either $|M_\alpha|<\alpha$ on a stationary set $\flower^\star$, or $|M_\alpha|=\alpha$ on a club, in the later case the above proof works by restricting our $\overline M$ to that club.
+		
+		Assume $|M_\alpha|<\alpha$ for all $\alpha\in\flower^\star$ stationary. By Fodor we can assume WLOG that $|M_\alpha|=\eta$ for all $\alpha\in \flower^\star$. Because $\kappa$ is uncountable strong limit, our language is countable and the club filter on $\kappa$ is $2^\eta\times\aleph_0$-complete, we can WLOG assume that $M_\alpha\cong M_\beta$ for all $\alpha,\beta\in\flower^\star$. Like  before we can encode each $M_\alpha$ to have domain $\eta$, again we note that the club filter on $\kappa$ is $2^\eta$-complete to be able to assume WLOG that $M_\alpha=M_\beta$ for all $\alpha,\beta\in\flower^\star$, let $M_\kappa=M_\alpha$ for some $\alpha\in\flower^\star$ to get the system we wanted. 
+	\end{cPart}
+\end{cExercise}
+\end{document}

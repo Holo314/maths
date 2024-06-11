@@ -1,0 +1,106 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 5}
+\begin{document}
+\maketitle
+\begin{cExercise}[][][author][1]
+	\begin{cPart}
+		Let $\phi:\Z^2\to\Z\times \Z_m$ defined as $\phi(a,b)=(a-b,b\pmod m)$.
+		
+		We have $(a-b,b\pmod m)+(x-y,y\pmod m)=(a-b+(x-y),(b\pmod m + y\pmod m)\pmod m)=((a+x)-(b+y), (b + y)\pmod m)$ so $\phi$ is an homomorphism.
+		
+		Given $(x,y)\in \Z\times \Z_m$ we have $\phi(x+y, y)=(x,y)$ so this is surjective.
+		
+		If $\phi(x,y)=e$ we have that $x=y$ and $y\equiv_m 0$, in particular $(x,y)=(nm,nm)$ for some integer $n$, hence $\ker(\phi)=\gen{(m,m)}$
+	
+		By the first iso-theorem we have that $\Z^2/\gen{(m,m)}\cong \Z\times\Z_m$.
+	\end{cPart}
+	\begin{cPart}
+		Let $\phi:\R^2\to S_1\times S_1$ defined as $(x,y)\mapsto (\exp(2\pi x), \exp(2\pi y))$.
+		Clearly this is a surjective homomorphism with kernel being the $\Z^2$, hence from the first iso-theorem the result follows.
+	\end{cPart}
+	\begin{cPart}
+		We have that $\Q/\Z\cong \Q\cap [0,1)$ where the latter is with addition mod 1. This can be seen using the homomorphism $x\mapsto x-\lfloor x\rfloor$.
+		
+		Let $x\in \Q\cap [0,1)$, we have that $x=\frac ab$ for $b\in\N\setminus \{0\}$, in particular $x^b=0$, so the order of $x$ is at most $b\le\infty$.
+		
+		If we replace $\Q$ with $\R$ we still have the quotient isomorphic to $[0,1)\cap \R=[0,1)$, but then the order of $\frac1\pi$ is not finite, as it would imply that $\pi$ is rational.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Let $k$ be the order of $g$, and $n$ the order of $gN$.
+		
+		We have that $g^k=e\implies (gN)^k=g^kN=eN=N=e_{G/N}\implies n|k$
+	\end{cPart}
+	\begin{cPart}
+		We know that an order of an element divides the order of the group, so $n|[G:N]$, in particular $mn=[G:N]$ hence $g^{[G:N]}N=(gN)^{[G:N]}=e_{G/N}=N$.
+		
+		From that $g^{[G:N]}\in N$ follows.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	We know that $G/Z(G)$ must be either trivial, in which case $G=Z(G)$ and $G$ is Abelian, or $G$, in this case $Z(G)=1$, or $G/Z(G)$ has an order $p$, in which case it is cyclic hence $G$ is Abelian.
+	
+	We shall show that $Z(G)$ cannot be trivial, indeed if it was then we would get from the Conjugacy class equation that $p^2=|G|=|Z(G)|+\sum\cdots$ where each term of the sum is an order of a quotient, hence $p$ divides it. This gives us that $p$ must divides $|Z(G)|\implies |Z(G)|\ne 1$.
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		We have that $ijk=-1$ so $k=-jjk=j(-j)k=jiijk=(ji)(ijk)=-ji\implies ji=-k$.
+		
+		We have that $-kk=-(-1)=1$, hence $ij=(-i)(-j)=(-i)^{-1}(-j)^{-1}=((-j)(-i))^{-1}=(ji)^{-1}=(-k)^{-1}=k$.
+	\end{cPart}
+	\begin{cPart}
+		In $D_4$ we have 6 elements of order $2$, $e,\sigma^2,\tau,\tau\sigma,\tau\sigma^2,\tau\sigma^3$, but in $\H$ we only have 2, $\pm1$, the rest of order 4.
+	\end{cPart}
+	\begin{cPart}
+		We know that $\pm 1\in Z(\H)$, and that $i,j\notin Z(\H)$.
+		
+		If $k$ were in $Z(\H)$ then we would get $kij=-1$, and a symmetric argument of what we did in 4.1 would give that $ki=-ik$, and $k,i$ won't don't commute.
+		
+		Therefore $Z(\H)=\{1,-1\}$.
+	\end{cPart}
+	\begin{cPart}
+		We have at least the subgroups $1,\gen{-1},\gen{i},\gen{j},\gen{k}$.
+		
+		Each of the latter 3 are of order $4$ hence cannot be extended to a different proper subgroup, and the first 2 are subgroups of the latter 3, hence those are the only proper subgroups.
+		
+		The first 2 subgroups are clearly normal as they are subgroups of the center, and the latter 3 are also normal because they have index 2.
+	\end{cPart}
+	\begin{cPart}
+		We know that $1$ is one of the conjugacy classes and that $\{-1\}$ is another, as $1,-1\in Z(\H)$.
+		
+		We shall look at $\Cl(i)$, We have $jij^{-1}=-jij=-jk$, because $ijk=-1$ we have $jk=i$, hence $jij^{-1}=-i$. $kik^{-1}=-ijiij=ijj=-i$, so we get that $\Cl(i)=\{i,-i\}$.
+		
+		We notice that $ijk=-1\implies -jk=-i\implies -jki=1\implies jki=-1$, so from symmetry $kij=-1$ and $\Cl(k)=\{k,-k\},\Cl(j)=\{j,-j\}$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	We have that $D_5=\{e,\sigma,\sigma^2,\sigma^3,\sigma^4,\tau,\tau\sigma,\tau\sigma^2,\tau\sigma^3,\tau\sigma^4\}$.
+	
+	We have that $e$ is of order 1, $\sigma,\sigma^2,\sigma^3,\sigma^4$ of order 5, and $\tau,\tau\sigma,\tau\sigma^2,\tau\sigma^3,\tau\sigma^4$ of order 2.
+	
+	Furthermore, if $\phi:D_5\to D_5$ is automorphism, it completely determined from $\phi(\sigma),\phi(\tau)$.
+	
+	Because automorphism preserves order, it must sends $\sigma$ to an element of order 5, and $\tau$ to an element of order 2.
+	
+	Let $0<r,t<5$ such that $\phi(\sigma)=\sigma^r$ and $\phi(\tau)=\tau\sigma^t$, we shall show that this induces an automorphism and hence all possible functions of that form are automorphism and we shall achieve that $|\Aut{D_5}|=20$.
+	
+	We extend $\phi$ to the function $\phi(e)=e,\phi(\tau\sigma^j)=\tau\sigma^{jr+t\pmod 5},\phi(\sigma^i)=\sigma^{ir\pmod 5}$. The fact that $\phi$ preserve the group operation when multiplying $\sigma^j$ with anything is almost by definition, so we shall only check $\phi(\tau\sigma^j)\phi(\tau\sigma^i)=\tau\sigma^{jr+t\pmod 5}\tau\sigma^{ir+t\pmod 5}=\sigma^{-jr-t\pmod 5}\sigma^{ir+t\pmod 5}=\sigma^{(i-j)r\pmod 5}=\phi(\sigma^{i-j})=\phi(\tau\tau\sigma^{i-j})=\phi(\tau\sigma^{j}\tau\sigma^i)$
+\end{cExercise}
+\end{document}

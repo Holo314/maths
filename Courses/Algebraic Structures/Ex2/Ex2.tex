@@ -87,11 +87,18 @@
 \end{cExercise}
 \begin{cExercise}
 	\begin{cPart}
-			First we will observe that $\sigma^{-1}=\sigma^{n-1},\tau^{-1}=\tau$.
+		First we will observe that $\sigma^{-1}=\sigma^{n-1},\tau^{-1}=\tau$.
 		
 		We will prove by induction on the length of the term that every $x\in D_n$ is either of the form $\sigma^k$ or $\tau\sigma^k$.
 		
-		To do this we notice that $\sigma\tau\sigma\tau=e\implies\sigma\tau=\tau^{-1}\sigma^{-1}=\tau\sigma^{n-1}$, which easily implies that $\sigma^{-1}\tau=\tau\sigma^{(n-1)^2}=\tau\sigma$.
+		To do this we notice that $\sigma\tau\sigma\tau=e\implies\sigma\tau=\tau^{-1}\sigma^{-1}=\tau\sigma^{n-1}$, which easily implies that $\sigma^{-1}\tau=\tau\sigma^{(n-1)^2}=\tau\sigma$. Indeed we can define an embedding $j:D_n\to S_n$ with $j(\tau)=(x\mapsto n-1-x)$ and $j(\sigma)=(x\mapsto x+1\pmod n)$, and then
+		\begin{align*}
+			&j(\sigma\tau\sigma\tau)&=&x\mapsto ((n-1-((n-1-x)+1))+1\pmod n)\\
+			&&=&x\mapsto ((n-1-(n-x))+1\pmod n)\\
+			&&=&x\mapsto ((x-1)+1\pmod n)\\
+			&&=&x\mapsto x\\
+			&&=&j(e)
+		\end{align*}
 		
 		Now given $x\in D_n$ a term of length $p>2$, it is of the form $gh$ for $g\in\{\tau,\sigma\}$ and $h$ of length $p-1$, by the induction hypothesis $h$ is either of the form $\sigma^k$, in which case we are done, or of the form $\tau\sigma^k$. So $x=g(\tau\sigma^{k})=(g\tau)\sigma^k$, if $g=\tau$ we are done, otherwise $x=(\tau\sigma^{n-1})\sigma^k=\tau\sigma^{k-1}$.
 	\end{cPart}
