@@ -8,4 +8,8 @@
 *.blg
 *.bbl
 *.toc
+*.bcf
+*.run.xml
+*.snm
+*.toc
 tmp\
