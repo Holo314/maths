@@ -1,0 +1,79 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 1}
+\begin{document}
+\maketitle
+\begin{cExercise}[][Yuval Paz][author][1]
+	\begin{cPart}[][Yuval Paz][author]
+		
+		Let $A\subseteq \Omega$ with probability $0$, and $B\subseteq \Omega$ any event with some probability $\alpha$.
+		
+		Let $B'=B\setminus A$, then $\P(A\cup B)=\P(A\cup B')=\P(A)+\P(B')=\P(B')$.
+		
+		We also have $\P(B)=\P((B\cap A)\cup B')=\P(B\cap A)+\P(B')$
+		
+		From 1.2, $\P(B\cap A)\le\P(A)\implies \P(B\cap A)=0\implies \P(B)=\P(B')$
+		
+	\end{cPart}
+	\begin{cPart}[][Yuval Paz][author]
+		Let $A\subseteq B$, and let $B'=B\setminus A$, then $\P(B)=\P(A\cup B')=\P(A)+\P(B)\ge \P(A)$ as $\P(B)\ge 0$
+		
+	\end{cPart}
+	\begin{cPart}[][Yuval Paz][author]
+		Let $(\Omega, \P)$ be any discrete probability space, let $\flower\notin \Omega$, and define $(\Omega\cup\{\flower\}, \P^{\flower})$ be discrete probability space defined as: $\P^{\flower}(A)=\P(A\setminus\{\flower\})$.
+		
+		Clearly this is a probability space ($\P^{\flower}(\Omega\cup\{\flower\})=\P(\Omega)=1$, and given any countable set of disjointed subsets of $\Omega\cup\{\flower\}$, at most one of them contains $\flower$, removing the flower from this specific set and looking at the $\sigma$-additivity of $\P$ gives the result)
+		
+		It is also discrete, as if $p$ is a discrete probability function inducing $\P$, then $p^{\flower}$ defined as $p$ on $\Omega$ and $p(\flower)=0$ will induce $\P^{\flower}$.
+		
+		In this probability space, let $A\subseteq\Omega$, then $A\subsetneq A\cup\{\flower\}$ but $\P^{\flower}(A)=\P^{\flower}(A\cup\{\flower\})$
+	\end{cPart}
+	\begin{cPart}[][Yuval Paz][author]
+		If $\P(A\cap B)=\alpha\in[0,1]$, the only way for the inequality to fail is for $\P(A)+\P(B)>1+\alpha$
+		
+		Now let $A',B'$ defined as in 1.1 and 1.2, then we have $\P(A)=\P(A')+\alpha\le 1\implies \P(A)\le 1-\alpha$, and similarly for $B$ so $\P(A)+\P(B)=\P(A')+\P(B')+2\alpha>1+\alpha\implies \P(A')+\P(B')+\alpha>1$, but by the definition $\alpha=\P(A\cap B)$, and $A',B',A\cap B$ are all disjoints, so we get that $\P(A'\cup B'\cup (A\cap B))>1$, contradiction.
+		
+	\end{cPart}
+	\begin{cPart}[][Yuval Paz][author]
+		Let $A',B'$ be as defined in 1.1 and 1.2.
+		
+		We have $\P(A)=\P(A')+\P(A\cap B)$ and $\P(B)=\P(B')+\P(A\cap B)$
+		
+		Notice that $B'\cap A'=\emptyset$, so adding the 2 equations we get $\P(A)+\P(B)=\P(A'\cup B')+2\P(A\cap B)\implies \P(A)+\P(B)-2\P(A\cap B)=\P(A'\cup B')$
+		
+		But $A'\cup B'$ is exactly $A\Delta B$, so we are done.
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[][Yuval Paz][author]
+	Let $\P$ be a probability function satisfying the conditions in the question.
+	
+	Because $\N$ is countable, so every subset of $\N$, so $A=\cup_{n\in A}\{n\}$ is countable union of disjoint sets, hence $\P(A)=\sum_{n\in A}\P(\{n\})$, hence it is enough to show that there is a unique discrete probability function $p$ on $\N$ satisfying $p(n)=3p(n+1)$.
+	
+	Notice that given 2 such discrete probability functions that agree on a single number must be equal.
+	
+	Let $p(0)=\alpha$, by definition of discrete probability function we have $\sum_{n\in\N}\alpha/3^n=\alpha\cdot \sum_{n\in\N}1/3^n=1\implies \alpha=\frac1{\sum_{n\in\N}1/3^n}$, hence any 2 discrete probability functions satisfying $p(n)=3p(n+1)$ must have the same value at $0$, but this implies that they are equal.
+	
+	$\P(\N)$ must be $1$, as $\P$ is a probability function, and (assuming $3\N$ means $\{3n\mid n\in\N\}$) $\P(3\N)=\sum_{n\in\N}\alpha/3^{3n}$
+\end{cExercise}
+
+
+\end{document}
+
+
+
+
