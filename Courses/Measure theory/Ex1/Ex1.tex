@@ -93,14 +93,14 @@
 		Define the following binary tree:
 		
 		\begin{itemize}
-			\item Define $T_{\Lambda}=X\setminus \bigcup A$ ($\Lambda$ is the empty sequence)
-			\item Given a finite binary sequence $\tau$ for which $T_\tau$ is already defined, let $\emptyset\ne A\subsetneq T_\tau$ be an element of $\cal M$ (it exists because $T_\tau$ is not an atom), then define $T_{\tau\frown\{0\}}=A,T_{\tau\frown\{1\}}=T_\tau\setminus A$
-			\item Define $T$ be the tree $(\{T_\tau\mid \tau\in 2^{<\N}\},\subseteq)$ 
+			\item Define $\flower_{\Lambda}=X\setminus \bigcup A$ ($\Lambda$ is the empty sequence)
+			\item Given a finite binary sequence $\tau$ for which $\flower_\tau$ is already defined, let $\emptyset\ne A\subsetneq \flower_\tau$ be an element of $\cal M$ (it exists because $\flower_\tau$ is not an atom), then define $\flower_{\tau\frown\{0\}}=A,\flower_{\tau\frown\{1\}}=\flower_\tau\setminus A$
+			\item Define $\flower$ be the tree $(\{\flower_\tau\mid \tau\in 2^{<\N}\},\subseteq)$ 
 		\end{itemize}
 		
-		Notice that given $\tau,\sigma\in 2^{<\N}$, if $\tau$ is not an initial segment of $\sigma$ and vice versa, then $T_\tau\cap T_\sigma=\emptyset$.
+		Notice that given $\tau,\sigma\in 2^{<\N}$, if $\tau$ is not an initial segment of $\sigma$ and vice versa, then $\flower_\tau\cap \flower_\sigma=\emptyset$.
 		
-		So $\{T_\tau\mid \tau\in 1^{<\N}\times\{1\}\}$ ($1^{<\N}\times\{1\}=\{1, 01, 001, 0001,\ldots\}$) is an infinite set of disjoint elements from $\cal M$.
+		So $\{\flower_\tau\mid \tau\in 1^{<\N}\times\{1\}\}$ ($1^{<\N}\times\{1\}=\{1, 01, 001, 0001,\ldots\}$) is an infinite set of disjoint elements from $\cal M$.
 	\end{cPart}
 	\begin{cPart}
 		If $A$ is infinite set of disjoint elements from $\cal M$ then it contains a countable infinite subset $B$, so $\{\bigcup J\mid J\subseteq B\}\subseteq \cal M$ but the former has cardinality $2^{\aleph_0}=\frak c>\aleph_0$
