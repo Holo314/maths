@@ -1,0 +1,114 @@
+\input{../../../base-article.tex}
+
+\usepackage{skak}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{textcomp}
+\usepackage{bbding}
+
+\usepackage{soul}
+
+\newcommand{\flower}{\text{\scalebox{0.75}{\raisebox{-0.7ex}{
+				\rotatebox{90}{\textleaf}\hspace{-0.3em}
+				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
+				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
+}}}}
+\title{Exercise 1}
+\begin{document}
+\maketitle
+\begin{cExercise}
+	\begin{cPart}
+		We need to show that $\cal A$ is closed under finite unions, it is enough to show that $\cal A$ is closed under union of size $2$.
+		
+		Let $Z,Y\in\cal A$, then $Z\cup Y=X\setminus((X\setminus Y)\setminus Z)\in\cal A$
+	\end{cPart}
+	\begin{cPart}
+		First let's note that $X\in \cal A_0$ hence $X\in \cal A$.
+		
+		Now given $Z,Y\in\cal A$ there exists some $n$ such that $Z,Y\in \cal A_n$ hence $Z\setminus Y\in\cal A_n$ and so $Z\setminus Y\in \cal A$ and we are done.
+	\end{cPart}
+	\begin{cPart}
+		\comment{Note that given $A$ a family of sets over $X$, $|\sigma(A)|\le \max(|A|^{\aleph_0},\aleph_0)$. That is because every element of $\sigma(A)$ comes uniquely from a countable amount of sets from $A$ as well as finite amount of operators from $\{\bigcup,\bigcap,\setminus\}$ (where $\bigcup,\bigcap$ are treated as function from $(2^X)^{\N}$ to $2^X$ and $\setminus$ is from $(2^X)^{2}$ to $2^X$).
+			
+		In particular $|\sigma(A)|\le |A|^{\aleph_0}\times 3^{<\aleph_0}=\max(|A|^{\aleph_0},\aleph_0)$.}{}
+		Note that given a set $X$ and a finite family $F$ over $X$, $\sigma(F)$ is finite.
+		
+		So let $X=\N$, and recursively define:
+		
+		\begin{itemize}
+			\item $\cal A_0=\sigma(\emptyset)$
+			\item $\cal A_{n+1}=\sigma(\cal A_n\cup\{n\})$
+			\item $\cal A=\bigcup \cal A_n$
+		\end{itemize}
+		Because $\cal A$ contains all of the singletons, if it was a $\sigma$-algebra it would contains the set of even numbers, but clearly no $\cal A_n$ contains that set, so $\cal A$ is not a $\sigma$-algebra
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		For every $x\in U$ let $I_x$ be an interval containing $x$ and a subset of $U$ (such interval exists by definition).
+		
+		Given $x,y\in U$, we say $x\sim y$ if there exists $\{x,y\}\subseteq J\subseteq U$ such that $\bigcup_{z\in J} I_z$ is an interval.
+		
+		This is clearly a equivalence relation, furthermore $\forall x\forall z\in I_x\;(x\sim z)$. Let $I$ be an equivalent class, and $z\in I$, then $I_z\subseteq I$, hence $I$ is open.
+		
+		Furthermore, if $x\sim y$ and $J\subseteq U$ witness that, then $x\sim w$ for every $w$ in $\bigcup_{z\in J} I_z$.
+		
+		If $I$ is not an interval it means that there exists $a<b<c$ such that $a,c\in I$ but $b\notin I$, but that is impossible, from the previous sentence.
+	\end{cPart}
+	\begin{cPart}
+		Every family of disjoint intervals in $\R$ is at most countable, indeed every interval contains some rational number and there are only countably many rational numbers.
+	\end{cPart}
+	\begin{cPart}
+		Let $\cal I$ be the collection of open intervals and $\tau$ the collection of open sets, then from the previous 2 parts we have that 
+		$$\cal I\subseteq\tau\subseteq \sigma(\cal I)\implies \sigma(\cal I)\subseteq\sigma(\tau)=\cal B(\R)\subseteq \sigma(\sigma(\cal I))=\sigma(\cal I)$$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}
+	$(a)\implies (b)$: trivial.
+	
+	$(b)\implies (c)$: assume $(b)$, and let $(A_n)$ be an $\subseteq$-increasing sequence of sets in $\cal M$, then $B_n=A_n\setminus(\bigcup_{k<n}A_k)$ is a sequence of disjoint subsets in $\cal M$ (it is in $\cal M$ because $\cal M$ is an algebra), from the assumption $\bigcup A_n=\bigcup B_n\in \cal M$
+	
+	$(c)\implies (a)$: assume $(c)$ and let $(A_n)$ be arbitrary sequence of elements from $\cal M$, then $B_n=\bigcup_{k<n}A_k$ is an increasing sequence of elements from $\cal M$ (it is in $\cal M$ because $\cal M$ is an algebra), from the assumption $\bigcup A_n=\bigcup B_n\in \cal M$
+	
+\end{cExercise}
+\begin{cExercise}
+	Given $Z,Y\in \cal M_1$, then $Z=f^{-1}(r), Y=f^{-1}(t)$ for $r,t\in\cal M_2$.
+	
+	\begin{itemize}
+		\item $X_1=f^{-1}(X_2)\in \cal M_1$
+		\item $Z\setminus Y=f^{-1}(r)\setminus f^{-1}(t)=f^{-1}(r\setminus t)\in\cal M_1$.
+		\item Let $(A_n)=(f^{-1}(B_n))$ be a sequence of elements from $\cal M_1$, then $\bigcup A_n=f^{-1}(\bigcup B_n)\in\cal M_1$
+	\end{itemize}
+\end{cExercise}
+\begin{cExercise}
+	\begin{cPart}
+		Let $A$ be the set of atoms in $\cal M$ (the set of non-empty sets that are $\subseteq$-minimal).
+		
+		Every element in $\cal M$ is either disjoint or a superset of every atom, in particular all of the atoms are disjoint.
+		
+		If $A$ is infinite we are done. Otherwise $X\setminus \bigcup A\in \cal M$. Because $\cal M$ is infinite and $2^A$ is finite, then $X\setminus \bigcup A\ne\emptyset$.
+		
+		Define the following binary tree:
+		
+		\begin{itemize}
+			\item Define $T_{\Lambda}=X\setminus \bigcup A$ ($\Lambda$ is the empty sequence)
+			\item Given a finite binary sequence $\tau$ for which $T_\tau$ is already defined, let $\emptyset\ne A\subsetneq T_\tau$ be an element of $\cal M$ (it exists because $T_\tau$ is not an atom), then define $T_{\tau\frown\{0\}}=A,T_{\tau\frown\{1\}}=T_\tau\setminus A$
+			\item Define $T$ be the tree $(\{T_\tau\mid \tau\in 2^{<\N}\},\subseteq)$ 
+		\end{itemize}
+		
+		Notice that given $\tau,\sigma\in 2^{<\N}$, if $\tau$ is not an initial segment of $\sigma$ and vice versa, then $T_\tau\cap T_\sigma=\emptyset$.
+		
+		So $\{T_\tau\mid \tau\in 1^{<\N}\times\{1\}\}$ ($1^{<\N}\times\{1\}=\{1, 01, 001, 0001,\ldots\}$) is an infinite set of disjoint elements from $\cal M$.
+	\end{cPart}
+	\begin{cPart}
+		If $A$ is infinite set of disjoint elements from $\cal M$ then it contains a countable infinite subset $B$, so $\{\bigcup J\mid J\subseteq B\}\subseteq \cal M$ but the former has cardinality $2^{\aleph_0}=\frak c>\aleph_0$
+	\end{cPart}
+\end{cExercise}
+
+\end{document}
+
+
+
+
