@@ -1,5 +1,6 @@
 \input{../../../base-article.tex}
 
+
 \usepackage{skak}
 \usepackage{relsize}
 \usepackage{graphicx}
@@ -15,6 +16,10 @@
 				\scalebox{0.7}{\textleaf}\hspace{-1.35em}
 				\raisebox{1ex}{\scalebox{0.8}{\FiveFlowerOpen}}
 }}}}
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
 \title{Exercise 1}
 \begin{document}
 \maketitle
@@ -77,7 +82,83 @@
 	
 	But if $J\subseteq I_n$ is finite, then $\sum_J a(i)\ge \frac{|J|}{n+1}$, and because $I_n$ is infinite, we can take $J$ to be as big as we want.
 \end{cExercise}
-
+\begin{cExercise}
+	All of the questions are about countable spaces, so when defining the probability function it is enough to only specify it on the singletons, and from $\sigma$-additivity the rest follows.
+	\begin{cPart}
+		$\Omega$ will be $[6]^{10}$ modulo $\sim$ where $a\sim b$ if there exists a permutation on $[6]$ such that $\tau(a)=b$ (alternatively multisets of size $10$ of elements from $[6]$) and define $\P(\{a\})=\frac{|a|}{6^{10}}$ (remember that $a$ is a set of elements in $[6]^{10}$ that is an equivalent class, so it's size is the amount of ways to get a specific set of results).
+		
+		Let $\Omega'=[6]^{10}$ with uniform distribution $\P'$.
+		
+		Now let $A=\{x\in \Omega\mid 1\in x\}$ (here we view $x$ as a multiset), by construction, $\P(A)=\P'(\bigcup A)=\P'(A')$ where $A'$ is the set of elements from $[6]^{10}$ that contains $1$ at some point. Looking at $\P([6]^{10}\setminus A')=(\frac56)^{10}$ and so $\P(A)=1-\P'([6]^{10}\setminus A')=1-(\frac56)^{10}$
+		
+		Let $B=\{x\in \Omega\mid |\{z\in x\mid z=1\}|=1\}$ (here we view $x$ as a multiset), as before this transform into $B'$ the set of sequences with exactly one $1$, and $\P(B)=\P'(B')$.
+		
+		$\P'(B')$ is $\frac16\cdot\left(\frac56\right)^{9}\cdot 10$ (the probability of rolling $1$ first and then 9 other numbers, times 10 (getting 1 in any position instead of only the first place)).
+	\end{cPart}
+	\begin{cPart}
+		$\Omega=\{2,3,4,5,6,7,8,9,10,11,12\}$ (the set of possible sums), and $\P(\{a\})=\frac{|\{x\in [6]^2\mid \pi_0(x)+\pi_1(x)=a\}|}{6^2}$ where $\pi_i$ is the projection to the $i^{th}$ index.
+		
+		We can count $\P(\{2\})=\frac1{36}, \P(\{3\})=\frac2{36}, \P(\{4\})=\frac3{36}, \P(\{5\})=\frac4{36}, \P(\{6\})=\frac5{36}$ and so $\P(\{7,8,9,10,11,12\})=1-\P(\{2,3,4,5,6\})=1-(\sum_{i=1}^5\frac i{36})$
+	\end{cPart}
+	\begin{cPart}
+		Assuming people's birth month is completely uniform, this probability space is the same as 4.1 but instead of dice with 6 sides, it is dice with 12 sides.
+		
+		Similarly to 4.1 let $A=\{x\in\Omega\mid \exists n(x(n)>1)\}$ (where $x$ is viewed as a multiset, and $x(n)$ is the count of appearance of $n$ in $x$) and let $A'$ the corresponding event in $\Omega'$.
+		
+		Note that $\P'([12]^{10}\setminus A')$ is exactly $\frac{12\cdot 11\cdot 10\cdot 9\cdots 3}{12^{10}}$, so $\P(A)=1-\frac{12!}{2\cdot12^{10}}$
+	\end{cPart}
+	\begin{cPart}
+		Similarly to 4.3, we can view each basket as a label in a die, so the question can be modelled as 4.1 but with dice having 8 dice and rolling 12 dice instead of 10.
+		
+		Let $A=\{x\in \Omega\mid \forall n\in[8](n\in x)\}$ where $x$ viewed as a multiset.
+		
+		As usual let $A'$ be the corresponding event in $\Omega'$.
+		
+		Using Inclusion-Exclusion we have that $$\P'([8]^{12}\setminus A')=\frac{{8\choose 1}7^{12}-{8\choose 2}6^{12}+{8\choose 3}5^{12}-{8\choose 4}4^{12}+{8\choose 5}3^{12}-{8\choose 6}2^{12}+{8\choose 7}1^{12}-{8\choose 8}0^{12}}{8^{12}}$$
+		
+		And $\P(A)=1-\P'([8]^{12}\setminus A')$
+	\end{cPart}
+	\begin{cPart}
+		Let $\Omega=[[13]\times\{\clubsuit,\vardiamond,\spadesuit,\varheart\}]^4$ (where $[x]^n$ is the set of $n$-sized subset of $x$) with uniform probability ($\P(\{a\})=\frac1{{52\choose 4}}$)
+		
+		There are ${13\choose 4}$ many elements in $\Omega$ that are all of Diamond suit, so from uniformity $\P(\{x\in\Omega\mid \forall z\in x(\pi_1(z)=\vardiamond)\})=\frac{{13\choose 4}}{{52\choose 4}}$ (where $\pi_i$ is the projection to the $i^{th}$ index)
+	\end{cPart}
+	\begin{cPart}
+		Let $\Omega=\{M,F\}\times\{x\in\{n\in \N\mid n\ne 0\}^{<\omega}\mid \sum x=16\}$ with uniform distribution. ($X^{<\omega}$ denotes the finite sequences whose range is in $X$)
+		
+		The right element each element of $\Omega$ is indicate how many people of the same gender sit in a row, and the left index indicate if a Male or a Female sits first.
+		
+		We want to calculate $\P(\{x\in\Omega\mid \range{\pi_1(x)}=\{1\}\})$ (where $\pi_i$ is the projection to the $i^{th}$ index), clearly $|\{x\in\Omega\mid \range{\pi_1(x)}=\{1\}\}|=2$.
+		
+		$|\{x\in\{n\in \N\mid n\ne 0\}^{<\omega}\mid \sum x=16\}|$ is well known to be $2^{15}$, hence $|\Omega|=2^{16}$ and so $\P(\{x\in\Omega\mid \range{\pi_1(x)}=\{1\}\})=\frac1{2^{15}}$
+	\end{cPart}
+	\begin{cPart}
+		Let $\Omega=[[n]]^k\times[[n]]^m$ (where $[x]^p$ is the $p$-sized subset of $x$) with uniform probability.
+		
+		The left index indicate the winning tickets, and the right index indicate the tickets a person got.
+		
+		We want to calculate the probability of $A=\{x\in\Omega\mid \pi_0(x)\cap\pi_1(x)\ne\emptyset\}$ where $\pi_i$ is the projection to the $i^{th}$ index.
+		
+		Now fixing $w\in[[n]]^k$, we have $k\cdot {n-1\choose m-1}$ many elements $b\in[[n]]^m$ such that $(w,b)\in A$.
+		
+		So the size of $A$ is ${n\choose k}\cdot k\cdot {n-1\choose m-1}$, and $|\Omega|={n\choose k}\cdot{n\choose m}$ so $\P(A)=k\cdot\frac{{n-1\choose m-1}}{{n\choose m}}$
+	\end{cPart}
+\end{cExercise}
+\begin{cExercise}[Bonus]
+	\begin{cPart}
+		If $X\in\cal F$ then either $X$ is finite, hence $X^c$ is co-finite, or $X$ is co-finite, hence $X^c$ is finite.
+		
+		For finite unions note that either all elements of the unions are finite, and hence the union is finite, or there exists at least 1 cofinite set in there, but any superset of a cofinite set is cofinite, hence the union is in $\cal F$ in this case as well.
+	\end{cPart}
+	\begin{cPart}
+		$\P(\emptyset)=0$ because $|\emptyset|=0$ and $\P(\Omega)=1$ because $|X|=\aleph_0$ by definition.
+		
+		Given $(A_n)_{n<k}$ a finite sequence of disjoint elements from $\cal F$, either all of $A_n$ are finite, and then $\bigcup A_n$ is finite and hence additivity present, or exactly one of $A_n$ is cofinite (as there are no 2 disjoint cofinite subsets of $\Omega$), and then $\bigcup A_n$ is cofinite, hence has probability 1, and the additivity presented in this case as well.
+	\end{cPart}
+	\begin{cPart}
+		WLOG we may assume $\Omega=\N$ and then we can let $A_n=\{n\}$, each $A_n$ has probability $0$, but $1=\P(\Omega)=\P(\bigcup A_n)\ne \sum \P(A_n)$
+	\end{cPart}
+\end{cExercise}
 \end{document}
 
 
